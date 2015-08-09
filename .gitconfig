@@ -1,3 +1,8 @@
 [user]
     name = Thomas
     email = thomas.whyyou@gmail.com
+
+[color "status"]
+    added = 46
+    changed = 196
+    untracked = magenta
