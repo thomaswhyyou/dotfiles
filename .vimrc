@@ -232,6 +232,7 @@ set showmatch                   " highlight matching [{()}]
 set matchpairs+=<:>             " Highlight <>
 set matchtime=2                 " how many tenths of a second to blink when matching brackets
 set scrolloff=7                 " set 7 lines to the cursor - when moving vertically using j/k
+set nostartofline               " don't move me around to the front automatically
 set sidescrolloff=20            " set 20 cols to the cursor when moving horizontally
 set colorcolumn=81              " line length marker
 set laststatus=2                " always show statusline
