@@ -11,7 +11,7 @@
 ;     remote = green
 
 [color "status"]
-    added = 33  # Blue
+    added = 148  # Yucky green
     changed = 163  # Purple
     untracked = 208  # Orange
 
