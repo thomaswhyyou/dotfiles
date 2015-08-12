@@ -22,4 +22,4 @@ then
     tmux select-window -t Painless:1
     tmux select-pane -t Painless:1.1
 fi
-# tmux attach -t Painless
+tmux attach -t Painless

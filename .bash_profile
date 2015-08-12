@@ -475,4 +475,11 @@ if hash tmux 2>/dev/null; then
     alias tat='tmux attach -t'
     alias tns='tmux new-session -s'
     alias tks='tmux kill-session -t'
+
+    TMUX_SETUP_SCRIPT="$HOME/dotfiles/scripts/tmux-setup-session-default.sh"
+    if [[ ("$TERM" != "screen-256color") && (-f "$TMUX_SETUP_SCRIPT") ]]; then
+        . "$TMUX_SETUP_SCRIPT"
+        # tmux attach-session -t Painless
+        # exit
+    fi
 fi
