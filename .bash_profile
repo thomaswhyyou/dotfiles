@@ -38,7 +38,7 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 # Add colors to LS (http://geoff.greer.fm/lscolors/)
 export CLICOLOR=1
-export LSCOLORS=fxexcxdxbxegedabagacad # BSD
+export LSCOLORS=exfxcxdxbxegedabagacad # BSD
 export LS_COLORS='di=35;40:ln=34;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:' # Linux
 export GREP_OPTIONS='--color=auto'
 # Set Default Editor (change 'Nano' to the editor of your choice)
@@ -207,8 +207,6 @@ else
     PS1+="${style_prompt}✿ \[${RESET}\]"
 fi
 
-# PS1+="${style_prompt}> \[${RESET}\]"
-
 
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
@@ -227,7 +225,7 @@ alias .3='cd ../../../'                     # Go back 3 directory levels
 alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
-# alias edit='subl'                           # edit:         Opens any file in sublime editor
+alias edit='vim'                            # edit:         Opens any file in vim
 # alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 # alias ~="cd ~"                              # ~:            Go Home
 alias clr='clear'                             # clr:            Clear terminal display
