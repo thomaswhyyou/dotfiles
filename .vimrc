@@ -467,6 +467,7 @@ if isdirectory(bundledir.'/unite.vim')
     nnoremap <leader>y :<C-u>Unite -buffer-name=yank                history/yank<cr>
     nnoremap <leader>f :<C-u>Unite -buffer-name=file                file<cr>
     nnoremap <leader>r :<C-u>Unite -buffer-name=mru                 file_mru<cr>
+    nnoremap <leader>o :<C-u>Unite -buffer-name=buffer -quick-match buffer<cr>
     nnoremap <leader>b :<C-u>Unite -buffer-name=buffer -quick-match buffer<cr>
     nnoremap <leader>/ :<C-u>Unite -buffer-name=grep -auto-preview  grep:!<cr>
     nnoremap <leader>\ :<C-u>Unite -buffer-name=line -auto-preview  line<cr>
