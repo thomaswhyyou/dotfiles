@@ -74,14 +74,14 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'valloric/MatchTagAlways'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'ervandew/supertab'
-NeoBundle 'Raimondi/delimitMate'
+" NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'tpope/vim-endwise'
-NeoBundle 'guns/xterm-color-table.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'christoomey/vim-tmux-navigator'
 " NeoBundle 'Shougo/vimshell.vim'
 
+" ----
 " Elixir
 NeoBundle 'elixir-lang/vim-elixir'
 
