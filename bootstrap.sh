@@ -6,7 +6,7 @@ if [ ! -d "$ORIGINDIR" ]; then
     return 1
 fi
 
-DOTFILES=$(find ~/dotfiles -type f -maxdepth 1 -not \( -name ".gitmodules" \) -name ".*")
+DOTFILES=$(find ~/dotfiles -maxdepth 1 -type f -not \( -name ".gitmodules" \) -name ".*")
 
 # Relevant dotfiles
 echo ""
