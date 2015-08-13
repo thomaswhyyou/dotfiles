@@ -1,7 +1,11 @@
+# Set up a default session called 'Painless'.
+
 tmux has-session -t Painless
-if [[ $? != 0 ]]
-then
-    tmux detach
+if [[ $? != 0 ]]; then
+    # Make sure we detach first if we are already inside tmux.
+    if [[ "$TERM" == "screen-256color" ]]; then
+        tmux detach
+    fi
 
     # Create a new session 'Painless' with first window 'Editor'
     tmux new-session -s Painless -n Editor -d
@@ -22,4 +26,8 @@ then
     tmux select-window -t Painless:1
     tmux select-pane -t Painless:1.1
 fi
-tmux attach -t Painless
+
+# Get us into the default session.
+if [[ "$TERM" != "screen-256color" ]]; then
+    tmux attach -t Painless
+fi

@@ -39,7 +39,7 @@ export LANG="en_US"
 # Add colors to LS (http://geoff.greer.fm/lscolors/)
 export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxegedabagacad # BSD
-export LS_COLORS='di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:' # Linux
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:' # Linux (color '40' dropped to use solarized iterm theme)
 export GREP_OPTIONS='--color=auto'
 # Set Default Editor (change 'Nano' to the editor of your choice)
 export EDITOR=vim
@@ -451,7 +451,7 @@ httpdebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect
 
 
 #   ---------------------------------------
-#   10.  MACHINE SPECIFIC
+#   10.  APPLICATION SPECIFIC
 #   ---------------------------------------
 
 ## Shortcuts
@@ -476,10 +476,8 @@ if hash tmux 2>/dev/null; then
     alias tns='tmux new-session -s'
     alias tks='tmux kill-session -t'
 
-    TMUX_SETUP_SCRIPT="$HOME/dotfiles/scripts/tmux-setup-session-default.sh"
-    if [[ ("$TERM" != "screen-256color") && (-f "$TMUX_SETUP_SCRIPT") ]]; then
-        . "$TMUX_SETUP_SCRIPT"
-        # tmux attach-session -t Painless
-        # exit
+    TMUX_INIT_SCRIPT="$HOME/dotfiles/scripts/tmux-setup-session-default.sh"
+    if [[ -f "$TMUX_INIT_SCRIPT" ]]; then
+        . "$TMUX_INIT_SCRIPT"
     fi
 fi
