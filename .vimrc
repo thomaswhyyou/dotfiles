@@ -402,7 +402,7 @@ if isdirectory(bundledir.'/vimfiler.vim')
         nmap <buffer> <CR> <Plug>(vimfiler_expand_or_edit)
         nnoremap <silent><buffer><expr> v vimfiler#do_switch_action('vsplit')
         nnoremap <silent><buffer><expr> s vimfiler#do_switch_action('split')
-        nmap <buffer> O <Plug>(vimfiler_expand_tree_recursive)
+        " nmap <buffer> O <Plug>(vimfiler_expand_tree_recursive)
         nmap <buffer> q <Plug>(vimfiler_hide)
         nmap <buffer> Q <Plug>(vimfiler_exit)
 
