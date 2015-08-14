@@ -49,8 +49,6 @@ export VISUAL=vim
 export BLOCKSIZE=1k
 # turn off flow control characters, that way we can use ctrl+q & ctrl+s bindings
 stty -ixon -ixoff
-# make it vim like
-set -o vi
 
 # Color for manpages in less makes manpages a little easier to read
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -96,7 +94,7 @@ if tput setaf 1 &> /dev/null; then
     CYAN=$(tput setaf 6)
     WHITE=$(tput setaf 7)
     ORANGE=$(tput setaf 172)
-    # GREEN=$(tput setaf 190)
+    GREEN=$(tput setaf 190)
     PURPLE=$(tput setaf 141)
     BG_BLACK=$(tput setab 0)
     BG_RED=$(tput setab 1)

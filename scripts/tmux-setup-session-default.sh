@@ -7,6 +7,9 @@ if [[ $? != 0 ]]; then
         tmux detach
     fi
 
+    tmux set -g base-index 1
+    tmux setw -g pane-base-index 1
+
     # Create a new session 'Painless' with first window 'Editor'
     tmux new-session -s Painless -n Editor -d
     tmux split-window -h -p 28 -t Painless:1.1
