@@ -1,3 +1,0 @@
-[submodule "vendor/dircolors-solarized"]
-	path = vendor/dircolors-solarized
-	url = https://github.com/seebi/dircolors-solarized.git
