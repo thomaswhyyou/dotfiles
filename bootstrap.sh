@@ -30,8 +30,4 @@ if [[ -f $DIRCOLORS ]]; then
     ln -sfn "$DIRCOLORS" ~/.dircolors/$(basename $DIRCOLORS)
 fi
 
-# if [ -f ~/.bash_profile ]; then
-#    source ~/.bash_profile
-# fi
-
 echo ""; echo "All done. Yay :)"
