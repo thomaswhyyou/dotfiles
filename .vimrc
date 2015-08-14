@@ -47,7 +47,6 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'thinca/vim-qfreplace'
-" NeoBundle 'rking/ag.vim'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'moll/vim-bbye'
 NeoBundle 'sjl/gundo.vim'
@@ -63,7 +62,6 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'gregsexton/gitv'
-" NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
 " Other utilities
 NeoBundle 'godlygeek/tabular'
@@ -473,8 +471,8 @@ if isdirectory(bundledir.'/unite.vim')
     nnoremap <leader>y :<C-u>Unite -buffer-name=yank                history/yank<cr>
     nnoremap <leader>f :<C-u>Unite -buffer-name=file                file<cr>
     nnoremap <leader>r :<C-u>Unite -buffer-name=mru                 file_mru<cr>
-    nnoremap <leader>o :<C-u>Unite -buffer-name=buffer -quick-match buffer<cr>
-    nnoremap <leader>b :<C-u>Unite -buffer-name=buffer -quick-match buffer<cr>
+    nnoremap <leader>o :<C-u>Unite -buffer-name=buffer              buffer<cr>
+    nnoremap <leader>b :<C-u>Unite -buffer-name=buffer              buffer<cr>
     nnoremap <leader>/ :<C-u>Unite -buffer-name=grep -auto-preview  grep:!<cr>
     nnoremap <leader>\ :<C-u>Unite -buffer-name=line -auto-preview  line<cr>
 
