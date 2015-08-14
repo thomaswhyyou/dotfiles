@@ -20,7 +20,7 @@ fi
 VENDORDIR="$ORIGINDIR/vendor"
 if hash tmux 2>/dev/null; then
     if [[ -d "$VENDORDIR/tpm" ]]; then
-        mkdir ~/.tmux/plugins
+        mkdir -p ~/.tmux/plugins
         echo "Creating symlink to '$VENDORDIR/tpm' *directory* in ~/.tmux/plugins directory."
         rm -rf ~/.tmux/plugins/tpm/
         ln -sfn $VENDORDIR/tpm ~/.tmux/plugins/tpm
