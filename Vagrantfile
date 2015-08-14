@@ -31,7 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder dirpath, vagrant_mount_path                # and instead mount it per vagrant_mount_path
 
   # Provision initial setps of guest vm
-  config.vm.provision "file", source: "~/.bash_profile", destination: "~/.bash_profile"
+  # config.vm.provision "file", source: "~/.bash_profile", destination: "~/.bash_profile"
 
   maybe_playbook = "#{dirpath}/ansible/vagrant.yml"
   if File.exist?(maybe_playbook)
