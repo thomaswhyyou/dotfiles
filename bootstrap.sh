@@ -11,6 +11,7 @@ fi
 # Make sure we have git submodules cloned too.
 if hash git 2>/dev/null; then
     git -C $ORIGINDIR submodule update --init --recursive
+    echo ""
 else
     echo "You need to install git first. :("
     return 1
