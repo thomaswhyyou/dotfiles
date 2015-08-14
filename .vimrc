@@ -998,7 +998,7 @@ noremap Y y$
 " nnoremap <leader>z :%s#\<<c-r>=expand("<cword>")<cr>\>##gc<left><left><left>
 " nnoremap <leader>Z :bufdo %s#\<<c-r>=expand("<cword>")<cr>\>##gce<space><bar><space>update<left><left><left><left><left><left><left><left><left><left><left><left><left>
 
-" Check syntax group
+" Check syntax color group
 function! <SID>CheckSyntaxItem()
     echo synIDattr(synID(line("."), col("."), 1), "name")
 endfunction
@@ -1019,6 +1019,7 @@ function! <SID>StripTrailingWhitespacesAndEmptyEndLines()
     call cursor(l, c)
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespacesAndEmptyEndLines()
+nnoremap <F8> :call <SID>StripTrailingWhitespacesAndEmptyEndLines()<CR>
 
 " Make directory automatically
 autocmd MyAutoCmd BufWritePre *
