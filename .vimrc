@@ -983,6 +983,7 @@ inoremap <C-l> <C-o>l
 
 " disable vim looking up man page
 nnoremap <S-k> <nop>
+xnoremap <S-k> <nop>
 
 " forward and backward for searched character
 nnoremap \ ;
