@@ -316,6 +316,7 @@ set whichwrap+=h,l,<,>,[,],b,s,~
 " filetype specifics (tabstop ts, shiftwidth sw, softtabstop sts)
 autocmd Filetype python setlocal ts=4 sw=4 sts=4 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 sts=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
 
 
 

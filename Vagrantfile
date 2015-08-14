@@ -22,6 +22,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Use host ssh credentials in guest vm; ssh agent must be running on host
   config.ssh.forward_agent = true
 
+  # make host graphical session available to the remote machine (only relevant if x11/gui available in guest)
+  config.ssh.forward_x11 = true
+
   # Configure shared folder
   vagrant_mount_path = "/home/vagrant/#{dirname}"                    # Where in guest shared folder should mount;
   config.vm.synced_folder dirpath, "/vagrant", disabled: true        # disable default vagrant mounting;
@@ -44,9 +47,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Customize some vb configurations
-  # config.vm.provider "virtualbox" do |vb|
-  #   vb.memory = 2048
-  #   vb.cpus = 2
-  # end
+  config.vm.provider "virtualbox" do |vb|
+    # vb.customize ["modifyvm", :id, "--memory", "2048"]
+    # vb.customize ["modifyvm", :id, "--cpus", "2"]
+    vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
+  end
 
 end
