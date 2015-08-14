@@ -23,11 +23,11 @@ if [[ (-f $VAGRANTFILE) && (-d "$HOME/.vagrant.d") ]]; then
 fi
 
 # dircolors-solarized for .dircolors
-DIRCOLORS="$ORIGINDIR/vendor/dircolors-solarized/dircolors.ansi-universal"
-if [[ -f $DIRCOLORS ]]; then
-    mkdir -p ~/.dircolors
-    echo "Creating symlink to '$DIRCOLORS' in ~/.dircolors directory."
-    ln -sfn "$DIRCOLORS" ~/.dircolors/$(basename $DIRCOLORS)
-fi
+# DIRCOLORS="$ORIGINDIR/vendor/dircolors-solarized/dircolors.ansi-universal"
+# if [[ -f $DIRCOLORS ]]; then
+#     mkdir -p ~/.dircolors
+#     echo "Creating symlink to '$DIRCOLORS' in ~/.dircolors directory."
+#     ln -sfn "$DIRCOLORS" ~/.dircolors/$(basename $DIRCOLORS)
+# fi
 
 echo ""; echo "All done. Yay :)"
