@@ -1,0 +1,62 @@
+---
+# requires {{ downloads_dir }} defined
+# requires {{ venv_dir }} defined
+# requires {{ venv_python }} defined
+# requires opencv file to be present in "files/" folder in this role
+
+# Reference:
+# http://milq.github.io/install-opencv-ubuntu-debian/
+# https://gist.github.com/robinkraft/4d1807fb8f9c246b2d21
+# http://joshuah.scripts.mit.edu/blog/?p=236
+# http://docs.opencv.org/doc/tutorials/introduction/linux_install/linux_install.html
+# http://ntraft.com/opencv-in-a-virtualenv/
+# http://stackoverflow.com/a/16003545/3479934
+
+- name: install required packages for opencv
+  apt: name={{ item }} state=present
+  with_items:
+  # ??
+    - pkg-config
+  # build tool
+    - cmake
+  # gui
+    - libgtk2.0-dev
+  # media i/o
+    - zlib1g-dev
+    - libjpeg-dev
+    - libwebp-dev
+    - libpng-dev
+    - libtiff5-dev
+    - libjasper-dev
+    - libopenexr-dev
+    - libgdal-dev
+  # video i/o
+    - libavcodec-dev
+    - libavformat-dev
+    - libswscale-dev
+    - libdc1394-22-dev
+    # - libtheora-dev
+    # - libvorbis-dev
+    # - libxvidcore-dev
+    # - libx264-dev
+    # - yasm
+    # - libfaac-dev
+    # - libopencore-amrnb-dev
+    # - libopencore-amrwb-dev
+    # - libv4l-dev
+    # - libxine-dev
+  # python packages
+    # python-dev   (skipped, included in setup_ubuntu_with_python_basics)
+    # python-numpy (skipped, included in setup_ubuntu_with_scipy_stacks)
+  # parallelism and linear algebra libraries
+    - libtbb-dev
+    - libeigen3-dev
+
+- include: install_opencv.yml
+  vars:
+    opencv_file_name: opencv-2.4.10
+    opencv_file_ext: zip
+    cmake_install_prefix: /usr/local
+
+- name: install mahotas
+  pip: name=mahotas state=present virtualenv={{ venv_dir }}

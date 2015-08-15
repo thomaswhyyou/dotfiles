@@ -1,0 +1,11 @@
+---
+- name: apt-get update
+  apt: update_cache=true
+
+- name: install java stuff
+  apt: name={{ item }} state=present
+  with_items:
+    - default-jre
+    - default-jdk
+    - openjdk-7-jre
+    - openjdk-7-jdk

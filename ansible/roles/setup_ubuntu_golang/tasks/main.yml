@@ -1,0 +1,9 @@
+---
+# requires golang file to be present in "files/" folder in this role
+
+- include: install_golang.yml
+  vars:
+    file_name: go1.4.1.linux-amd64
+    file_ext: tar.gz
+    unpack_destination: /usr/local
+

@@ -1,0 +1,7 @@
+---
+- name: copy golang file and unpack in guest dest
+  unarchive: src={{ file_name }}.{{ file_ext }}
+             dest={{ unpack_destination }}
+
+- file: path=/etc/profile.d/include.sh state=touch
+- lineinfile: dest=/etc/profile.d/include.sh line="export PATH=$PATH:{{ unpack_destination }}/go/bin"

@@ -1,0 +1,36 @@
+---
+- name: apt-get update
+  apt: update_cache=yes
+
+# https://gist.github.com/91e14096374075f5316e.git
+- name: install tmux dependencies
+  apt: name={{ item }} state=present
+  with_items:
+    - python-software-properties
+    - software-properties-common
+
+# Add latest tmux repo and update cache again.
+- apt_repository: repo='ppa:pi-rho/dev' state=present
+- name: apt-get update
+  apt: update_cache=yes
+
+- name: install essentials
+  apt: name={{ item }} state=latest
+  with_items:
+    - build-essential
+    - libz-dev                      # (also pretty common and essential)
+    - libreadline-dev               # (otherwise the REPL prompt can be crap)
+    - libncursesw5-dev
+    - libssl-dev
+    - libgdbm-dev
+    - libsqlite3-dev
+    - libbz2-dev
+    - libc6-dev
+    - git
+    - tar
+    - unzip
+    - xclip                         # clipboard..?
+    - silversearcher-ag             # grep/ack replacement
+    - exuberant-ctags               # for vim tagbar plugin
+    - libevent-dev                  # Apparently needed for tmux
+    - tmux
