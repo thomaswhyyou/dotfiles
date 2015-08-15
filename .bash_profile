@@ -479,6 +479,5 @@ if hash tmux 2>/dev/null; then
     TMUX_INIT_SCRIPT="$HOME/dotfiles/scripts/tmux-setup-session-default.sh"
     if [[ -f "$TMUX_INIT_SCRIPT" ]]; then
         . "$TMUX_INIT_SCRIPT"
-        exit
     fi
 fi
