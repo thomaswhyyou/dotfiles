@@ -29,7 +29,7 @@ if hash tmux 2>/dev/null; then
 fi
 
 # Relevant dotfiles
-DOTFILES=$(find ~/dotfiles -maxdepth 1 -type f -not \( -name ".gitmodules" \) -name ".*")
+DOTFILES=$(find ~/dotfiles -maxdepth 1 -type f -not \( -name ".gitmodules" -o -name ".gitignore" \) -name ".*")
 for file in $DOTFILES; do
     echo "Creating symlink to '$file' in home directory."
     ln -sfn $file ~/$(basename $file)
