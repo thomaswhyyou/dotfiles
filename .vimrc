@@ -1015,6 +1015,8 @@ function! <SID>StripTrailingWhitespacesAndEmptyEndLines()
     :silent! %s/\s\+$//e
     " Strip empty end lines.
     :silent! %s#\($\n\s*\)\+\%$##
+    " Add just one empty line at the end of file
+    :silent! $norm o
     " clean up: restore previous search history, and cursor position
     let @/=_s
     call cursor(l, c)
