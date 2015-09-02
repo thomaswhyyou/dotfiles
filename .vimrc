@@ -93,6 +93,9 @@ NeoBundle 'tpope/vim-markdown'
 " JavaScript
 NeoBundle 'pangloss/vim-javascript'
 
+" Docker
+NeoBundle 'ekalinin/Dockerfile.vim'
+
 call neobundle#end()
 
 filetype plugin indent on
