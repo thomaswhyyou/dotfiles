@@ -458,6 +458,9 @@ httpdebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect
 if [ -d ~/Dropbox/Code ]; then
     alias code='cd ~/Dropbox/Code'
 fi
+if [ -d ~/work ]; then
+    alias work='cd ~/work'
+fi
 
 ## autoenv
 if hash activate.sh 2>/dev/null; then
