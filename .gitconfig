@@ -16,7 +16,7 @@
     untracked = 208  # Orange
 
 [color "diff"]
-    meta = 208  # Orange
-    frag = 255  # White
+    meta = 255  # White
+    frag = 163  # Purple
     old = 160 # Red
     new = 34  # Green
