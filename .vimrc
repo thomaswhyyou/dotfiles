@@ -96,6 +96,9 @@ NeoBundle 'pangloss/vim-javascript'
 " Docker
 NeoBundle 'ekalinin/Dockerfile.vim'
 
+" React
+NeoBundle 'mxw/vim-jsx'
+
 call neobundle#end()
 
 filetype plugin indent on
