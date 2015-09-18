@@ -32,5 +32,7 @@
     - xclip                         # clipboard..?
     - silversearcher-ag             # grep/ack replacement
     - exuberant-ctags               # for vim tagbar plugin
+    - cmake                         # needed for YCM vim plugin
+    - python-dev                    # needed for YCM vim plugin
     - libevent-dev                  # Apparently needed for tmux
     - tmux

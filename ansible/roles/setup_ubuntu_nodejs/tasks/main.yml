@@ -3,3 +3,9 @@
 - shell: curl -L https://deb.nodesource.com/setup_4.x | sudo -E bash -
 - name: install nodejs
   apt: name=nodejs state=present
+
+# XXX: Make a list of items and loop
+- npm: name=eslint global=yes
+- npm: name=eslint-plugin-react global=yes
+- npm: name=babel-eslint global=yes
+- npm: name=typescript global=yes

@@ -5,6 +5,7 @@
 set nocompatible
 filetype off
 let bundledir = expand('~/.vim/bundle')
+let g:neobundle#install_process_timeout = 1500  "YouCompleteMe is slow
 
 " Skip initialization for vim-tiny or vim-small.
 if 0 | endif
@@ -57,27 +58,43 @@ NeoBundle 'majutsushi/tagbar'
 " NeoBundle 'Shougo/neocomplete'
 " NeoBundle 'Shougo/neosnippet.vim'
 " NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'SirVer/ultisnips'
+" NeoBundle 'honza/vim-snippets'
+NeoBundle 'Valloric/YouCompleteMe', {
+     \ 'build' : {
+     \     'mac' : './install.sh --clang-completer',
+     \     'unix' : './install.sh --clang-completer',
+     \     'windows' : './install.sh --clang-completer',
+     \     'cygwin' : './install.sh --clang-completer'
+     \    }
+     \ }
 
 " Version control
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'gregsexton/gitv'
+NeoBundle 'tpope/vim-fugitive'
 
-" Other utilities
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'easymotion/vim-easymotion'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'valloric/MatchTagAlways'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'nathanaelkane/vim-indent-guides'
+" Better maneuvering
 NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'easymotion/vim-easymotion'
+
+" Better editing
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-unimpaired'
+" NeoBundle 'ervandew/supertab'
+NeoBundle 'Raimondi/delimitMate'
+
+" Other utilities
+NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'valloric/MatchTagAlways'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 " NeoBundle 'Shougo/vimshell.vim'
+
 
 " ----
 " Elixir
@@ -92,12 +109,12 @@ NeoBundle 'tpope/vim-markdown'
 
 " JavaScript
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'elzr/vim-json'
 
 " Docker
 NeoBundle 'ekalinin/Dockerfile.vim'
 
-" React
-NeoBundle 'mxw/vim-jsx'
 
 call neobundle#end()
 
@@ -623,44 +640,50 @@ endif
 " endif "}}}
 
 
+" YouCompleteMe
+" NOTE: Need to compile YCM to use it:
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.py --clang-completer --gocode-completer
+if isdirectory(bundledir.'/YouCompleteMe')
+  " Placeholder
+endif
+
+
 " Syntastic
 " ----
 if isdirectory(bundledir.'/syntastic')
     " configure syntastic syntax checking to check on open as well as save
     let g:syntastic_check_on_open=1
     "  window will be automatically opened when errors are detected, and closed when none are detected
-    let g:syntastic_auto_loc_list=1
+    " let g:syntastic_auto_loc_list=1
 
     let g:syntastic_python_pylint_exe = "pylint2"
     let g:syntastic_error_symbol='✗'
     let g:syntastic_warning_symbol='⚠'
-    let g:syntastic_style_error_symbol= '⚡'
-    let g:syntastic_style_warning_symbol  = '⚡'
+    let g:syntastic_style_error_symbol = '✠'
+    let g:syntastic_style_warning_symbol = '≈'
 
     let g:syntastic_mode_map = { 'mode': 'active',
                 \ 'active_filetypes': [],
                 \ 'passive_filetypes': ['python'] }
 
-" let g:syntastic_error_symbol = '✗✗'
-" let g:syntastic_warning_symbol = '⚠⚠'
-" let g:syntastic_style_error_symbol = '✠✠'
-" let g:syntastic_style_warning_symbol = '≈≈'
-" let g:syntastic_enable_balloons = 0
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_loc_list_height = 6
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_python_checkers = ['flake8']
-" let g:syntastic_coffee_coffeelint_args = '-f ~/.config/coffeelint.json'
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_c_config_file = '.clang_complete'
-" let g:syntastic_cpp_config_file = '.clang_complete'
-" let g:syntastic_java_javac_config_file_enabled = 1
-" let g:syntastic_cpp_compiler = 'clang++'
-" let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-" let g:syntastic_mode_map = { "mode": "active",
-            " \ "active_filetypes": ["coffee", "javascript", "python"],
-            " \ "passive_filetypes": ["cpp"] }
+    " let g:syntastic_enable_balloons = 0
+    " let g:syntastic_auto_loc_list = 0
+    " let g:syntastic_loc_list_height = 6
+    " let g:syntastic_always_populate_loc_list = 1
+    " let g:syntastic_check_on_wq = 0
+    " let g:syntastic_python_checkers = ['flake8']
+    " let g:syntastic_coffee_coffeelint_args = '-f ~/.config/coffeelint.json'
+    let g:syntastic_javascript_checkers = ['eslint']
+    " let g:syntastic_javascript_checkers = ['jshint']
+    " let g:syntastic_c_config_file = '.clang_complete'
+    " let g:syntastic_cpp_config_file = '.clang_complete'
+    " let g:syntastic_java_javac_config_file_enabled = 1
+    " let g:syntastic_cpp_compiler = 'clang++'
+    " let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+    " let g:syntastic_mode_map = { "mode": "active",
+                " \ "active_filetypes": ["coffee", "javascript", "python"],
+                " \ "passive_filetypes": ["cpp"] }
 endif
 
 
@@ -914,6 +937,9 @@ if isdirectory(bundledir.'/vim-smooth-scroll')
     noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 endif
 
+
+" elzr/vim-json
+let g:vim_json_syntax_conceal = 0
 
 
 " ==============================================================================
