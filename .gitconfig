@@ -2,6 +2,9 @@
     name = Thomas
     email = thomas.whyyou@gmail.com
 
+[push]
+    default = simple
+
 ; [color]
 ;     ui = auto
 
