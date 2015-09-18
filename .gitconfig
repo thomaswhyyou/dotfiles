@@ -13,7 +13,7 @@
 [color "status"]
     added = 148  # Yucky green
     changed = 163  # Purple
-    untracked = 208  # Orange
+    untracked = 31  # Dark blue
 
 [color "diff"]
     meta = 255  # White
