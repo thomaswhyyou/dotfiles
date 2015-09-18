@@ -91,7 +91,6 @@ NeoBundle 'Raimondi/delimitMate'
 
 " Other utilities
 NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'valloric/MatchTagAlways'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 " NeoBundle 'Shougo/vimshell.vim'
 
@@ -106,6 +105,10 @@ NeoBundle 'sophacles/vim-bundle-mako'
 
 " Markdown
 NeoBundle 'tpope/vim-markdown'
+
+" HTML
+NeoBundle 'docunext/closetag.vim'
+NeoBundle 'valloric/MatchTagAlways'
 
 " JavaScript
 NeoBundle 'pangloss/vim-javascript'
