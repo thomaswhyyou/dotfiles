@@ -1,0 +1,5 @@
+# Ignore files compiled from TypeScript and CoffeeScript
+**/*.{ts,coffee}.js
+
+# Ignore built files
+build/
