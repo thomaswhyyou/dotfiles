@@ -213,6 +213,7 @@ let general_ignore_pattern = [
     \ '\.vagrant',
     \ '\.DS_Store',
     \ ]
+    " \ '/node_modules',
 
 " then those we should ignore in search.
 let search_ignore_pattern = general_ignore_pattern + [
