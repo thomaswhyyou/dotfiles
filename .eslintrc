@@ -20,6 +20,10 @@
         "browser": true,
         "node": true
     },
+    {
+        "globals": {
+        }
+    },
     "extends": "eslint:recommended",
     "ecmaFeatures": {
         "jsx": true,

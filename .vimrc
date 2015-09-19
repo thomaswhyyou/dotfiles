@@ -55,11 +55,8 @@ NeoBundle 'sjl/gundo.vim'
 " Code intelligence
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'majutsushi/tagbar'
-" NeoBundle 'Shougo/neocomplete'
-" NeoBundle 'Shougo/neosnippet.vim'
-" NeoBundle 'Shougo/neosnippet-snippets'
-" NeoBundle 'SirVer/ultisnips'
-" NeoBundle 'honza/vim-snippets'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
 NeoBundle 'Valloric/YouCompleteMe', {
      \ 'build' : {
      \     'mac' : './install.sh --clang-completer',
@@ -83,10 +80,10 @@ NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'godlygeek/tabular'
-NeoBundle 'tpope/vim-endwise'
+" NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
-" NeoBundle 'ervandew/supertab'
+NeoBundle 'ervandew/supertab'
 NeoBundle 'Raimondi/delimitMate'
 
 " Other utilities
@@ -590,68 +587,6 @@ endif
 " autocmd FileType git set nofoldenable
 
 
-" " Neocomplete {{{
-
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_smart_case = 1
-" let g:neocomplete#enable_refresh_always = 1
-" let g:neocomplete#max_list = 30
-" let g:neocomplete#min_keyword_length = 1
-" let g:neocomplete#sources#syntax#min_keyword_length = 1
-" let g:neocomplete#data_directory = $HOME.'/.vim/tmp/neocomplete'
-
-" " disable the auto select feature by default to speed up writing without
-" " obstacles (is optimal for certain situations)
-" let g:neocomplete#enable_auto_select = 0
-
-" " toggle the auto select feature
-" function! ToggleNeoComplete()
-  " if !g:neocomplete#disable_auto_complete && g:neocomplete#enable_auto_select
-      " let g:neocomplete#disable_auto_complete = 0
-      " let g:neocomplete#enable_auto_select = 0
-  " elseif !g:neocomplete#disable_auto_complete && !g:neocomplete#enable_auto_select
-      " let g:neocomplete#disable_auto_complete = 1
-      " let g:neocomplete#enable_auto_select = 0
-  " elseif g:neocomplete#disable_auto_complete && !g:neocomplete#enable_auto_select
-      " let g:neocomplete#disable_auto_complete = 0
-      " let g:neocomplete#enable_auto_select = 1
-  " endif
-" endfunction
-" nnoremap <silent><Leader>ea :call ToggleNeoComplete()<CR>
-
-" " Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-    " let g:neocomplete#sources#omni#input_patterns = {}
-" endif
-
-" let g:neocomplete#sources#omni#input_patterns.python='[^. \t]\.\w*'
-
-
-" if neobundle#tap('jedi-vim') "{{{
-"   autocmd MyAutoCmd FileType python setlocal omnifunc=jedi#completions
-"   let g:jedi#completions_enabled = 0
-"   let g:jedi#auto_vim_configuration = 0
-
-"   call neobundle#untap()
-" endif "}}}
-
-
-" YouCompleteMe
-" NOTE: Need to compile YCM to use it:
-" cd ~/.vim/bundle/YouCompleteMe
-" ./install.py --clang-completer --gocode-completer
-if isdirectory(bundledir.'/YouCompleteMe')
-  " Placeholder
-endif
-
-
 " Syntastic
 " ----
 if isdirectory(bundledir.'/syntastic')
@@ -891,35 +826,35 @@ if isdirectory(bundledir.'/vim-unimpaired')
 endif
 
 
-" Python Mode
-" ----
-let g:pymode_trim_whitespaces = 0               " we already do this manually
-let g:pymode_virtualenv=0                       " don't worry about venv
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = ''
-" Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checkers = ['pyflakes', 'pep8']
-let g:pymode_lint_ignore = 'C0111,D100,D101,D102,D103,E501,W391,E702,E131'
-let g:pymode_lint_sort = ['E', 'C', 'W', 'R', 'I', 'F', 'D']
-let g:pymode_lint_unmodified = 1
-" Auto check on save
-let g:pymode_lint_write = 1
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 0
-" let g:pymode_breakpoint_bind = '<leader>b'
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-" Don't autofold code
-let g:pymode_folding = 0
-" Python rope
-let g:pymode_rope = 1
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
+" " Python Mode
+" " ----
+" let g:pymode_trim_whitespaces = 0               " we already do this manually
+" let g:pymode_virtualenv=0                       " don't worry about venv
+" " Documentation
+" let g:pymode_doc = 1
+" let g:pymode_doc_key = ''
+" " Linting
+" let g:pymode_lint = 1
+" let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+" let g:pymode_lint_ignore = 'C0111,D100,D101,D102,D103,E501,W391,E702,E131'
+" let g:pymode_lint_sort = ['E', 'C', 'W', 'R', 'I', 'F', 'D']
+" let g:pymode_lint_unmodified = 1
+" " Auto check on save
+" let g:pymode_lint_write = 1
+" " Enable breakpoints plugin
+" let g:pymode_breakpoint = 0
+" " let g:pymode_breakpoint_bind = '<leader>b'
+" " syntax highlighting
+" let g:pymode_syntax = 1
+" let g:pymode_syntax_all = 1
+" let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+" let g:pymode_syntax_space_errors = g:pymode_syntax_all
+" " Don't autofold code
+" let g:pymode_folding = 0
+" " Python rope
+" let g:pymode_rope = 1
+" let g:pymode_rope_completion = 0
+" let g:pymode_rope_complete_on_dot = 0
 
 
 " delimitmate
@@ -938,6 +873,27 @@ if isdirectory(bundledir.'/vim-smooth-scroll')
     noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
     noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
     noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+endif
+
+
+" YouCompleteMe
+if isdirectory(bundledir.'/YouCompleteMe')
+  " Placeholder
+endif
+
+
+" sirver/ultisnips + YCM + Supertab
+" http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+if isdirectory(bundledir.'/ultisnips') && isdirectory(bundledir.'/YouCompleteMe') && isdirectory(bundledir.'/supertab')
+  " make YCM compatible with UltiSnips (using supertab)
+  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+  let g:SuperTabDefaultCompletionType = '<C-n>'
+
+  " better key bindings for UltiSnipsExpandTrigger
+  let g:UltiSnipsExpandTrigger = "<tab>"
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 endif
 
 
