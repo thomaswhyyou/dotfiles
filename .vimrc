@@ -57,6 +57,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'ervandew/supertab'
 NeoBundle 'Valloric/YouCompleteMe', {
      \ 'build' : {
      \     'mac' : './install.sh --clang-completer',
@@ -80,10 +81,8 @@ NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'godlygeek/tabular'
-" NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'ervandew/supertab'
 NeoBundle 'Raimondi/delimitMate'
 
 " Other utilities
@@ -470,6 +469,10 @@ if isdirectory(bundledir.'/unite.vim')
     call unite#filters#matcher_default#use(['matcher_fuzzy'])
     call unite#filters#sorter_default#use(['sorter_rank'])
 
+    " https://github.com/Shougo/unite.vim/issues/374
+    let g:unite_source_rec_max_cache_files = 0
+    call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 0)
+
     call unite#custom#profile('default', 'context', {
         \ 'no_split': 1,
         \ 'vertical_preview': 1,
@@ -497,14 +500,20 @@ if isdirectory(bundledir.'/unite.vim')
     nnoremap <leader>r :<C-u>Unite -buffer-name=mru                 file_mru<cr>
     nnoremap <leader>o :<C-u>Unite -buffer-name=buffer              buffer<cr>
     nnoremap <leader>b :<C-u>Unite -buffer-name=buffer              buffer<cr>
-    nnoremap <leader>/ :<C-u>Unite -buffer-name=grep -auto-preview  grep:!<cr>
+    nnoremap <leader>/ :<C-u>Unite -buffer-name=grep                grep:!<cr>
     nnoremap <leader>\ :<C-u>Unite -buffer-name=line -auto-preview  line<cr>
 
     " Use ag for search
     if executable('ag')
+        let g:unite_source_rec_async_command =
+                \ ['ag', '--follow', '--nocolor', '--nogroup',
+                \  '--hidden', '--skip-vcs-ignores',
+                \  '--path-to-agignore', '~/.agignore',
+                \  '-g', '']
+
         let g:unite_source_grep_command = 'ag'
         let g:unite_source_grep_default_opts =
-                \ '--line-numbers --nocolor --nogroup --hidden'
+                \ '--line-numbers --nocolor --nogroup --hidden --smart-case --skip-vcs-ignores'
         let g:unite_source_grep_recursive_opt = ''
         let g:unite_source_grep_search_word_highlight = 'Special'
     endif
@@ -528,6 +537,7 @@ if isdirectory(bundledir.'/unite.vim')
         nmap <buffer><nowait> X <Plug>(unite_toggle_mark_current_candidate_up)
         nmap <buffer><nowait> p <Plug>(unite_toggle_auto_preview)
         nmap <buffer><nowait> \| <Plug>(unite_choose_action)
+        nmap <buffer><nowait> T <Plug>(unite_redraw)
 
         nnoremap <silent><buffer><expr> v unite#do_action('vsplit')
         nnoremap <silent><buffer><expr> s unite#do_action('split')
@@ -591,38 +601,36 @@ endif
 " Syntastic
 " ----
 if isdirectory(bundledir.'/syntastic')
-    " configure syntastic syntax checking to check on open as well as save
-    let g:syntastic_check_on_open=1
-    "  window will be automatically opened when errors are detected, and closed when none are detected
-    " let g:syntastic_auto_loc_list=1
+    " Don't auto populate message list
+    let g:syntastic_always_populate_loc_list = 0
+    "  window will NOT be automatically opened when errors are detected,
+    "  and closed when none are detected
+    let g:syntastic_auto_loc_list = 0
+    " check on open as well as save
+    let g:syntastic_check_on_open = 1
+    " don't bother when quiting
+    let g:syntastic_check_on_wq = 0
 
-    let g:syntastic_python_pylint_exe = "pylint2"
-    let g:syntastic_error_symbol='✗'
-    let g:syntastic_warning_symbol='⚠'
-    let g:syntastic_style_error_symbol = '✠'
-    let g:syntastic_style_warning_symbol = '≈'
+    " Styling
+    let g:syntastic_error_symbol='⚑'
+    let g:syntastic_warning_symbol='⚐'
+    let g:syntastic_style_error_symbol = 'š'
+    let g:syntastic_style_warning_symbol = 'ś'
+    let g:syntastic_stl_format = '[Syntax %E{ERR:%e}%B{, }%W{WARN:%w}]'
 
-    let g:syntastic_mode_map = { 'mode': 'active',
-                \ 'active_filetypes': [],
-                \ 'passive_filetypes': ['python'] }
-
-    " let g:syntastic_enable_balloons = 0
-    " let g:syntastic_auto_loc_list = 0
-    " let g:syntastic_loc_list_height = 6
-    " let g:syntastic_always_populate_loc_list = 1
-    " let g:syntastic_check_on_wq = 0
-    " let g:syntastic_python_checkers = ['flake8']
-    " let g:syntastic_coffee_coffeelint_args = '-f ~/.config/coffeelint.json'
+    " Linters
     let g:syntastic_javascript_checkers = ['eslint']
-    " let g:syntastic_javascript_checkers = ['jshint']
+    let g:syntastic_python_checkers = ['pylint']
+    " let g:syntastic_coffee_coffeelint_args = '-f ~/.config/coffeelint.json'
     " let g:syntastic_c_config_file = '.clang_complete'
     " let g:syntastic_cpp_config_file = '.clang_complete'
     " let g:syntastic_java_javac_config_file_enabled = 1
     " let g:syntastic_cpp_compiler = 'clang++'
     " let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-    " let g:syntastic_mode_map = { "mode": "active",
-                " \ "active_filetypes": ["coffee", "javascript", "python"],
-                " \ "passive_filetypes": ["cpp"] }
+
+    let g:syntastic_mode_map = { 'mode': 'active',
+                \ 'active_filetypes': [],
+                \ 'passive_filetypes': [] }
 endif
 
 
@@ -884,7 +892,7 @@ endif
 
 
 " sirver/ultisnips + YCM + Supertab
-" http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+" Make them play nice together: http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 if isdirectory(bundledir.'/ultisnips') && isdirectory(bundledir.'/YouCompleteMe') && isdirectory(bundledir.'/supertab')
   " make YCM compatible with UltiSnips (using supertab)
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -1007,8 +1015,6 @@ function! <SID>StripTrailingWhitespacesAndEmptyEndLines()
     :silent! %s/\s\+$//e
     " Strip empty end lines.
     :silent! %s#\($\n\s*\)\+\%$##
-    " Add just one empty line at the end of file
-    " :silent! $norm o
     " clean up: restore previous search history, and cursor position
     let @/=_s
     call cursor(l, c)

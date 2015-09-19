@@ -2,27 +2,18 @@
 
 {
     "rules": {
-        "indent": [
-            2,
-            4
-        ],
-        "linebreak-style": [
-            2,
-            "unix"
-        ],
-        "semi": [
-            2,
-            "always"
-        ]
+        "indent": [2, 4],
+        "linebreak-style": [2, "unix"],
+        "semi": [2, "always"]
     },
     "env": {
         "es6": true,
         "browser": true,
         "node": true
     },
-    {
-        "globals": {
-        }
+    "globals": {
+        "angular": false,
+        "$": false
     },
     "extends": "eslint:recommended",
     "ecmaFeatures": {
