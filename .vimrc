@@ -5,7 +5,7 @@
 set nocompatible
 filetype off
 let bundledir = expand('~/.vim/bundle')
-let g:neobundle#install_process_timeout = 1500  "YouCompleteMe is slow
+let g:neobundle#install_process_timeout = 6000  "YouCompleteMe is slow
 
 " Skip initialization for vim-tiny or vim-small.
 if 0 | endif
