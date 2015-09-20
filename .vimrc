@@ -992,7 +992,7 @@ nnoremap \| ,
 noremap Y y$
 
 " wipteout buffer and window together
-" noremap <c-q> :bw<cr>
+noremap <c-q> :bw<cr>
 
 " Pull word under cursor into LHS of a substitute
 " nnoremap <leader>z :%s#\<<c-r>=expand("<cword>")<cr>\>##gc<left><left><left>
