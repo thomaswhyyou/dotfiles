@@ -1,11 +1,15 @@
 ---
-# https://github.com/nodesource/distributions
-- shell: curl -L https://deb.nodesource.com/setup_4.x | sudo -E bash -
-- name: install nodejs
-  apt: name=nodejs state=present
+# Maybe use this? Yes, use this.
+# http://stackoverflow.com/questions/19451851/install-node-js-to-install-n-to-install-node-js
 
-# XXX: Make a list of items and loop
-- npm: name=eslint global=yes
-- npm: name=eslint-plugin-react global=yes
-- npm: name=babel-eslint global=yes
-- npm: name=typescript global=yes
+# https://github.com/nodesource/distributions
+# - shell: curl -L https://deb.nodesource.com/setup_4.x | sudo -E bash -
+# - name: install nodejs
+#   apt: name=nodejs state=present
+
+- name: install node packages globally
+  apt: name={{ item }} global=yes
+  with_items:
+    - eslint
+    - eslint-plugin-react
+    - babel-eslint
