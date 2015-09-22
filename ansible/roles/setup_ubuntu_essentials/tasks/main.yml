@@ -2,7 +2,7 @@
 - name: apt-get update
   apt: update_cache=yes
 
-# https://gist.github.com/91e14096374075f5316e.git
+# https://gist.github.com/91e14096374075f5316e
 - name: install tmux dependencies
   apt: name={{ item }} state=present
   with_items:
