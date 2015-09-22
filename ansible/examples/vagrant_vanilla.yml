@@ -1,6 +1,7 @@
 ---
 - hosts: "{{ vagrant_hostname_main }}"
-  sudo: yes
+  become: yes
+  become_user: vagrant
 
   roles:
     - setup_ubuntu_essentials

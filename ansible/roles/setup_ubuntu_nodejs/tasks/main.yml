@@ -1,14 +1,24 @@
 ---
-# Maybe use this? Yes, use this.
-# http://stackoverflow.com/questions/19451851/install-node-js-to-install-n-to-install-node-js
+# Use n version manager to install node and npm.
+# https://github.com/tj/n
+# https://github.com/mklement0/n-install
+- shell: curl -L http://git.io/n-install | N_PREFIX=/n bash -s -- -y
+# - file: src=/n/bin/n dest=/usr/local/bin/n state=link
+# - file: src=/n/bin/node dest=/usr/local/bin/node state=link
+# - file: src=/n/bin/npm dest=/usr/local/bin/npm state=link
+# - file: src=/n/bin/n-uninstall dest=/usr/local/bin/n-uninstall state=link
+# - file: src=/n/bin/n-update dest=/usr/local/bin/n-update state=link
 
-# https://github.com/nodesource/distributions
-# - shell: curl -L https://deb.nodesource.com/setup_4.x | sudo -E bash -
-# - name: install nodejs
-#   apt: name=nodejs state=present
+- file: src=/n/bin/{{ item.src }} dest=/usr/local/bin/{{ item.dest }} state=link
+  with_items:
+    - { src: 'n', dest: 'n' }
+    - { src: 'node', dest: 'node' }
+    - { src: 'npm', dest: 'npm' }
+    - { src: 'n-uninstall', dest: 'n-uninstall' }
+    - { src: 'n-update', dest: 'n-update' }
 
 - name: install node packages globally
-  apt: name={{ item }} global=yes
+  npm: name={{ item }} global=yes
   with_items:
     - eslint
     - eslint-plugin-react
