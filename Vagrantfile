@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Connect host-guest networking
-  config.vm.network "private_network", ip: "192.168.56.10"
+  config.vm.network "private_network", ip: "192.168.50.4"
   config.vm.network "forwarded_port", guest: 5000, host: 5000, auto_correct: true
 
   # Use host ssh credentials in guest vm; ssh agent must be running on host
