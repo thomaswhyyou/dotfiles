@@ -585,16 +585,17 @@ endif
 
 
 " Gitv
+if isdirectory(bundledir.'/gitv')
 " https://github.com/joedicastro/dotfiles/blob/master/vim/vimrc
 " nnoremap <silent> <leader>gv :Gitv --all<CR>
 " nnoremap <silent> <leader>gV :Gitv! --all<CR>
-" vnoremap <silent> <leader>gV :Gitv! --all<CR>
 
 " let g:Gitv_OpenHorizontal = 'auto'
-" let g:Gitv_WipeAllOnClose = 1
-" let g:Gitv_DoNotMapCtrlKey = 1
-" " let g:Gitv_WrapLines = 1
+let g:Gitv_WipeAllOnClose = 1
+let g:Gitv_DoNotMapCtrlKey = 1
+" let g:Gitv_WrapLines = 1
 " autocmd FileType git set nofoldenable
+endif
 
 
 " Syntastic

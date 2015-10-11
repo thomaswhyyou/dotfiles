@@ -36,10 +36,10 @@ for file in $DOTFILES; do
 done
 
 # Vagrantfile
-VAGRANTFILE="$ORIGINDIR/Vagrantfile"
-if [[ (-f $VAGRANTFILE) && (-d "$HOME/.vagrant.d") ]]; then
-    echo "Creating symlink to '$VAGRANTFILE' in ~/.vagrant.d directory."
-    ln -sfn "$VAGRANTFILE" ~/.vagrant.d/$(basename $VAGRANTFILE)
-fi
+# VAGRANTFILE="$ORIGINDIR/Vagrantfile"
+# if [[ (-f $VAGRANTFILE) && (-d "$HOME/.vagrant.d") ]]; then
+#     echo "Creating symlink to '$VAGRANTFILE' in ~/.vagrant.d directory."
+#     ln -sfn "$VAGRANTFILE" ~/.vagrant.d/$(basename $VAGRANTFILE)
+# fi
 
 echo ""; echo "All done. Yay :)"
