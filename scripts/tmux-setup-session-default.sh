@@ -21,8 +21,8 @@ if [[ $? != 0 ]]; then
 
     # Third window 'Servers'
     tmux new-window -n Servers -t Painless
-    tmux split-window -h -p 66 -t Painless:2
-    tmux split-window -h -p 50 -t Painless:2
+    tmux split-window -h -p 66 -t Painless:3
+    tmux split-window -h -p 50 -t Painless:3
 
     # Select the main editor window
     tmux select-window -t Painless:1
