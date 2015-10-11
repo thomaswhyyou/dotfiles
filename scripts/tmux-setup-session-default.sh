@@ -18,6 +18,7 @@ if [[ $? != 0 ]]; then
 
     # Second window 'Whatevs'
     tmux new-window -n Whatevs -t Painless
+    tmux split-window -h -p 50 -t Painless:2
 
     # Third window 'Servers'
     tmux new-window -n Servers -t Painless
