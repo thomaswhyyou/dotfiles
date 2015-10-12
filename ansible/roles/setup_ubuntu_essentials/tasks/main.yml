@@ -34,5 +34,6 @@
     - exuberant-ctags               # for vim tagbar plugin
     - cmake                         # needed for YCM vim plugin
     - python-dev                    # needed for YCM vim plugin
+    - libxml2-utils                 # For xml linting in vim
     - libevent-dev                  # Apparently needed for tmux
     - tmux
