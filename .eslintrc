@@ -3,7 +3,9 @@
 {
     "rules": {
         "no-constant-condition": 0,
-        "indent": [2, 4],
+        "indent": [2, 4, {
+            "SwitchCase": 1
+        }],
         "linebreak-style": [2, "unix"],
         "semi": [2, "always"],
         "no-unused-vars": [2, {"vars": "all", "args": "none", "argsIgnorePattern": "^_"}]
