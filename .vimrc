@@ -474,11 +474,11 @@ if isdirectory(bundledir.'/unite.vim')
 
     call unite#custom#profile('default', 'context', {
         \ 'no_split': 1,
-        \ 'vertical_preview': 1,
         \ 'max_multi_lines': 1,
         \ 'toggle': 1,
         \ 'prompt': '>> ',
         \ })
+        " \ 'vertical_preview': 1,
 
     call unite#custom#profile('file_rec,line', 'context', {
         \ 'start_insert': 1,
