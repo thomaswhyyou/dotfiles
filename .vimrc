@@ -736,7 +736,7 @@ endif
 " EasyMotion
 " ----
 if isdirectory(bundledir.'/vim-easymotion')
-  nmap <leader>s <Plug>(easymotion-s)
+  nmap <leader>s <Plug>(easymotion-s2)
 
   " easymotion highlight colors, make them easier to see
   highlight link EasyMotionTarget2First EasyMotionTarget
