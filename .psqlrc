@@ -1,0 +1,21 @@
+-- Reference:
+-- http://phili.pe/posts/postgresql-on-the-command-line/
+-- https://robots.thoughtbot.com/improving-the-command-line-postgres-experience
+
+\set COMP_KEYWORD_CASE upper
+\x auto
+\pset null ¤
+
+-- Verbose error reports.
+\set VERBOSITY verbose
+
+-- Use a separate history file per-database.
+\set HISTFILE ~/.psql_history- :DBNAME
+
+-- If a command is run more than once in a row, only store it once in the
+-- history.
+\set HISTCONTROL ignoredups
+
+-- Use a separate history file per-database.
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
