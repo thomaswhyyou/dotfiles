@@ -499,7 +499,6 @@ if isdirectory(bundledir.'/unite.vim')
     nnoremap <leader>f :<C-u>Unite -buffer-name=file                    file<cr>
     nnoremap <leader>r :<C-u>Unite -buffer-name=mru                     file_mru<cr>
     nnoremap <leader>o :<C-u>Unite -buffer-name=buffer -start-insert    buffer<cr>
-    nnoremap <leader>b :<C-u>Unite -buffer-name=buffer                  buffer<cr>
     nnoremap <leader>/ :<C-u>Unite -buffer-name=grep                    grep:!<cr>
     nnoremap <leader>\ :<C-u>Unite -buffer-name=line -auto-preview      line<cr>
 
