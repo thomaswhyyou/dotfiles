@@ -204,7 +204,7 @@ PS1+="\n"
 if [ -n "$SSH_CLIENT" ]; then
     PS1+="${style_prompt}> \[${RESET}\]"
 else
-    PS1+="${style_prompt}✿ \[${RESET}\]"
+    PS1+="${style_prompt}❀ \[${RESET}\]"
 fi
 
 
