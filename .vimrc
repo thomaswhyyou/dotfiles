@@ -493,14 +493,14 @@ if isdirectory(bundledir.'/unite.vim')
         \ )
 
     " Key mappings to invoke Unite.
-    nnoremap <leader>t :<C-u>Unite -buffer-name=file_rec            file_rec/async:!<cr>
-    nnoremap <leader>y :<C-u>Unite -buffer-name=yank                history/yank<cr>
-    nnoremap <leader>f :<C-u>Unite -buffer-name=file                file<cr>
-    nnoremap <leader>r :<C-u>Unite -buffer-name=mru                 file_mru<cr>
-    nnoremap <leader>o :<C-u>Unite -buffer-name=buffer              buffer<cr>
-    nnoremap <leader>b :<C-u>Unite -buffer-name=buffer              buffer<cr>
-    nnoremap <leader>/ :<C-u>Unite -buffer-name=grep                grep:!<cr>
-    nnoremap <leader>\ :<C-u>Unite -buffer-name=line -auto-preview  line<cr>
+    nnoremap <leader>t :<C-u>Unite -buffer-name=file_rec                file_rec/async:!<cr>
+    nnoremap <leader>y :<C-u>Unite -buffer-name=yank                    history/yank<cr>
+    nnoremap <leader>f :<C-u>Unite -buffer-name=file                    file<cr>
+    nnoremap <leader>r :<C-u>Unite -buffer-name=mru                     file_mru<cr>
+    nnoremap <leader>o :<C-u>Unite -buffer-name=buffer -start-insert    buffer<cr>
+    nnoremap <leader>b :<C-u>Unite -buffer-name=buffer                  buffer<cr>
+    nnoremap <leader>/ :<C-u>Unite -buffer-name=grep                    grep:!<cr>
+    nnoremap <leader>\ :<C-u>Unite -buffer-name=line -auto-preview      line<cr>
 
     " Use ag for search
     if executable('ag')
