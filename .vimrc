@@ -110,6 +110,7 @@ NeoBundle 'valloric/MatchTagAlways'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'elzr/vim-json'
+NeoBundle 'blockloop/vim-swigjs'
 
 " Docker
 NeoBundle 'ekalinin/Dockerfile.vim'
