@@ -200,11 +200,13 @@ if command -v git >/dev/null 2>&1; then
     PS1+="\$(prompt_git)"
 fi
 
+# https://mkaz.github.io/2014/04/17/the-bash-prompt/
+# http://unicode-table.com/
 PS1+="\n"
 if [ -n "$SSH_CLIENT" ]; then
     PS1+="${style_prompt}> \[${RESET}\]"
 else
-    PS1+="${style_prompt}❀ \[${RESET}\]"
+    PS1+="${style_prompt}❂ \[${RESET}\]"
 fi
 
 
