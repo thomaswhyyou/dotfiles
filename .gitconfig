@@ -27,4 +27,4 @@
 [alias]
 	stat = status
 	st = status
-	dif = diff
+	difs = diff --staged
