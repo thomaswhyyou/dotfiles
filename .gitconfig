@@ -22,4 +22,9 @@
     meta = 255  # White
     frag = 163  # Purple
     old = 160 # Red
-    new = 34  # Green
+	new = 34  # Green
+
+[alias]
+	stat = status
+	st = status
+	dif = diff
