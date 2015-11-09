@@ -22,20 +22,28 @@
     meta = 255  # White
     frag = 163  # Purple
     old = 160 # Red
-	new = 34  # Green
+    new = 34  # Green
 
 [alias]
     # http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+
+    # Basic
+    st = status -s
+    stat = status
+    co = checkout
+    br = branch
+
+    # Commit
+    cm = commit
+    amend = commit --amend
+
+    # Diff
+    df = diff
+    ds = diff --staged
+    dc = diff --cached
 
     # log commands
     ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     lc  = "!f() { git ll "$1"^.."$1"; }; f"
     lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
-
-    df = diff
-    ds = diff --staged
-    dc = diff --cached
-
-    st = status -s
-    stat = status
