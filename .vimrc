@@ -100,7 +100,8 @@ NeoBundle 'sophacles/vim-bundle-mako'
 " NeoBundle 'klen/python-mode'
 
 " Markdown
-NeoBundle 'tpope/vim-markdown'
+" NeoBundle 'tpope/vim-markdown'
+NeoBundle 'plasticboy/vim-markdown'
 
 " HTML
 NeoBundle 'docunext/closetag.vim'
@@ -338,6 +339,10 @@ autocmd Filetype python setlocal ts=4 sw=4 sts=4 expandtab
 autocmd Filetype ruby setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype html setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
+
+" http://blog.ezyang.com/2010/03/vim-textwidth/
+" http://www.swamphogg.com/2015/vim-setup/
+autocmd Filetype markdown setlocal tw=72
 
 
 
@@ -768,6 +773,13 @@ if isdirectory(bundledir.'/tabular')
     vnoremap <leader>at :Tabularize /\|<CR>
     nnoremap <Leader>a, :Tabularize /,<CR>
     vnoremap <Leader>a, :Tabularize /,<CR>
+endif
+
+
+" vim-markdown
+" ----
+if isdirectory(bundledir.'/vim-markdown')
+  let g:vim_markdown_frontmatter=1
 endif
 
 
