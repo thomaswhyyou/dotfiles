@@ -19,8 +19,8 @@ fi
 
 # vim install
 VIM_INSTALL_SCRIPT="$HOME/dotfiles/scripts/vim-install-from-source.sh"
-if [[ -f "VIM_INSTALL_SCRIPT" ]]; then
-    . "VIM_INSTALL_SCRIPT"
+if [[ -f "$VIM_INSTALL_SCRIPT" ]]; then
+    . "$VIM_INSTALL_SCRIPT"
 fi
 
 # tmux plugin manager.
