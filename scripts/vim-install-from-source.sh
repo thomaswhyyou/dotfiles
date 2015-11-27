@@ -32,3 +32,4 @@ cd ..
 sudo mkdir /usr/share/vim
 sudo mkdir /usr/share/vim/vim74
 sudo cp -fr runtime/* /usr/share/vim/vim74/
+cd ~
