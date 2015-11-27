@@ -100,7 +100,6 @@ NeoBundle 'sophacles/vim-bundle-mako'
 " NeoBundle 'klen/python-mode'
 
 " Markdown
-" NeoBundle 'tpope/vim-markdown'
 NeoBundle 'plasticboy/vim-markdown'
 
 " HTML
