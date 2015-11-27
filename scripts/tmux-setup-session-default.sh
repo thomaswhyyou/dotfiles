@@ -13,7 +13,7 @@ if [[ $? != 0 ]]; then
     # Create a new session 'asdf' with first window 'Editor'
     tmux new-session -s asdf -n Editor -d
 
-    tmux split-window -v -p 25 -t asdf:1.1
+    tmux split-window -v -p 10 -t asdf:1.1
     tmux split-window -h -p 25 -t asdf:1.2
 
     # Second window 'Whatevs'
