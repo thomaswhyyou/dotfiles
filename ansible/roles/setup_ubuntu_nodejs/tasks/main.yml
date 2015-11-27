@@ -6,14 +6,6 @@
 
 # XXX: below doesn't really work, better to install in user home folder probably
 # need to do it manually.
-- file: src=/n/bin/{{ item.src }} dest=/usr/local/bin/{{ item.dest }} state=link
-  with_items:
-    - { src: 'n', dest: 'n' }
-    - { src: 'node', dest: 'node' }
-    - { src: 'npm', dest: 'npm' }
-    - { src: 'n-uninstall', dest: 'n-uninstall' }
-    - { src: 'n-update', dest: 'n-update' }
-
 - name: install node packages globally
   npm: name={{ item }} global=yes
   with_items:
