@@ -105,12 +105,12 @@ NeoBundle 'plasticboy/vim-markdown'
 " HTML
 NeoBundle 'docunext/closetag.vim'
 NeoBundle 'valloric/MatchTagAlways'
+NeoBundle 'mitsuhiko/vim-jinja'
 
 " JavaScript
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'elzr/vim-json'
-NeoBundle 'blockloop/vim-swigjs'
 
 " Docker
 NeoBundle 'ekalinin/Dockerfile.vim'
