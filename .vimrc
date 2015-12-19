@@ -941,9 +941,6 @@ if isdirectory(bundledir.'/goyo.vim')
 
   function! s:goyo_leave()
     silent !tmux set status on
-    set showmode
-    set showcmd
-    set scrolloff=5
     Limelight!
   endfunction
 
