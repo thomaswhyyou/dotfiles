@@ -741,17 +741,6 @@ if isdirectory(bundledir.'/vim-bbye')
 endif
 
 
-" EasyMotion
-" ----
-if isdirectory(bundledir.'/vim-easymotion')
-  nmap <leader>s <Plug>(easymotion-sn)
-
-  " easymotion highlight colors, make them easier to see
-  highlight link EasyMotionTarget2First EasyMotionTarget
-  highlight link EasyMotionTarget2Second EasyMotionTarget
-endif
-
-
 " TagBar
 " ----
 if isdirectory(bundledir.'/tagbar')
@@ -975,6 +964,21 @@ if isdirectory(bundledir.'/limelight.vim')
   let g:limelight_priority = -1
 endif
 
+
+" EasyMotion
+" ----
+if isdirectory(bundledir.'/vim-easymotion')
+  " nmap <leader>s <Plug>(easymotion-sn)
+  map <Leader>s <Plug>(easymotion-sn)
+  " map / <Plug>(easymotion-sn)
+  map <Leader>j <Plug>(easymotion-j)
+  map <Leader>k <Plug>(easymotion-k)
+  " let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
+  " easymotion highlight colors, make them easier to see
+  highlight link EasyMotionTarget2First EasyMotionTarget
+  highlight link EasyMotionTarget2Second EasyMotionTarget
+endif
 
 
 " ==============================================================================
