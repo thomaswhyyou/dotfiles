@@ -104,7 +104,7 @@ NeoBundle 'sophacles/vim-bundle-mako'
 " NeoBundle 'klen/python-mode'
 
 " Markdown
-NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'plasticboy/vim-markdown'  " godlygeek/tabular must come before.
 
 " HTML
 NeoBundle 'docunext/closetag.vim'
@@ -345,7 +345,7 @@ autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
 
 " http://blog.ezyang.com/2010/03/vim-textwidth/
 " http://www.swamphogg.com/2015/vim-setup/
-autocmd Filetype markdown setlocal tw=72
+autocmd Filetype markdown setlocal ts=2 sw=2 sts=2 tw=72 expandtab
 
 
 
@@ -1071,22 +1071,26 @@ noremap <c-q> :bw<cr>
 " nnoremap <leader>Z :bufdo %s#\<<c-r>=expand("<cword>")<cr>\>##gce<space><bar><space>update<left><left><left><left><left><left><left><left><left><left><left><left><left>
 
 
-" tidy up trailing white spaces and empty endlines
+" Tidy up trailing white spaces and empty endlines
 function! <SID>StripTrailingWhitespacesAndEmptyEndLines()
-    " preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " strip trailing white spaces
-    :silent! %s/\s\+$//e
-    " Strip empty end lines.
-    :silent! %s#\($\n\s*\)\+\%$##
-    " clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+  " preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " strip trailing white spaces
+  :silent! %s/\s\+$//e
+  " Strip empty end lines.
+  :silent! %s#\($\n\s*\)\+\%$##
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfun
-autocmd BufWritePre * :call <SID>StripTrailingWhitespacesAndEmptyEndLines()
+" Auto trigger to strip by default, unless exempted.
+let noAutoStripFileTypes = ['markdown']  " http://stackoverflow.com/a/10410590/3479934
+autocmd BufWritePre * if index(noAutoStripFileTypes, &ft) < 0 | :call <SID>StripTrailingWhitespacesAndEmptyEndLines()
+" Manual trigger to strip trailing spaces.
 nnoremap <F8> :call <SID>StripTrailingWhitespacesAndEmptyEndLines()<CR>
+
 
 " Check syntax color group
 function! <SID>CheckSyntaxItem()
@@ -1094,8 +1098,10 @@ function! <SID>CheckSyntaxItem()
 endfunction
 nnoremap <F10> :call <SID>CheckSyntaxItem()<CR>
 
+
 " toggle Goyo
 nnoremap <F12> :Goyo<CR>
+
 
 " Make directory automatically
 autocmd MyAutoCmd BufWritePre *
