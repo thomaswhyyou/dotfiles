@@ -17,6 +17,12 @@ else
     return 1
 fi
 
+# Ensure .bashrc exists even if blank
+BASHRC_FILE="$HOME/.bashrc"
+if [[ ! -f "$BASHRC_FILE" ]]; then
+    touch "$BASHRC_FILE"
+fi
+
 # vim install
 VIM_INSTALL_SCRIPT="$HOME/dotfiles/scripts/vim-install-from-source.sh"
 if [[ -f "$VIM_INSTALL_SCRIPT" ]]; then

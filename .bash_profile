@@ -12,6 +12,7 @@
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
+    # http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
     if [ -f "$HOME/.bashrc" ]; then
         . "$HOME/.bashrc"
     fi
