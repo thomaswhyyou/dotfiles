@@ -775,6 +775,13 @@ if isdirectory(bundledir.'/vim-markdown')
 endif
 
 
+" vim-jsx
+" ----
+if isdirectory(bundledir.'/vim-jsx')
+  let g:jsx_ext_required = 0
+endif
+
+
 " Indent Guides
 " ----
 if isdirectory(bundledir.'/vim-indent-guides')
