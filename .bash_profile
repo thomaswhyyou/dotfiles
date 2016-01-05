@@ -488,3 +488,9 @@ if hash tmux 2>/dev/null; then
         . "$TMUX_INIT_SCRIPT"
     fi
 fi
+
+## Export any private credentials, if exists.
+if [ -f "$HOME/.secret" ]; then
+    . "$HOME/.secret"
+    export OPSWORKS_NAME="tyu"
+fi
