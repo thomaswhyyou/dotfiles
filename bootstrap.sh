@@ -23,12 +23,6 @@ if [[ ! -f "$BASHRC_FILE" ]]; then
     touch "$BASHRC_FILE"
 fi
 
-# vim install
-VIM_INSTALL_SCRIPT="$HOME/dotfiles/scripts/vim-install-from-source.sh"
-if [[ -f "$VIM_INSTALL_SCRIPT" ]]; then
-    . "$VIM_INSTALL_SCRIPT"
-fi
-
 # tmux plugin manager.
 VENDORDIR="$ORIGINDIR/vendor"
 if hash tmux 2>/dev/null; then
@@ -52,6 +46,13 @@ done
 # if [[ (-f $VAGRANTFILE) && (-d "$HOME/.vagrant.d") ]]; then
 #     echo "Creating symlink to '$VAGRANTFILE' in ~/.vagrant.d directory."
 #     ln -sfn "$VAGRANTFILE" ~/.vagrant.d/$(basename $VAGRANTFILE)
+# fi
+
+# vim install
+# XXX: Maybe we should just run this manually.
+# VIM_INSTALL_SCRIPT="$HOME/dotfiles/scripts/vim-install-from-source.sh"
+# if [[ -f "$VIM_INSTALL_SCRIPT" ]]; then
+#     . "$VIM_INSTALL_SCRIPT"
 # fi
 
 echo ""; echo "All done. Yay :)"

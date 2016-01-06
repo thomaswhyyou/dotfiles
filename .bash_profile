@@ -229,6 +229,7 @@ alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 alias edit='vim'                            # edit:         Opens any file in vim
+alias vi='vim'                              # edit:         map vi -> vim
 # alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 # alias ~="cd ~"                              # ~:            Go Home
 # alias clr='clear'                             # clr:            Clear terminal display
@@ -489,8 +490,21 @@ if hash tmux 2>/dev/null; then
     fi
 fi
 
-## Export any private credentials, if exists.
+## Spring speicifcs.
 if [ -f "$HOME/.secret" ]; then
     . "$HOME/.secret"
+
     export OPSWORKS_NAME="tyu"
+
+    export GOPATH="$HOME/code/go:$(brew --prefix go)/libexec"
+    export PATH=${GOPATH[@]//:/\/bin:}/bin:$PATH
+
+    export RBENV_ROOT="$HOME/.rbenv"
+    export PATH="$RBENV_ROOT/bin:$PATH"
+    if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+    export GOPATH="$GOPATH:$HOME/code/branded/go"
+    export PATH="$HOME/code/branded/go/bin:$PATH"
+
+    export PATH="$HOME/code/arcanist/bin:$PATH"
 fi
