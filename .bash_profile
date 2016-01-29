@@ -490,7 +490,7 @@ if hash tmux 2>/dev/null; then
     fi
 fi
 
-## Spring speicifcs.
+## Spring related -> core product.
 if [ -f "$HOME/.secret" ]; then
     . "$HOME/.secret"
 
@@ -507,4 +507,9 @@ if [ -f "$HOME/.secret" ]; then
     export PATH="$HOME/code/branded/go/bin:$PATH"
 
     export PATH="$HOME/code/arcanist/bin:$PATH"
+fi
+
+## Spring related -> atlas
+if [ -f "$HOME/.atlas-secrets" ]; then
+    . "$HOME/.atlas-secrets"
 fi
