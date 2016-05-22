@@ -73,7 +73,6 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'tpope/vim-fugitive'
 
 " Better maneuvering
-NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'easymotion/vim-easymotion'
 
@@ -894,15 +893,6 @@ if isdirectory(bundledir.'/delimitMate')
   let delimitMate_balance_matchpairs = 1
 
   autocmd MyAutoCmd FileType vim let b:delimitMate_quotes = "'"
-endif
-
-
-" vim-smooth-scroll
-if isdirectory(bundledir.'/vim-smooth-scroll')
-    noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-    noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-    noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-    noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 endif
 
 
