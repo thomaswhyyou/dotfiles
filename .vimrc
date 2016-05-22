@@ -99,6 +99,9 @@ NeoBundle 'junegunn/limelight.vim'
 " Elixir
 NeoBundle 'elixir-lang/vim-elixir'
 
+" Go
+NeoBundle 'fatih/vim-go'
+
 " Python
 NeoBundle 'sophacles/vim-bundle-mako'
 " NeoBundle 'klen/python-mode'
@@ -610,7 +613,7 @@ endif
 " ----
 if isdirectory(bundledir.'/syntastic')
     " Don't auto populate message list
-    let g:syntastic_always_populate_loc_list = 0
+    let g:syntastic_always_populate_loc_list = 1
     "  window will NOT be automatically opened when errors are detected,
     "  and closed when none are detected
     let g:syntastic_auto_loc_list = 0
@@ -629,6 +632,7 @@ if isdirectory(bundledir.'/syntastic')
     " Linters
     let g:syntastic_javascript_checkers = ['eslint']
     let g:syntastic_python_checkers = ['pylint']
+    let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
     " let g:syntastic_coffee_coffeelint_args = '-f ~/.config/coffeelint.json'
     " let g:syntastic_c_config_file = '.clang_complete'
     " let g:syntastic_cpp_config_file = '.clang_complete'
