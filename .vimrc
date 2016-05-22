@@ -73,7 +73,7 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'tpope/vim-fugitive'
 
 " Better maneuvering
-NeoBundle 'terryma/vim-smooth-scroll'
+" NeoBundle 'terryma/vim-smooth-scroll'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'easymotion/vim-easymotion'
 
