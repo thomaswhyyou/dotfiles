@@ -113,11 +113,14 @@ NeoBundle 'plasticboy/vim-markdown'  " godlygeek/tabular must come before.
 NeoBundle 'docunext/closetag.vim'
 NeoBundle 'valloric/MatchTagAlways'
 NeoBundle 'mitsuhiko/vim-jinja'
+NeoBundle 'othree/html5-syntax.vim'
+NeoBundle 'othree/html5.vim'
 
 " JavaScript
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'elzr/vim-json'
+NeoBundle 'moll/vim-node'
 
 " Docker
 NeoBundle 'ekalinin/Dockerfile.vim'
@@ -886,10 +889,11 @@ endif
 " delimitmate
 " ----
 if isdirectory(bundledir.'/delimitMate')
-    let delimitMate_expand_space = 1
-    let delimitMate_expand_cr = 1
+  let delimitMate_expand_space = 1
+  let delimitMate_expand_cr = 1
+  let delimitMate_balance_matchpairs = 1
 
-    autocmd MyAutoCmd FileType vim let b:delimitMate_quotes = "'"
+  autocmd MyAutoCmd FileType vim let b:delimitMate_quotes = "'"
 endif
 
 
@@ -1179,3 +1183,13 @@ endfunction
 
 command! -range=% FormatXML <line1>,<line2>call DoFormatXML()
 " nmap <silent> <leader>x :%FormatXML<CR>
+
+" Use local eslint if exists, otherwise try global one?
+" Copypasta from Jim Grandpre
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+  let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+  let g:syntastic_javascript_eslint_exec = local_eslint
+endif
