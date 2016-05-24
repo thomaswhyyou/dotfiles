@@ -230,6 +230,7 @@ alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 alias edit='vim'                            # edit:         Opens any file in vim
 alias vi='vim'                              # edit:         map vi -> vim
+alias em='emacs'
 # alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 # alias ~="cd ~"                              # ~:            Go Home
 # alias clr='clear'                             # clr:            Clear terminal display
