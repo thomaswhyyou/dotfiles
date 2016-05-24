@@ -1,5 +1,5 @@
 [user]
-    name = Thomas
+    name = ThomasWhyyou
     email = thomas.whyyou@gmail.com
 
 [push]
@@ -48,39 +48,39 @@
     ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     lc  = "!f() { git ll "$1"^.."$1"; }; f"
-	lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+    lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
 
-	unstage = reset -q HEAD --
-	discard = checkout --
-	nevermind = !git reset --hard HEAD && git clean -d -f
-	uncommit = reset --mixed HEAD~
-	save = commit -m
-	resave = commit --amend
-	invert = revert
-	last = log -1 HEAD --format=format:"%Cred%H"
-	summary = status -u -s
-	graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
-	history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
-	branchout = checkout -b
-	tags = tag
-	branches = branch -a
-	stashes = stash list
-	remotes = remote -v
-	prestage = diff -w --word-diff=color
-	precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
-	move = mv
-	remove = rm
-	unmerged = branch --no-merged
-	unstash = stash pop
-	what = show -w
-	untrack = rm -r --cached
-	rewrite = rebase -i
-	amend = commit --amend
-	back = checkout "-"
-	contributors = shortlog -s -n
-	filetrail = git log --follow -p -w
-	mergetrail = log --ancestry-path --merges
-	unmerged = diff --name-only --diff-filter=U
+    unstage = reset -q HEAD --
+    discard = checkout --
+    nevermind = !git reset --hard HEAD && git clean -d -f
+    uncommit = reset --mixed HEAD~
+    save = commit -m
+    resave = commit --amend
+    invert = revert
+    last = log -1 HEAD --format=format:"%Cred%H"
+    summary = status -u -s
+    graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
+    history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
+    branchout = checkout -b
+    tags = tag
+    branches = branch -a
+    stashes = stash list
+    remotes = remote -v
+    prestage = diff -w --word-diff=color
+    precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
+    move = mv
+    remove = rm
+    unmerged = branch --no-merged
+    unstash = stash pop
+    what = show -w
+    untrack = rm -r --cached
+    rewrite = rebase -i
+    amend = commit --amend
+    back = checkout "-"
+    contributors = shortlog -s -n
+    filetrail = git log --follow -p -w
+    mergetrail = log --ancestry-path --merges
+    unmerged = diff --name-only --diff-filter=U
 
 ; [blame]
 ;   date = relative
