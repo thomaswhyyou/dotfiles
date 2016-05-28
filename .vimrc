@@ -12,8 +12,17 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" required:
-set runtimepath^=~/.vim/bundle/neobundle.vim/
+if has('vim_starting')
+    " Install NeoBundle if not installed.
+    if !isdirectory(bundledir.'/neobundle.vim')
+        execute printf('!git clone %s://github.com/Shougo/neobundle.vim.git',
+            \ (exists('$http_proxy') ? 'https' : 'git'))
+            \ bundledir.'/neobundle.vim'
+    endif
+
+    " Load neobundle.
+    execute 'set runtimepath+='.bundledir.'/neobundle.vim'
+endif
 
 " required:
 call neobundle#begin(expand('~/.vim/bundle/'))
@@ -225,7 +234,7 @@ let search_ignore_pattern = general_ignore_pattern + [
 
 " (Any change in colors must come after this section)
 syntax on                   " enable syntax processing
-set synmaxcol=300           " don't bother syntax highlight beyond this
+set synmaxcol=320           " don't bother syntax highlight beyond this
 set background=dark         " colorscheme
 if isdirectory(bundledir.'/vim-colors-solarized')
     colorscheme solarized   " colorscheme
