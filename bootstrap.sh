@@ -8,34 +8,11 @@ if [ ! -d "$ORIGINDIR" ]; then
     return 1
 fi
 
-# # Make sure we have git submodules cloned too.
-# if hash git 2>/dev/null; then
-#     git -C $ORIGINDIR submodule update --init --recursive
-#     echo ""
-# else
-#     echo "You need to install git first. :("
-#     return 1
-# fi
-
 # Ensure .bashrc exists even if blank
 BASHRC_FILE="$HOME/.bashrc"
 if [[ ! -f "$BASHRC_FILE" ]]; then
     touch "$BASHRC_FILE"
 fi
-
-# Relevant dotfiles
-DOTFILES=$(find ~/dotfiles -maxdepth 1 -type f -not \( -name ".gitmodules" -o -name ".gitignore" \) -name ".*")
-for file in $DOTFILES; do
-    echo "Creating symlink to '$file' in home directory."
-    ln -sfn $file ~/$(basename $file)
-done
-
-# Vagrantfile
-# VAGRANTFILE="$ORIGINDIR/Vagrantfile"
-# if [[ (-f $VAGRANTFILE) && (-d "$HOME/.vagrant.d") ]]; then
-#     echo "Creating symlink to '$VAGRANTFILE' in ~/.vagrant.d directory."
-#     ln -sfn "$VAGRANTFILE" ~/.vagrant.d/$(basename $VAGRANTFILE)
-# fi
 
 # vim install
 VIM_INSTALL_SCRIPT="$HOME/dotfiles/scripts/build-vim-from-source.sh"
@@ -49,6 +26,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     chsh -s /bin/zsh
 fi
 
-. ~/dotfiles/scripts/tmux-setup-session-default.sh
+# Relevant dotfiles
+. ~/dotfiles/scripts/symlink-dotfiles-to-home.sh
 
 echo ""; echo "All done. Yay :)"
