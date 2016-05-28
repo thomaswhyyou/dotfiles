@@ -8,14 +8,14 @@ if [ ! -d "$ORIGINDIR" ]; then
     return 1
 fi
 
-# Make sure we have git submodules cloned too.
-if hash git 2>/dev/null; then
-    git -C $ORIGINDIR submodule update --init --recursive
-    echo ""
-else
-    echo "You need to install git first. :("
-    return 1
-fi
+# # Make sure we have git submodules cloned too.
+# if hash git 2>/dev/null; then
+#     git -C $ORIGINDIR submodule update --init --recursive
+#     echo ""
+# else
+#     echo "You need to install git first. :("
+#     return 1
+# fi
 
 # Ensure .bashrc exists even if blank
 BASHRC_FILE="$HOME/.bashrc"
@@ -46,12 +46,6 @@ fi
 # zshell install
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
-    setopt EXTENDED_GLOB
-    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-        ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-    done
-
     chsh -s /bin/zsh
 fi
 

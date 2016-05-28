@@ -1,3 +1,8 @@
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
 # Set up the prompt
 
 autoload -Uz promptinit
@@ -16,8 +21,6 @@ HISTFILE=~/.zsh_history
 
 # Use modern completion system
 autoload -Uz compinit
-promptinit
-prompt steef
 compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
