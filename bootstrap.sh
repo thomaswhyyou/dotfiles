@@ -49,6 +49,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     chsh -s /bin/zsh
 fi
 
-. ~/scripts/tmux-setup-session-default.sh
+. ~/dotfiles/scripts/tmux-setup-session-default.sh
 
 echo ""; echo "All done. Yay :)"
