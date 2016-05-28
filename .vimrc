@@ -1,33 +1,28 @@
 " ==============================================================================
 " NeoBundle
 " ==============================================================================
-
-set nocompatible
-filetype off
-let bundledir = expand('~/.vim/bundle')
 let g:neobundle#install_process_timeout = 6000  "YouCompleteMe is slow
+let bundledir = expand('~/.vim/bundle')
 
+" https://github.com/Shougo/neobundle.vim
 " Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
-if has('vim_starting')
-    " Install NeoBundle if not installed.
-    if !isdirectory(bundledir.'/neobundle.vim')
-        execute printf('!git clone %s://github.com/Shougo/neobundle.vim.git',
-            \ (exists('$http_proxy') ? 'https' : 'git'))
-            \ bundledir.'/neobundle.vim'
-    endif
-
-    " Load neobundle.
-    execute 'set runtimepath+='.bundledir.'/neobundle.vim'
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
+" required:
+set runtimepath^=~/.vim/bundle/neobundle.vim/
 
+" required:
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
+" required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" CUSTOM PLUGINS FROM HERE =====================================================
 " For async vim process
 NeoBundle 'Shougo/vimproc.vim', {
     \ 'build' : {
@@ -41,7 +36,8 @@ NeoBundle 'Shougo/vimproc.vim', {
 
 " Vim appearance
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 
 " File browsing
 NeoBundle 'Shougo/vimfiler.vim'
@@ -123,14 +119,12 @@ NeoBundle 'moll/vim-node'
 
 " Docker
 NeoBundle 'ekalinin/Dockerfile.vim'
+" CUSTOM PLUGINS UPTP HERE =====================================================
 
-
+" Wrap up
 call neobundle#end()
-
 filetype plugin indent on
-NeoBundleClean
 NeoBundleCheck
-
 
 
 " ==============================================================================
@@ -253,8 +247,8 @@ autocmd WinLeave * setlocal nocursorline
 autocmd WinEnter * setlocal relativenumber
 autocmd WinLeave * setlocal norelativenumber
 highlight clear CursorLineNr
-highlight CursorLineNr cterm=bold ctermfg=46 ctermbg=233
-" highlight CursorLineNr cterm=bold ctermfg=148 ctermbg=233
+" highlight CursorLineNr cterm=bold ctermfg=46 ctermbg=233
+highlight CursorLineNr cterm=bold ctermfg=148 ctermbg=233
 
 set lazyredraw                  " redraw only when we need to
 set ttyfast                     " fast redrawing
@@ -652,6 +646,7 @@ endif
 " ----
 if isdirectory(bundledir.'/vim-airline')
     let g:airline_theme='powerlineish'
+
     " powerlineish theme copypasta below, need them here to modify.
     " color reference: http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
     " --------------------------------------------------------------------------
