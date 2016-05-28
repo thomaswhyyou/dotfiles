@@ -39,10 +39,22 @@ done
 
 # vim install
 VIM_INSTALL_SCRIPT="$HOME/dotfiles/scripts/build-vim-from-source.sh"
-if [[ -f "$VIM_INSTALL_SCRIPT" ]] && [[ "$TERM" != "screen-256color" ]]; then
+if [[ -f "$VIM_INSTALL_SCRIPT" ]] && [[ "$OSTYPE" == "linux-gnu" ]]; then
     . "$VIM_INSTALL_SCRIPT"
 fi
 
-. scripts/tmux-setup-session-default.sh
+# zshell install
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
+    setopt EXTENDED_GLOB
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+        ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+    done
+
+    chsh -s /bin/zsh
+fi
+
+. ~/scripts/tmux-setup-session-default.sh
 
 echo ""; echo "All done. Yay :)"

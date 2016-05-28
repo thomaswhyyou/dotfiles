@@ -38,3 +38,4 @@
     - libxml2-utils                 # For xml linting in vim
     - libevent-dev                  # Apparently needed for tmux
     - tmux
+    - zsh
