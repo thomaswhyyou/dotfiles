@@ -23,17 +23,6 @@ if [[ ! -f "$BASHRC_FILE" ]]; then
     touch "$BASHRC_FILE"
 fi
 
-# # tmux plugin manager.
-# VENDORDIR="$ORIGINDIR/vendor"
-# if hash tmux 2>/dev/null; then
-#     if [[ -d "$VENDORDIR/tpm" ]]; then
-#         mkdir -p ~/.tmux/plugins
-#         echo "Creating symlink to '$VENDORDIR/tpm' *directory* in ~/.tmux/plugins directory."
-#         rm -rf ~/.tmux/plugins/tpm/
-#         ln -sfn $VENDORDIR/tpm ~/.tmux/plugins/tpm
-#     fi
-# fi
-
 # Relevant dotfiles
 DOTFILES=$(find ~/dotfiles -maxdepth 1 -type f -not \( -name ".gitmodules" -o -name ".gitignore" \) -name ".*")
 for file in $DOTFILES; do
@@ -49,11 +38,10 @@ done
 # fi
 
 # vim install
-# XXX: Maybe we should just run this manually.
-# VIM_INSTALL_SCRIPT="$HOME/dotfiles/scripts/build-vim-from-source.sh"
-# if [[ -f "$VIM_INSTALL_SCRIPT" ]]; then
-#     . "$VIM_INSTALL_SCRIPT"
-# fi
+VIM_INSTALL_SCRIPT="$HOME/dotfiles/scripts/build-vim-from-source.sh"
+if [[ -f "$VIM_INSTALL_SCRIPT" ]] && [[ "$TERM" != "screen-256color" ]]; then
+    . "$VIM_INSTALL_SCRIPT"
+fi
 
 . scripts/tmux-setup-session-default.sh
 

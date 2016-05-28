@@ -10,12 +10,15 @@ if [[ $? != 0 ]]; then
     tmux set -g base-index 1
     tmux setw -g pane-base-index 1
 
-    # Create a new session 'asdf' with first window 'Main'
-    tmux new-session -s asdf -n Main -d
-    tmux split-window -h -p 50 -t asdf:1.1
+    # Create a new session 'asdf' with first window 'main'
+    tmux new-session -s asdf -n main -d
 
-    # Third window '4x4'
-    tmux new-window -n 4x4 -t asdf
+    # Third window 'misc'
+    tmux new-window -n misc -t asdf
+    tmux split-window -h -p 50 -t asdf:2.1
+
+    # Third window '2x2'
+    tmux new-window -n 2x2 -t asdf
     tmux split-window -h -p 50 -t asdf:2
     tmux split-window -v -p 50 -t asdf:2.1
     tmux split-window -v -p 50 -t asdf:2.2
