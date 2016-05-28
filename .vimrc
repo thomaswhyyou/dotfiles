@@ -23,6 +23,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " CUSTOM PLUGINS FROM HERE =====================================================
+
 " For async vim process
 NeoBundle 'Shougo/vimproc.vim', {
     \ 'build' : {
@@ -42,7 +43,6 @@ NeoBundle 'vim-airline/vim-airline-themes'
 " File browsing
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'moll/vim-bbye'
@@ -75,6 +75,7 @@ NeoBundle 'easymotion/vim-easymotion'
 
 " Better editing
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'tpope/vim-surround'
@@ -168,7 +169,7 @@ let s:is_cygwin = has('win32unix')
 let s:is_mac = !s:is_windows && !s:is_cygwin &&
       \ (has('mac') || has('macunix') || has('gui_macvim') || (!executable('xdg-open') && system('uname') =~? '^darwin'))
 
-"Persistent undo settings
+" Persistent undo settings
 if has("persistent_undo")
     set undofile
     set undodir=~/.vim/undofiles/
@@ -224,7 +225,7 @@ let search_ignore_pattern = general_ignore_pattern + [
 
 " (Any change in colors must come after this section)
 syntax on                   " enable syntax processing
-set synmaxcol=200           " don't bother syntax highlight beyond this
+set synmaxcol=300           " don't bother syntax highlight beyond this
 set background=dark         " colorscheme
 if isdirectory(bundledir.'/vim-colors-solarized')
     colorscheme solarized   " colorscheme
@@ -383,6 +384,14 @@ if isdirectory(bundledir.'/gundo.vim')
 endif
 
 
+" vim-expand-region
+" ----
+if isdirectory(bundledir.'/vim-expand-region')
+  vmap v <Plug>(expand_region_expand)
+  vmap <S-v> <Plug>(expand_region_shrink)
+endif
+
+
 " NERDCommenter
 " ----
 if isdirectory(bundledir.'/nerdcommenter')
@@ -476,7 +485,6 @@ if isdirectory(bundledir.'/ctrlp.vim')
 
   " https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
   let g:ctrlp_use_caching = 0  " AG is fast enough, no caching
-
   if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 
@@ -487,6 +495,7 @@ if isdirectory(bundledir.'/ctrlp.vim')
           \ --ignore .hg
           \ --ignore .DS_Store
           \ --ignore "**/*.pyc"
+          \ --path-to-agignore "~/.agignore"
           \ -g ""'
   endif
 endif
@@ -521,15 +530,13 @@ if isdirectory(bundledir.'/unite.vim')
         \ 'no_empty': 1,
         \ })
 
-    call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+    call unite#custom_source('file_rec,file_rec/async,buffer,grep',
         \ 'ignore_pattern', join(search_ignore_pattern, '\|')
         \ )
 
     " Key mappings to invoke Unite.
     nnoremap <leader>t :<C-u>Unite -buffer-name=file_rec                file_rec/async:!<cr>
     nnoremap <leader>y :<C-u>Unite -buffer-name=yank                    history/yank<cr>
-    " nnoremap <leader>f :<C-u>Unite -buffer-name=file                    file<cr>
-    " nnoremap <leader>r :<C-u>Unite -buffer-name=mru                     file_mru<cr>
     nnoremap <leader>o :<C-u>Unite -buffer-name=buffer -start-insert    buffer<cr>
     nnoremap <leader>/ :<C-u>Unite -buffer-name=grep                    grep:!<cr>
     nnoremap <leader>\ :<C-u>Unite -buffer-name=line -auto-preview      line<cr>
@@ -590,9 +597,6 @@ if isdirectory(bundledir.'/unite.vim')
         nmap <buffer><nowait> * <Plug>(unite_toggle_mark_all_candidates)
         nmap <buffer><nowait> . <Plug>(unite_narrowing_dot)
     endfunction
-
-    " neomru.vim source settings
-    let g:neomru#filename_format = ':~:.'
 
     " qfreplace.vim
     autocmd MyAutoCmd FileType qf nnoremap <buffer> R :<C-u>Qfreplace<CR>
@@ -1129,6 +1133,16 @@ endfunction
 
 command! -range=% FormatXML <line1>,<line2>call DoFormatXML()
 " nmap <silent> <leader>x :%FormatXML<CR>
+
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" Automatically jump to end of text you pasted:
+" (so that you can paste multiple lines multiple times with simple ppppp)
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 
 " Use local eslint if exists, otherwise try global one?
 " Copypasta from Jim Grandpre
