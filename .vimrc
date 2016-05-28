@@ -47,6 +47,7 @@ NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'moll/vim-bbye'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 
 " Code intelligence
 NeoBundle 'scrooloose/syntastic'
@@ -82,13 +83,6 @@ NeoBundle 'Raimondi/delimitMate'
 
 " Other utilities
 NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" NeoBundle 'Shougo/vimshell.vim'
-
-" Better writing
-NeoBundle 'junegunn/goyo.vim'
-NeoBundle 'junegunn/limelight.vim'
-
 
 " ----
 " Elixir
@@ -230,6 +224,7 @@ let search_ignore_pattern = general_ignore_pattern + [
 
 " (Any change in colors must come after this section)
 syntax on                   " enable syntax processing
+set synmaxcol=200           " don't bother syntax highlight beyond this
 set background=dark         " colorscheme
 if isdirectory(bundledir.'/vim-colors-solarized')
     colorscheme solarized   " colorscheme
@@ -252,6 +247,7 @@ highlight CursorLineNr cterm=bold ctermfg=148 ctermbg=233
 
 set lazyredraw                  " redraw only when we need to
 set ttyfast                     " fast redrawing
+set ttyscroll=3                 " maybe make vim faster
 set showmatch                   " highlight matching [{()}]
 set matchpairs+=<:>             " Highlight <>
 set matchtime=2                 " how many tenths of a second to blink when matching brackets
@@ -467,6 +463,35 @@ if isdirectory(bundledir.'/vimfiler.vim')
 endif
 
 
+" CtrlP
+" ----
+if isdirectory(bundledir.'/ctrlp.vim')
+  nnoremap <Leader>p :CtrlP<CR>
+  let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
+
+  let g:ctrlp_show_hidden = 1           " Show hidden files too
+  let g:ctrlp_match_current_file = 1    " Show current file
+
+  let g:ctrlp_prompt_mappings = {'ToggleType(1)': ['<tab>']}
+
+  " https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+  let g:ctrlp_use_caching = 0  " AG is fast enough, no caching
+
+  if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " http://softwareas.com/a-simple-way-to-speed-up-vim-ctrl-p-plugin-delegate-to-ag/
+    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+          \ --ignore .git
+          \ --ignore .svn
+          \ --ignore .hg
+          \ --ignore .DS_Store
+          \ --ignore "**/*.pyc"
+          \ -g ""'
+  endif
+endif
+
+
 " Unite
 " ----
 if isdirectory(bundledir.'/unite.vim')
@@ -503,8 +528,8 @@ if isdirectory(bundledir.'/unite.vim')
     " Key mappings to invoke Unite.
     nnoremap <leader>t :<C-u>Unite -buffer-name=file_rec                file_rec/async:!<cr>
     nnoremap <leader>y :<C-u>Unite -buffer-name=yank                    history/yank<cr>
-    nnoremap <leader>f :<C-u>Unite -buffer-name=file                    file<cr>
-    nnoremap <leader>r :<C-u>Unite -buffer-name=mru                     file_mru<cr>
+    " nnoremap <leader>f :<C-u>Unite -buffer-name=file                    file<cr>
+    " nnoremap <leader>r :<C-u>Unite -buffer-name=mru                     file_mru<cr>
     nnoremap <leader>o :<C-u>Unite -buffer-name=buffer -start-insert    buffer<cr>
     nnoremap <leader>/ :<C-u>Unite -buffer-name=grep                    grep:!<cr>
     nnoremap <leader>\ :<C-u>Unite -buffer-name=line -auto-preview      line<cr>
@@ -638,7 +663,7 @@ if isdirectory(bundledir.'/syntastic')
 
     let g:syntastic_mode_map = { 'mode': 'active',
                 \ 'active_filetypes': [],
-                \ 'passive_filetypes': [] }
+                \ 'passive_filetypes': ['sass', 'scss'] }
 endif
 
 
@@ -698,16 +723,25 @@ if isdirectory(bundledir.'/vim-airline')
     if !exists('g:airline_symbols')
         let g:airline_symbols = {}
     endif
+
+    " customize the bottom line
     let g:airline_left_sep = ''
     let g:airline_right_sep = ''
     let g:airline_symbols.linenr = '␤'
     let g:airline_symbols.branch = '⎇'
     let g:airline_symbols.whitespace = 'ξ'
+    " customize the airline status line
+    let g:airline_section_c = '%f%m'
+    let g:airline_section_z = '␤ %l/%L,%2v'
 
     " show and customize the tabline
+    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_alt_sep = '|'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
     let g:airline#extensions#tabline#fnamemod = ':t'
+    let g:airline#extensions#tagbar#enabled = 0  " Possibly slow, disable
+
     nmap <leader>1 <Plug>AirlineSelectTab1
     nmap <leader>2 <Plug>AirlineSelectTab2
     nmap <leader>3 <Plug>AirlineSelectTab3
@@ -717,10 +751,6 @@ if isdirectory(bundledir.'/vim-airline')
     nmap <leader>7 <Plug>AirlineSelectTab7
     nmap <leader>8 <Plug>AirlineSelectTab8
     nmap <leader>9 <Plug>AirlineSelectTab9
-
-    " customize the airline status line
-    let g:airline_section_c = '%f%m'
-    let g:airline_section_z = '␤ %l/%L,%2v'
 endif
 
 
@@ -737,6 +767,7 @@ endif
 
 
 " Bbye
+" ----
 if isdirectory(bundledir.'/vim-bbye')
     nnoremap <leader>q :Bdelete<CR>
 endif
@@ -751,7 +782,7 @@ if isdirectory(bundledir.'/tagbar')
     let g:tagbar_autofocus = 1
     let g:tagbar_compact = 1
     let g:tagbar_sort = 0
-    nnoremap <silent><F3> :TagbarToggle<CR>
+    nnoremap <silent><F8> :TagbarToggle<CR>
 endif
 
 
@@ -780,19 +811,6 @@ endif
 " ----
 if isdirectory(bundledir.'/vim-jsx')
   let g:jsx_ext_required = 0
-endif
-
-
-" Indent Guides
-" ----
-if isdirectory(bundledir.'/vim-indent-guides')
-    let g:indent_guides_default_mapping = 0
-    let indent_guides_auto_colors=0
-    hi IndentGuidesOdd  ctermbg=black
-    hi IndentGuidesEven ctermbg=black
-    let g:indent_guides_start_level=2
-    let g:indent_guides_guide_size=1
-    nmap <F6> <Plug>IndentGuidesToggle
 endif
 
 
@@ -887,6 +905,7 @@ if isdirectory(bundledir.'/delimitMate')
   let delimitMate_expand_cr = 1
   let delimitMate_balance_matchpairs = 1
 
+  " Don't match " in vimrc because it starts comments
   autocmd MyAutoCmd FileType vim let b:delimitMate_quotes = "'"
 endif
 
@@ -916,64 +935,11 @@ endif
 let g:vim_json_syntax_conceal = 0
 
 
-" Goyo
-if isdirectory(bundledir.'/goyo.vim')
-  function! s:goyo_enter()
-    silent !tmux set status off
-    set nonumber
-    set norelativenumber
-    set noshowmode
-    set noshowcmd
-    set scrolloff=999
-    Limelight
-  endfunction
-
-  function! s:goyo_leave()
-    silent !tmux set status on
-    Limelight!
-  endfunction
-
-  autocmd! User GoyoEnter nested call <SID>goyo_enter()
-  autocmd! User GoyoLeave nested call <SID>goyo_leave()
-endif
-
-
-if isdirectory(bundledir.'/limelight.vim')
-  " Color name (:help cterm-colors) or ANSI code
-  let g:limelight_conceal_ctermfg = 'gray'
-  let g:limelight_conceal_ctermfg = 240
-
-  " Color name (:help gui-colors) or RGB color
-  let g:limelight_conceal_guifg = 'DarkGray'
-  let g:limelight_conceal_guifg = '#777777'
-
-  " Default: 0.5
-  let g:limelight_default_coefficient = 0.7
-
-  " Number of preceding/following paragraphs to include (default: 0)
-  let g:limelight_paragraph_span = 1
-
-  " Beginning/end of paragraph
-  "   When there's no empty line between the paragraphs
-  "   and each paragraph starts with indentation
-  let g:limelight_bop = '^\s'
-  let g:limelight_eop = '\ze\n^\s'
-
-  " Highlighting priority (default: 10)
-  "   Set it to -1 not to overrule hlsearch
-  let g:limelight_priority = -1
-endif
-
-
 " EasyMotion
 " ----
 if isdirectory(bundledir.'/vim-easymotion')
-  " nmap <leader>s <Plug>(easymotion-sn)
-  map <Leader>s <Plug>(easymotion-sn)
-  " map / <Plug>(easymotion-sn)
-  map <Leader>j <Plug>(easymotion-j)
-  map <Leader>k <Plug>(easymotion-k)
-  " let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+  " map <Leader>s <Plug>(easymotion-sn)
+  map <Leader><Space> <Plug>(easymotion-sn)
 
   " easymotion highlight colors, make them easier to see
   highlight link EasyMotionTarget2First EasyMotionTarget
@@ -985,8 +951,30 @@ endif
 " Other Stuff
 " ==============================================================================
 
+" Easily move between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" provide hjkl movements in insert mode via the <C> modifier key
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
+
+" Disable arrow keys
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
 " don't accidently get into Ex mode
 nnoremap Q <nop>
+
+" scroll the viewport faster
+nnoremap <C-e> 15<C-e>
+nnoremap <C-y> 15<C-y>
 
 " toggle paste mode
 set pastetoggle=<F2>
@@ -1009,33 +997,17 @@ hi SpellBad ctermfg=189 cterm=undercurl
 " if want to sync across different machines
 " set spellfile=$HOME/Dropbox/vim/spell/en.utf-8.add
 
-" Easily move between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
 " Sublime style indentation
 nnoremap > >>
 nnoremap < <<
 xnoremap > >gv
 xnoremap < <gv
 
-" switch between current and last buffer
-nnoremap <silent><leader><tab> <c-^>
+" " switch between current and last buffer
+" nnoremap <silent><leader><tab> <c-^>
 
 " enable . command in visual mode
 vnoremap . :normal .<cr>
-
-" scroll the viewport faster
-nnoremap <C-e> 10<C-e>
-nnoremap <C-y> 10<C-y>
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -1045,12 +1017,6 @@ autocmd BufReadPost *
 
 " Remember info about open buffers on close
 set viminfo^=%
-
-" provide hjkl movements in insert mode via the <C> modifier key
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>l
 
 " disable vim looking up man page
 nnoremap <S-k> <nop>
@@ -1070,7 +1036,6 @@ noremap <c-q> :bw<cr>
 " nnoremap <leader>z :%s#\<<c-r>=expand("<cword>")<cr>\>##gc<left><left><left>
 " nnoremap <leader>Z :bufdo %s#\<<c-r>=expand("<cword>")<cr>\>##gce<space><bar><space>update<left><left><left><left><left><left><left><left><left><left><left><left><left>
 
-
 " Tidy up trailing white spaces and empty endlines
 function! <SID>StripTrailingWhitespacesAndEmptyEndLines()
   " preparation: save last search, and cursor position.
@@ -1089,7 +1054,7 @@ endfun
 let noAutoStripFileTypes = ['markdown']  " http://stackoverflow.com/a/10410590/3479934
 autocmd BufWritePre * if index(noAutoStripFileTypes, &ft) < 0 | :call <SID>StripTrailingWhitespacesAndEmptyEndLines()
 " Manual trigger to strip trailing spaces.
-nnoremap <F8> :call <SID>StripTrailingWhitespacesAndEmptyEndLines()<CR>
+nnoremap <F6> :call <SID>StripTrailingWhitespacesAndEmptyEndLines()<CR>
 
 
 " Check syntax color group
@@ -1097,10 +1062,6 @@ function! <SID>CheckSyntaxItem()
     echo synIDattr(synID(line("."), col("."), 1), "name")
 endfunction
 nnoremap <F10> :call <SID>CheckSyntaxItem()<CR>
-
-
-" toggle Goyo
-nnoremap <F12> :Goyo<CR>
 
 
 " Make directory automatically
