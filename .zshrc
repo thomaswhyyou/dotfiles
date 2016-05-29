@@ -11,3 +11,8 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# include .shell_common if it exists
+if [ -f "$HOME/.shell_common" ]; then
+  . "$HOME/.shell_common"
+fi
