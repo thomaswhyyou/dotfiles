@@ -1,17 +1,6 @@
+# vim: filetype=sh
 
-
-# Reference:
-# http://natelandau.com/my-mac-osx-bash_profile/ (mostly copied from here)
-# https://gist.github.com/phlco/6670713          (..and here)
-# http://www.linuxquestions.org/questions/linux-general-1/ultimate-prompt-and-bashrc-file-4175518169/
-# https://gist.github.com/thomaswhyyou/8907953
-# http://www.ibm.com/developerworks/linux/library/l-tip-prompt/
-# http://cli.learncodethehardway.org/bash_cheat_sheet.pdf
-# http://ss64.com/bash/syntax-prompt.html
-# https://dougbarton.us/Bash/Bash-prompts.html
-# http://jilles.me/badassify-your-terminal-and-shell/   (zsh)
 # set PATH so it includes user's private bin if it exists
-
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
@@ -313,3 +302,15 @@ fi
 if [ -f "$HOME/.atlas-secrets" ]; then
   . "$HOME/.atlas-secrets"
 fi
+
+
+# Reference:
+# http://natelandau.com/my-mac-osx-bash_profile/ (mostly copied from here)
+# https://gist.github.com/phlco/6670713          (..and here)
+# http://www.linuxquestions.org/questions/linux-general-1/ultimate-prompt-and-bashrc-file-4175518169/
+# https://gist.github.com/thomaswhyyou/8907953
+# http://www.ibm.com/developerworks/linux/library/l-tip-prompt/
+# http://cli.learncodethehardway.org/bash_cheat_sheet.pdf
+# http://ss64.com/bash/syntax-prompt.html
+# https://dougbarton.us/Bash/Bash-prompts.html
+# http://jilles.me/badassify-your-terminal-and-shell/   (zsh)

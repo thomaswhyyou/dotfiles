@@ -234,6 +234,7 @@ let search_ignore_pattern = general_ignore_pattern + [
 
 " (Any change in colors must come after this section)
 syntax on                   " enable syntax processing
+set modeline                " read modline for syntax
 set synmaxcol=320           " don't bother syntax highlight beyond this
 set background=dark         " colorscheme
 if isdirectory(bundledir.'/vim-colors-solarized')

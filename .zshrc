@@ -12,7 +12,7 @@ fi
 
 # Customize to your needs...
 
-# include .shell_common if it exists
-if [ -f "$HOME/.shell_common" ]; then
-  . "$HOME/.shell_common"
+# include .commonrc if it exists
+if [ -f "$HOME/.commonrc" ]; then
+  . "$HOME/.commonrc"
 fi
