@@ -28,6 +28,11 @@ fi
 bind 'set completion-ignore-case on'
 bind 'set show-all-if-ambiguous on'
 
+# Causes bash to append to history instead of overwriting it so if you start a
+# new terminal, you have old session history
+shopt -s histappend
+PROMPT_COMMAND='history -a'
+
 ## Long git to show + ? !
 is_git_repo() {
     $(git rev-parse --is-inside-work-tree &> /dev/null)
