@@ -30,5 +30,5 @@ fi
 
 # Get us into the default session.
 if [[ "$TERM" != "screen-256color" ]]; then
-    tmux attach -t asdf
+    tmux ls
 fi
