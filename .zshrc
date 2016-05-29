@@ -13,6 +13,6 @@ fi
 # Customize to your needs...
 
 # include .commonrc if it exists
-if [ -f "$HOME/.commonrc" ]; then
+if [[ -f "$HOME/.commonrc" ]]; then
   . "$HOME/.commonrc"
 fi
