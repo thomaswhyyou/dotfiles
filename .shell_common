@@ -1,3 +1,5 @@
+
+
 # Reference:
 # http://natelandau.com/my-mac-osx-bash_profile/ (mostly copied from here)
 # https://gist.github.com/phlco/6670713          (..and here)
@@ -9,7 +11,6 @@
 # https://dougbarton.us/Bash/Bash-prompts.html
 # http://jilles.me/badassify-your-terminal-and-shell/   (zsh)
 # set PATH so it includes user's private bin if it exists
-
 
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -242,15 +243,15 @@ alias showblocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
 
 #   ii:  display useful host related informaton
 ii() {
-    echo -e "\nYou are logged on ${RED}$HOST"
-    echo -e "\nAdditionnal information:$NC " ; uname -a
-    echo -e "\n${RED}Users logged on:$NC " ; w -h
-    echo -e "\n${RED}Current date :$NC " ; date
-    echo -e "\n${RED}Machine stats :$NC " ; uptime
-    echo -e "\n${RED}Current network location :$NC " ; scselect
-    echo -e "\n${RED}Public facing IP Address :$NC " ;myip
-    aecho -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
-    echo
+  echo -e "\nYou are logged on ${RED}$HOST"
+  echo -e "\nAdditionnal information:$NC " ; uname -a
+  echo -e "\n${RED}Users logged on:$NC " ; w -h
+  echo -e "\n${RED}Current date :$NC " ; date
+  echo -e "\n${RED}Machine stats :$NC " ; uptime
+  echo -e "\n${RED}Current network location :$NC " ; scselect
+  echo -e "\n${RED}Public facing IP Address :$NC " ;myip
+  aecho -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
+  echo
 }
 
 
@@ -270,45 +271,45 @@ alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
 
 ## Shortcuts
 if [ -d ~/Dropbox/Code ]; then
-    alias code='cd ~/Dropbox/Code'
+  alias code='cd ~/Dropbox/Code'
 fi
 if [ -d ~/work ]; then
-    alias work='cd ~/work'
+  alias work='cd ~/work'
 fi
 
 ## autoenv
 if hash activate.sh 2>/dev/null; then
-    . activate.sh
+  . activate.sh
 fi
 
 ## tmux
 if hash tmux 2>/dev/null; then
-    alias tls='tmux ls'
-    alias tat='tmux attach -t'
-    alias tns='tmux new-session -s'
-    alias tks='tmux kill-session -t'
+  alias tls='tmux ls'
+  alias tat='tmux attach -t'
+  alias tns='tmux new-session -s'
+  alias tks='tmux kill-session -t'
 fi
 
 ## Spring related -> core product.
 if [ -f "$HOME/.secret" ]; then
-    . "$HOME/.secret"
+  . "$HOME/.secret"
 
-    export OPSWORKS_NAME="tyu"
+  export OPSWORKS_NAME="tyu"
 
-    export GOPATH="$HOME/code/go:$(brew --prefix go)/libexec"
-    export PATH=${GOPATH[@]//:/\/bin:}/bin:$PATH
+  export GOPATH="$HOME/code/go:$(brew --prefix go)/libexec"
+  export PATH=${GOPATH[@]//:/\/bin:}/bin:$PATH
 
-    export RBENV_ROOT="$HOME/.rbenv"
-    export PATH="$RBENV_ROOT/bin:$PATH"
-    if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+  export RBENV_ROOT="$HOME/.rbenv"
+  export PATH="$RBENV_ROOT/bin:$PATH"
+  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-    export GOPATH="$GOPATH:$HOME/code/branded/go"
-    export PATH="$HOME/code/branded/go/bin:$PATH"
+  export GOPATH="$GOPATH:$HOME/code/branded/go"
+  export PATH="$HOME/code/branded/go/bin:$PATH"
 
-    export PATH="$HOME/code/arcanist/bin:$PATH"
+  export PATH="$HOME/code/arcanist/bin:$PATH"
 fi
 
 ## Spring related -> atlas
 if [ -f "$HOME/.atlas-secrets" ]; then
-    . "$HOME/.atlas-secrets"
+  . "$HOME/.atlas-secrets"
 fi
