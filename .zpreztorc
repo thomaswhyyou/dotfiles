@@ -1,9 +1,4 @@
-# References:
-# http://wikimatze.de/better-zsh-with-prezto
-# http://joshsymonds.com/blog/2014/06/12/shell-awesomeness-with-prezto/
-# https://gist.github.com/Veraticus/a1b5204d8f922de5ea88
-
-
+#
 # Sets Prezto options.
 #
 # Authors:
@@ -37,11 +32,11 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'ssh' \
   'git' \
-  'tmux' \
-  'syntax-highlighting' \
+  'ssh' \
+  'archive' \
   'history-substring-search' \
+  'autosuggestions' \
   'prompt'
 
 #
@@ -49,14 +44,14 @@ zstyle ':prezto:load' pmodule \
 #
 
 # Set the query found color.
-zstyle ':prezto:module:autosuggestions:color' found ''
+# zstyle ':prezto:module:autosuggestions:color' found ''
 
 #
 # Editor
 #
 
 # Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' key-bindings 'vi'
+zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Auto convert .... to ../..
 # zstyle ':prezto:module:editor' dot-expansion 'yes'
@@ -80,13 +75,13 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 #
 
 # Set the query found color.
-zstyle ':prezto:module:history-substring-search:color' found ''
+# zstyle ':prezto:module:history-substring-search:color' found ''
 
 # Set the query not found color.
-zstyle ':prezto:module:history-substring-search:color' not-found ''
+# zstyle ':prezto:module:history-substring-search:color' not-found ''
 
 # Set the search globbing flags.
-zstyle ':prezto:module:history-substring-search' globbing-flags ''
+# zstyle ':prezto:module:history-substring-search' globbing-flags ''
 
 #
 # Pacman
@@ -134,42 +129,42 @@ zstyle ':prezto:module:prompt' theme 'steeef'
 
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
-zstyle ':prezto:module:syntax-highlighting' highlighters \
-  'main' \
-  'brackets' \
-  'pattern' \
-  'line' \
-  'cursor' \
-  'root'
+# zstyle ':prezto:module:syntax-highlighting' highlighters \
+#   'main' \
+#   'brackets' \
+#   'pattern' \
+#   'line' \
+#   'cursor' \
+#   'root'
 
 # Set syntax highlighting styles.
-zstyle ':prezto:module:syntax-highlighting' styles \
-  'builtin' 'bg=blue' \
-  'command' 'bg=blue' \
-  'function' 'bg=blue'
+# zstyle ':prezto:module:syntax-highlighting' styles \
+#   'builtin' 'bg=blue' \
+#   'command' 'bg=blue' \
+#   'function' 'bg=blue'
 
 #
 # Terminal
 #
 
 # Auto set the tab and window titles.
-zstyle ':prezto:module:terminal' auto-title 'yes'
+# zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Set the window title format.
-zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+# zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
 
 # Set the tab title format.
-zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+# zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 #
 # Tmux
 #
 
 # Auto start a session when Zsh is launched in a local terminal.
-zstyle ':prezto:module:tmux:auto-start' local 'yes'
+# zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Auto start a session when Zsh is launched in a SSH connection.
-zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+# zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
