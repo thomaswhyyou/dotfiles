@@ -545,7 +545,7 @@ if isdirectory(bundledir.'/unite.vim')
 
     " Key mappings to invoke Unite.
     nnoremap <leader>t :<C-u>Unite -buffer-name=file_rec                file_rec/async:!<cr>
-    nnoremap <leader>y :<C-u>Unite -buffer-name=yank                    history/yank<cr>
+    " nnoremap <leader>y :<C-u>Unite -buffer-name=yank                    history/yank<cr>
     nnoremap <leader>o :<C-u>Unite -buffer-name=buffer -start-insert    buffer<cr>
     nnoremap <leader>/ :<C-u>Unite -buffer-name=grep                    grep:!<cr>
     nnoremap <leader>\ :<C-u>Unite -buffer-name=line -auto-preview      line<cr>
@@ -572,13 +572,15 @@ if isdirectory(bundledir.'/unite.vim')
         setlocal nowrap
 
         " Custome key mappings ------------------------------------------------
-        nmap <buffer><nowait> <c-q> <Plug>(unite_all_exit)
-        imap <buffer><nowait> <c-q> <c-o><Plug>(unite_all_exit)<esc>
-        xmap <buffer><nowait> <c-q> <Plug>(unite_all_exit)
+        nmap <buffer><nowait> <esc> <Plug>(unite_all_exit)
+        " nmap <buffer><nowait> <c-q> <Plug>(unite_all_exit)
+        " imap <buffer><nowait> <c-q> <c-o><Plug>(unite_all_exit)<esc>
+        " xmap <buffer><nowait> <c-q> <Plug>(unite_all_exit)
+
+        " nmap <buffer><nowait> - <Plug>(unite_exit)
+        " nmap <buffer><nowait> _ <Plug>(unite_all_exit)
 
         nmap <buffer><nowait> i gg$l<Plug>(unite_insert_enter)
-        nmap <buffer><nowait> - <Plug>(unite_exit)
-        nmap <buffer><nowait> _ <Plug>(unite_all_exit)
         nmap <buffer><nowait> + <Plug>(unite_new_candidate)
         nmap <buffer><nowait> x <Plug>(unite_toggle_mark_current_candidate)
         nmap <buffer><nowait> X <Plug>(unite_toggle_mark_current_candidate_up)
