@@ -39,3 +39,4 @@
     - libevent-dev                  # Apparently needed for tmux
     - tmux
     - zsh
+    - htop
