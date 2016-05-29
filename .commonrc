@@ -117,7 +117,7 @@ alias edit='vim'                            # edit:         Opens any file in vi
 alias vi='vim'                              # edit:         map vi -> vim
 alias em='emacs'
 alias ~="cd ~"                              # ~:            Go Home
-alias which='type -all'                     # which:        Find executables
+alias which='type -a'                     # which:        Find executables
 alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
 
 #   mans:   Search manpage given in agument '1' for term given in argument '2' (case insensitive)
