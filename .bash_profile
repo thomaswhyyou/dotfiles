@@ -70,7 +70,7 @@ prompt_git() {
     fi
     git_state=$uc$us$ut$st
     # Combine the branch name and state information
-    if [[$git_state]]; then
+    if [[ $git_state ]]; then
         git_info="$git_info${RESET}($git_state${RESET})"
     fi
     printf "${WHITE} on ${style_branch}${git_info}"
