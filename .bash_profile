@@ -1,38 +1,36 @@
 # Reference:
-# 	http://natelandau.com/my-mac-osx-bash_profile/ (mostly copied from here)
-# 	https://gist.github.com/phlco/6670713          (..and here)
-#   http://www.linuxquestions.org/questions/linux-general-1/ultimate-prompt-and-bashrc-file-4175518169/
-#   https://gist.github.com/thomaswhyyou/8907953
-#   http://www.ibm.com/developerworks/linux/library/l-tip-prompt/
-#   http://cli.learncodethehardway.org/bash_cheat_sheet.pdf
-#   http://ss64.com/bash/syntax-prompt.html
-#   https://dougbarton.us/Bash/Bash-prompts.html
-#   http://jilles.me/badassify-your-terminal-and-shell/   (zsh)
+# http://natelandau.com/my-mac-osx-bash_profile/ (mostly copied from here)
+# https://gist.github.com/phlco/6670713          (..and here)
+# http://www.linuxquestions.org/questions/linux-general-1/ultimate-prompt-and-bashrc-file-4175518169/
+# https://gist.github.com/thomaswhyyou/8907953
+# http://www.ibm.com/developerworks/linux/library/l-tip-prompt/
+# http://cli.learncodethehardway.org/bash_cheat_sheet.pdf
+# http://ss64.com/bash/syntax-prompt.html
+# https://dougbarton.us/Bash/Bash-prompts.html
+# http://jilles.me/badassify-your-terminal-and-shell/   (zsh)
 
+#   -------------------------------
+#   0.  BASH IMPORTS
+#   -------------------------------
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
+  if [ -f "$HOME/.bashrc" ]; then
     # include .bashrc if it exists
     # http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
-    if [ -f "$HOME/.bashrc" ]; then
-        . "$HOME/.bashrc"
-    fi
+    . "$HOME/.bashrc"
+  fi
 
+  if [ -f "$HOME/.bash_include" ]; then
     # include .bash_include if it exists
-    if [ -f "$HOME/.bash_include" ]; then
-        . "$HOME/.bash_include"
-    fi
+    . "$HOME/.bash_include"
+  fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
 
 #   -------------------------------
-#   1.  ENVIRONMENT CONFIGURATION
+#   1.  ENVIRONMENT CONFIGURATION (FOR BASH)
 #   -------------------------------
 
-## Settings
 # Prefer US English
 export LC_ALL="en_US.UTF-8"
 # use UTF-8
@@ -211,6 +209,12 @@ else
 fi
 
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
@@ -219,34 +223,28 @@ alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
+#   lr:  Full Recursive Directory Listing
+alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 alias less='less -FSRXc'                    # Preferred 'less' implementation
-cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
-# alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
-alias ..='cd ../'                           # Go back 1 directory level
-alias .2='cd ../../'                        # Go back 2 directory levels
-alias .3='cd ../../../'                     # Go back 3 directory levels
-alias .4='cd ../../../../'                  # Go back 4 directory levels
-alias .5='cd ../../../../../'               # Go back 5 directory levels
-alias .6='cd ../../../../../../'            # Go back 6 directory levels
+alias 1='cd ../'                           # Go back 1 directory level
+alias 2='cd ../../'                        # Go back 2 directory levels
+alias 3='cd ../../../'                     # Go back 3 directory levels
+alias 4='cd ../../../../'                  # Go back 4 directory levels
+alias 5='cd ../../../../../'               # Go back 5 directory levels
+alias 6='cd ../../../../../../'            # Go back 6 directory levels
 alias edit='vim'                            # edit:         Opens any file in vim
 alias vi='vim'                              # edit:         map vi -> vim
 alias em='emacs'
-# alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
-# alias ~="cd ~"                              # ~:            Go Home
-# alias clr='clear'                             # clr:            Clear terminal display
-alias cls='clear'                             # clr:            Clear terminal display
+alias ~="cd ~"                              # ~:            Go Home
 alias which='type -all'                     # which:        Find executables
 alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
 # alias show_options='shopt'                  # Show_options: display bash options settings
 # alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
 # mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
-trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
+# trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
 # ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
 # alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
-
-#   lr:  Full Recursive Directory Listing
-alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 
 #   mans:   Search manpage given in agument '1' for term given in argument '2' (case insensitive)
 #           displays paginated result with colored search terms and two lines surrounding each hit.             Example: mans mplayer codec
@@ -260,30 +258,11 @@ mans () {
 #   -------------------------------
 
 zipf () { zip -r "$1".zip "$1" ; }          # zipf:         To create a ZIP archive of a folder
-# alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
-alias countfiles='echo $(ls -1 | wc -l)'      # countfiles:     Count of non-hidden files in current dir
 alias make1mb='mkfile 1m ./1MB.dat'         # make1mb:      Creates a file of 1mb size (all zeros)
 alias make5mb='mkfile 5m ./5MB.dat'         # make5mb:      Creates a file of 5mb size (all zeros)
 alias make10mb='mkfile 10m ./10MB.dat'      # make10mb:     Creates a file of 10mb size (all zeros)
 
-#   cdf:  'Cd's to frontmost window of MacOS Finder
-cdf () {
-    currFolderPath=$( /usr/bin/osascript <<EOT
-        tell application "Finder"
-            try
-        set currFolder to (folder of the front window as alias)
-            on error
-        set currFolder to (path to desktop folder as alias)
-            end try
-            POSIX path of currFolder
-        end tell
-EOT
-    )
-    echo "cd to \"$currFolderPath\""
-    cd "$currFolderPath"
-}
-
-#   extract:  Extract most known archives with one command
+# extract:  Extract most known archives with one command
 extract () {
     if [ -f $1 ] ; then
       case $1 in
@@ -305,18 +284,11 @@ extract () {
      fi
 }
 
-
-#   ---------------------------
-#   4.  SEARCHING
-#   ---------------------------
-
-alias qfind="find . -name "                 # qfind:    Quickly search for file
+# alias qfind="find . -name "                 # qfind:    Quickly search for file
 ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
 ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
 ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
 
-#   spotlight: Search for a file using MacOS Spotlight's metadata
-# spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 
 # Searches for text in all files in the current folder
 ftext ()
@@ -388,7 +360,7 @@ ii() {
     echo -e "\n${RED}Machine stats :$NC " ; uptime
     echo -e "\n${RED}Current network location :$NC " ; scselect
     echo -e "\n${RED}Public facing IP Address :$NC " ;myip
-    #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
+    aecho -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
     echo
 }
 
@@ -401,59 +373,6 @@ alias mountreadwrite='/sbin/mount -uw /'    # mountReadWrite:   For use when boo
 
 #   cleanupDS:  Recursively delete .DS_Store files
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
-
-#   finderShowHidden:   Show hidden files in Finder
-#   finderHideHidden:   Hide hidden files in Finder
-alias findershowhidden='defaults write com.apple.finder ShowAllFiles TRUE'
-alias finderhidehidden='defaults write com.apple.finder ShowAllFiles FALSE'
-
-#   cleanupLS:  Clean up LaunchServices to remove duplicates in the "Open With" menu
-# alias cleanupLS="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
-
-#   ---------------------------------------
-#   8.  WEB DEVELOPMENT
-#   ---------------------------------------
-
-# alias apacheEdit='sudo edit /etc/httpd/httpd.conf'      # apacheEdit:       Edit httpd.conf
-# alias apacheRestart='sudo apachectl graceful'           # apacheRestart:    Restart Apache
-# alias editHosts='sudo edit /etc/hosts'                  # editHosts:        Edit /etc/hosts file
-# alias herr='tail /var/log/httpd/error_log'              # herr:             Tails HTTP error logs
-# alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:   Shows apache error logs
-# httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grabs headers from web page
-
-#   httpDebug:  Download a web page and show info on what took time
-httpdebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
-
-
-#   ---------------------------------------
-#   9.  REMINDERS & NOTES
-#   ---------------------------------------
-
-#   remove_disk: spin down unneeded disk
-#   ---------------------------------------
-#   diskutil eject /dev/disk1s3
-
-#   to change the password on an encrypted disk image:
-#   ---------------------------------------
-#   hdiutil chpass /path/to/the/diskimage
-
-#   to mount a read-only disk image as read-write:
-#   ---------------------------------------
-#   hdiutil attach example.dmg -shadow /tmp/example.shadow -noverify
-
-#   mounting a removable drive (of type msdos or hfs)
-#   ---------------------------------------
-#   mkdir /Volumes/Foo
-#   ls /dev/disk*   to find out the device to use in the mount command)
-#   mount -t msdos /dev/disk1s1 /Volumes/Foo
-#   mount -t hfs /dev/disk1s1 /Volumes/Foo
-
-#   to create a file of a given size: /usr/sbin/mkfile or /usr/bin/hdiutil
-#   ---------------------------------------
-#   e.g.: mkfile 10m 10MB.dat
-#   e.g.: hdiutil create -size 10m 10MB.dmg
-#   the above create files that are almost all zeros - if random bytes are desired
-#   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
 
 
 #   ---------------------------------------
@@ -473,22 +392,12 @@ if hash activate.sh 2>/dev/null; then
     . activate.sh
 fi
 
-## Elixir
-if hash elixir 2>/dev/null; then
-    alias elix='elixir'
-fi
-
 ## tmux
 if hash tmux 2>/dev/null; then
     alias tls='tmux ls'
     alias tat='tmux attach -t'
     alias tns='tmux new-session -s'
     alias tks='tmux kill-session -t'
-
-    TMUX_INIT_SCRIPT="$HOME/dotfiles/scripts/tmux-setup-session-default.sh"
-    if [[ -f "$TMUX_INIT_SCRIPT" ]]; then
-        . "$TMUX_INIT_SCRIPT"
-    fi
 fi
 
 ## Spring related -> core product.
