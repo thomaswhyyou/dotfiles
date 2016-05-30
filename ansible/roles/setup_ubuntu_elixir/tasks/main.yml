@@ -10,3 +10,8 @@
 
 - name: install elixir
   apt: name=elixir state=latest
+
+- name: install erlang
+  apt: name={{ item }} state=latest
+  with_items:
+    - erlang
