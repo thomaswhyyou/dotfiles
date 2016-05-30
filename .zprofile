@@ -72,3 +72,18 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+
+#
+# Source Prezto.
+#
+
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# MAKE THIS COME AFTER PREZTO
+# include .commonrc if it exists
+if [[ -f "$HOME/.commonrc" ]]; then
+  . "$HOME/.commonrc"
+fi

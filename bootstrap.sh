@@ -14,6 +14,12 @@ if [[ ! -f "$BASHRC_FILE" ]]; then
     touch "$BASHRC_FILE"
 fi
 
+# Ensure .zshrc exists even if blank
+ZSHRC_FILE="$HOME/.zshrc"
+if [[ ! -f "$ZSHRC_FILE" ]]; then
+    touch "$ZSHRC_FILE"
+fi
+
 # vim install
 VIM_INSTALL_SCRIPT="$HOME/dotfiles/scripts/build-vim-from-source.sh"
 if [[ -f "$VIM_INSTALL_SCRIPT" ]] && [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -26,7 +32,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     chsh -s /bin/zsh
 fi
 
-# Relevant dotfiles
+# Symlink relevant dotfiles
 . ~/dotfiles/scripts/symlink-dotfiles-to-home.sh
 
 echo ""; echo "All done. Yay :)"
