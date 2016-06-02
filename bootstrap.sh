@@ -26,7 +26,7 @@ if [[ -f "$VIM_INSTALL_SCRIPT" ]] && [[ "$OSTYPE" == "linux-gnu" ]]; then
     . "$VIM_INSTALL_SCRIPT"
 fi
 
-# zshell install
+# zshell zprezto install
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
     chsh -s /bin/zsh
