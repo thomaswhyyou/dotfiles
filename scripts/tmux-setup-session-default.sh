@@ -30,5 +30,6 @@ fi
 
 # Get us into the default session.
 if [[ "$TERM" != "screen-256color" ]]; then
-    tmux attach -t asdf
+    # http://comments.gmane.org/gmane.comp.terminal-emulators.tmux.user/1333
+    tmux attach -d -t asdf
 fi

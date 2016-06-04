@@ -269,7 +269,7 @@ fi
 ## tmux
 if hash tmux 2>/dev/null; then
   alias tls='tmux ls'
-  alias tat='tmux attach -t'
+  alias tat='tmux attach -d -t'
   alias tns='tmux new-session -s'
   alias tks='tmux kill-session -t'
 
