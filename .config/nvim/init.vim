@@ -38,6 +38,7 @@ Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dkprice/vim-easygrep'
 Plug 'mileszs/ack.vim'
+Plug 'terryma/vim-multiple-cursors'
 
 " Code intelligence
 " NOTE: 'ervandew/supertab' doesn't play well with deoplete, don't use.
@@ -462,7 +463,7 @@ if isdirectory(pluggeddir.'/nerdtree')
 
   function! DoNERDTreeInit()
     " Move up a directory using "-" like vim-vinegar (usually "u" does this).
-    nmap <buffer> <expr> - g:NERDTreeMapUpdir
+    nmap <buffer> <expr> - g:NERDTreeMapUpdirKeepOpen
   endfunction
 
   if has('autocmd')
