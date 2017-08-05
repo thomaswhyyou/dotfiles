@@ -97,6 +97,7 @@ NeoBundle 'tpope/vim-sleuth'
 " ----
 " Elixir
 NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'slashmili/alchemist.vim'
 
 " Go
 NeoBundle 'fatih/vim-go'
@@ -108,21 +109,27 @@ NeoBundle 'sophacles/vim-bundle-mako'
 " Markdown
 NeoBundle 'plasticboy/vim-markdown'  " godlygeek/tabular must come before.
 
-" HTML
+" HTML / CSS
 NeoBundle 'docunext/closetag.vim'
 NeoBundle 'valloric/MatchTagAlways'
 NeoBundle 'mitsuhiko/vim-jinja'
 NeoBundle 'othree/html5-syntax.vim'
 NeoBundle 'othree/html5.vim'
+NeoBundle 'cakebaker/scss-syntax.vim'
 
 " JavaScript
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'moll/vim-node'
+NeoBundle 'mtscout6/syntastic-local-eslint.vim'
 
 " Docker
 NeoBundle 'ekalinin/Dockerfile.vim'
+
+" Reason/OCaml
+NeoBundle 'reasonml/vim-reason'
+
 " CUSTOM PLUGINS UPTP HERE =====================================================
 
 " Wrap up
@@ -348,6 +355,9 @@ set whichwrap+=h,l,<,>,[,],b,s,~
 " autocmd Filetype ruby,html,yaml setlocal ts=2 sw=2 sts=2 expandtab
 " autocmd Filetype html setlocal ts=2 sw=2 sts=2 expandtab
 " autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
+
+" So we can get scss syntax highlighting with cakebaker/scss-syntax.vim
+au BufRead,BufNewFile *.css set filetype=scss
 
 " http://blog.ezyang.com/2010/03/vim-textwidth/
 " http://www.swamphogg.com/2015/vim-setup/
@@ -1158,12 +1168,12 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-" Use local eslint if exists, otherwise try global one?
-" Copypasta from Jim Grandpre
-let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
-if matchstr(local_eslint, "^\/\\w") == ''
-  let local_eslint = getcwd() . "/" . local_eslint
-endif
-if executable(local_eslint)
-  let g:syntastic_javascript_eslint_exec = local_eslint
-endif
+" " Use local eslint if exists, otherwise try global one?
+" " Copypasta from Jim Grandpre
+" let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+" if matchstr(local_eslint, "^\/\\w") == ''
+"   let local_eslint = getcwd() . "/" . local_eslint
+" endif
+" if executable(local_eslint)
+"   let g:syntastic_javascript_eslint_exec = local_eslint
+" endif

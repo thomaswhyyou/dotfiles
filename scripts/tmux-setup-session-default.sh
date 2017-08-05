@@ -28,8 +28,8 @@ if [[ $? != 0 ]]; then
     tmux select-pane -t asdf:1.1
 fi
 
-# Get us into the default session.
-if [[ "$TERM" != "screen-256color" ]]; then
-    # http://comments.gmane.org/gmane.comp.terminal-emulators.tmux.user/1333
-    tmux attach -d -t asdf
-fi
+# # Get us into the default session.
+# if [[ "$TERM" != "screen-256color" ]]; then
+#     # http://comments.gmane.org/gmane.comp.terminal-emulators.tmux.user/1333
+#     tmux attach -d -t asdf
+# fi

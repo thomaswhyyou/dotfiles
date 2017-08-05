@@ -92,8 +92,8 @@ style_prompt="\[${RESET}${BLUE}\]"
 ## Build the prompt
 PS1="\n"
 if [ -n "$SSH_CLIENT" ]; then
-    PS1+="${style_remote}\u "
-    PS1+="${style_chars}at ${style_remote}\h ${style_chars}in "
+  PS1+="${style_remote}\u "
+  PS1+="${style_chars}at ${style_remote}\h ${style_chars}in "
 # else
 #     PS1+="${style_local}\u "${style_chars}in "
 fi
@@ -101,14 +101,14 @@ fi
 PS1+="${style_path}\w"
 
 if command -v git >/dev/null 2>&1; then
-    PS1+="\$(prompt_git)"
+  PS1+="\$(prompt_git)"
 fi
 
 # https://mkaz.github.io/2014/04/17/the-bash-prompt/
 # http://unicode-table.com/
 PS1+="\n"
 if [ -n "$SSH_CLIENT" ]; then
-    PS1+="${style_prompt}> \[${RESET}\]"
+  PS1+="${style_prompt}> \[${RESET}\]"
 else
-    PS1+="${style_prompt}❂ \[${RESET}\]"
+  PS1+="${style_prompt}> \[${RESET}\]"
 fi

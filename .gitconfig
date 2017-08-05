@@ -1,9 +1,9 @@
 [user]
-    name = ThomasWhyyou
-    email = thomas.whyyou@gmail.com
+  name = thomaswhyyou
+  email = thomas.whyyou@gmail.com
 
 [push]
-    default = simple
+  default = simple
 ; [push]
 ;   default = current
 
@@ -16,78 +16,78 @@
 ;     remote = green
 
 [color "status"]
-    added = 148  # Yucky green
-    changed = 163  # Purple
-    untracked = 31  # Dark blue
+  added = 148  # Yucky green
+  changed = 163  # Purple
+  untracked = 31  # Dark blue
 
 [color "diff"]
-    meta = 255  # White
-    frag = 163  # Purple
-    old = 160 # Red
-    new = 34  # Green
+  meta = 255  # White
+  frag = 163  # Purple
+  old = 160 # Red
+  new = 34  # Green
 
 [alias]
-    # http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+# http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 
-    # Basic
-    st = status -s
-    stat = status
-    co = checkout
-    br = branch
+# Basic
+  st = status -s
+  stat = status
+  co = checkout
+  br = branch
 
-    # Commit
-    cm = commit
-    amend = commit --amend
+# Commit
+  cm = commit
+  amend = commit --amend
 
-    # Diff
-    df = diff
-    ds = diff --staged
-    dc = diff --cached
+# Diff
+  df = diff
+  ds = diff --staged
+  dc = diff --cached
 
-    # log commands
-    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-    lc  = "!f() { git ll "$1"^.."$1"; }; f"
-    lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+# log commands
+  ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lc  = "!f() { git ll "$1"^.."$1"; }; f"
+  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
 
-    unstage = reset -q HEAD --
-    discard = checkout --
-    nevermind = !git reset --hard HEAD && git clean -d -f
-    uncommit = reset --mixed HEAD~
-    save = commit -m
-    resave = commit --amend
-    invert = revert
-    last = log -1 HEAD --format=format:"%Cred%H"
-    summary = status -u -s
-    graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
-    history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
-    branchout = checkout -b
-    tags = tag
-    branches = branch -a
-    stashes = stash list
-    remotes = remote -v
-    prestage = diff -w --word-diff=color
-    precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
-    move = mv
-    remove = rm
-    unmerged = branch --no-merged
-    unstash = stash pop
-    what = show -w
-    untrack = rm -r --cached
-    rewrite = rebase -i
-    amend = commit --amend
-    back = checkout "-"
-    contributors = shortlog -s -n
-    filetrail = git log --follow -p -w
-    mergetrail = log --ancestry-path --merges
-    unmerged = diff --name-only --diff-filter=U
+  unstage = reset -q HEAD --
+  discard = checkout --
+  nevermind = !git reset --hard HEAD && git clean -d -f
+  uncommit = reset --mixed HEAD~
+  save = commit -m
+  resave = commit --amend
+  invert = revert
+  last = log -1 HEAD --format=format:"%Cred%H"
+  summary = status -u -s
+  graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
+  history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
+  branchout = checkout -b
+  tags = tag
+  branches = branch -a
+  stashes = stash list
+  remotes = remote -v
+  prestage = diff -w --word-diff=color
+  precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
+  move = mv
+  remove = rm
+  unmerged = branch --no-merged
+  unstash = stash pop
+  what = show -w
+  untrack = rm -r --cached
+  rewrite = rebase -i
+  amend = commit --amend
+  back = checkout "-"
+  contributors = shortlog -s -n
+  filetrail = git log --follow -p -w
+  mergetrail = log --ancestry-path --merges
+  unmerged = diff --name-only --diff-filter=U
 
 ; [blame]
 ;   date = relative
-; [core]
-;   editor = vim
-;   precomposeunicode = true
-;   excludesfile = ~/.gitignore_global
+[core]
+  editor = nvim
+  precomposeunicode = true
+  excludesfile = ~/.gitignore_global
 ; [merge]
 ;   conflictstyle = diff3
 ; [mailmap]
