@@ -473,6 +473,9 @@ if isdirectory(pluggeddir.'/nerdtree')
     augroup END
   endif
 
+  " Don't bother showing these files
+  let NERDTreeIgnore = ['\.pyc$', '\.DS_Store$']
+
 endif
 
 " deoplete.nvim
