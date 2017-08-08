@@ -232,7 +232,7 @@ set smartcase               " be smart when searching
 set magic                   " for regex turn magic on
 
 " turn off search highlight
-nnoremap <ESC><ESC> :nohlsearch<CR>:match<CR>
+nnoremap <TAB><TAB> :nohlsearch<CR>:match<CR>
 
 " Prefer ag for grepprg
 set grepformat=%f:%l:%c:%m
@@ -457,6 +457,8 @@ if isdirectory(pluggeddir.'/nerdtree')
   let g:NERDTreeWinSize=40                  " The default of 31 is just a little too narrow.
   let g:NERDTreeMinimalUI=1                 " Disable display of '?' text and 'Bookmarks' label.
   let NERDTreeCreatePrefix='silent keepalt keepjumps'   " Keep the alt buffer around..?
+
+  let NERDTreeMapQuit="<esc>"
 
   " Like vim-vinegar.
   nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
