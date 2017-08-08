@@ -448,7 +448,7 @@ if isdirectory(pluggeddir.'/nerdtree')
       execute ':NERDTreeFind'
     endif
   endfunction
-  nnoremap <leader>f :call ToggleNERDTreeFind()<CR>
+  nnoremap <leader>r :call ToggleNERDTreeFind()<CR>
 
   " https://www.youtube.com/watch?v=OgQW07saWb0
   let NERDTreeShowHidden=1                  " Show hidden files
