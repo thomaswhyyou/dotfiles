@@ -39,6 +39,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'dkprice/vim-easygrep'
 Plug 'mileszs/ack.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'jiangmiao/auto-pairs'
 
 " Code intelligence
 " NOTE: 'ervandew/supertab' doesn't play well with deoplete, don't use.
@@ -67,6 +68,9 @@ Plug 'reasonml/vim-reason'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
+
+" HTML and etc.
+Plug 'alvan/vim-closetag'
 
 " Initialize plugin system
 call plug#end()
@@ -558,4 +562,12 @@ endif
 " ---
 if isdirectory(pluggeddir.'/vim-json')
   let g:vim_json_syntax_conceal = 0
+endif
+
+
+" vim-closetag
+" ---
+if isdirectory(pluggeddir.'/vim-closetag')
+  let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js'
+  let g:closetag_emptyTags_caseSensitive = 1
 endif
