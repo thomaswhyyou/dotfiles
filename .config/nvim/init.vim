@@ -28,7 +28,7 @@ Plug 'Yggdroot/indentLine'
 
 " Editing, Maneuvering & Seaching
 " NOTE: 'henrik/vim-indexed-search' doesn't play well with easymotion
-" Plug 'haya14busa/incsearch.vim' | Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'haya14busa/incsearch.vim' | Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'easymotion/vim-easymotion'
@@ -236,7 +236,7 @@ set smartcase               " be smart when searching
 set magic                   " for regex turn magic on
 
 " turn off search highlight
-nnoremap <TAB><TAB> :nohlsearch<CR>:match<CR>
+nnoremap <TAB> :nohlsearch<CR>:match<CR>
 
 " Prefer ag for grepprg
 set grepformat=%f:%l:%c:%m
@@ -411,7 +411,7 @@ if isdirectory(pluggeddir.'/ale')
   let g:ale_lint_delay = 200
 
   nnoremap <silent> <C-p> :ALEPreviousWrap<CR>
-  nnoremap <silent> <C-n> :ALENextWrap<CR>
+  " nnoremap <silent> <C-n> :ALENextWrap<CR>
 
   let g:ale_linters = {
   \   'javascript': ['eslint'],
@@ -430,8 +430,8 @@ endif
 if isdirectory(pluggeddir.'/vim-easymotion')
   let g:EasyMotion_smartcase = 1
 
-  map  / <Plug>(easymotion-sn)
-  omap / <Plug>(easymotion-tn)
+  " map  / <Plug>(easymotion-sn)
+  " omap / <Plug>(easymotion-tn)
 
   map  <Leader><Space> <Plug>(easymotion-bd-w)
   nmap <Leader><Space> <Plug>(easymotion-overwin-w)
@@ -503,6 +503,8 @@ if isdirectory(pluggeddir.'/neosnippet')
   imap <expr><CR>
       \ pumvisible() && neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
+  inoremap <expr><C-f>
+      \ pumvisible() ? "\<CR>" : "\<C-f>"
   imap <expr><TAB>
       \ pumvisible() ? "\<Down>" :
       \ neosnippet#expandable_or_jumpable() ?
@@ -557,7 +559,6 @@ if isdirectory(pluggeddir.'/nerdcommenter')
   let g:NERDCommentEmptyLines = 1
 endif
 
-
 " vim-json
 " ---
 if isdirectory(pluggeddir.'/vim-json')
@@ -565,9 +566,27 @@ if isdirectory(pluggeddir.'/vim-json')
 endif
 
 
+" auto-pairs
+" ---
+if isdirectory(pluggeddir.'/auto-pairs')
+  let g:AutoPairsMapCh = 0
+endif
+
 " vim-closetag
 " ---
 if isdirectory(pluggeddir.'/vim-closetag')
   let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js'
   let g:closetag_emptyTags_caseSensitive = 1
+endif
+
+" incsearch.vim
+" ---
+if isdirectory(pluggeddir.'/incsearch.vim')
+  let g:incsearch#auto_nohlsearch = 1
+  " map / <Plug>(incsearch-stay)
+
+  " Example:
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
 endif

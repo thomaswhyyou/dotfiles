@@ -287,6 +287,9 @@ if [ -d ~/.cargo ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+## nvm / npm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Reference:
 # http://natelandau.com/my-mac-osx-bash_profile/ (mostly copied from here)
