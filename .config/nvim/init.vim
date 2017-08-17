@@ -504,7 +504,7 @@ if isdirectory(pluggeddir.'/neosnippet')
       \ pumvisible() && neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
   inoremap <expr><C-f>
-      \ pumvisible() ? "\<CR>" : "\<C-f>"
+      \ pumvisible() ? "\<Down>\<CR>" : "\<C-f>"
   imap <expr><TAB>
       \ pumvisible() ? "\<Down>" :
       \ neosnippet#expandable_or_jumpable() ?
