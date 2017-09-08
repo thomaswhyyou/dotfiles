@@ -375,8 +375,13 @@ endif
 " https://www.reddit.com/r/neovim/comments/3oeko4/post_your_fzfvim_configurations/
 " ---
 if isdirectory(pluggeddir.'/fzf.vim')
-  nnoremap <silent> <leader>t :GFiles<CR>
-  nnoremap <silent> <leader>p :Files<CR>
+  " Run GFiles if inside git repo, otherwise Files
+  " References :
+  " https://github.com/junegunn/fzf.vim/issues/47
+  " https://github.com/junegunn/fzf.vim/issues/233
+  command! SmartGFiles execute system('git rev-parse --is-inside-work-tree') =~ 'true' ? 'GFiles' : 'Files'
+  nnoremap <silent> <leader>p :SmartGFiles<CR>
+
   nnoremap <silent> <leader>o :Buffers<CR>
   nnoremap <silent> <leader>/ :execute 'Ag! ' . input('Ag/')<CR>
 
