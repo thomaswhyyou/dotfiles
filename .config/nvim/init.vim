@@ -360,6 +360,9 @@ nnoremap <F7> :setlocal spell! spelllang=en_us<CR>
 " bad spelling highlight
 hi SpellBad ctermfg=131 cterm=undercurl
 
+" toggle indent lines
+nnoremap <F8> :IndentLinesToggle<CR>
+
 
 " ==============================================================================
 " Plugins
@@ -570,7 +573,6 @@ if isdirectory(pluggeddir.'/vim-json')
   let g:vim_json_syntax_conceal = 0
 endif
 
-
 " auto-pairs
 " ---
 if isdirectory(pluggeddir.'/auto-pairs')
@@ -594,4 +596,11 @@ if isdirectory(pluggeddir.'/incsearch.vim')
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
   map g/ <Plug>(incsearch-stay)
+endif
+
+
+" indentLine
+" ---
+if isdirectory(pluggeddir.'/indentLine')
+  let g:indentLine_enabled = 0
 endif
