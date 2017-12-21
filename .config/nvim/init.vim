@@ -72,6 +72,11 @@ Plug 'plasticboy/vim-markdown'
 " HTML and etc.
 Plug 'alvan/vim-closetag'
 
+" Misc.
+Plug 'hashivim/vim-terraform'   " Terraform
+Plug 'ekalinin/Dockerfile.vim'  " Docker
+Plug 'chr4/nginx.vim'           " Nginx
+
 " Initialize plugin system
 call plug#end()
 
@@ -345,6 +350,11 @@ vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
 
+" Highlight word under cursor without moving..
+" http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches#Highlight_matches_without_moving
+nnoremap <Leader><Space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
+
 " ==============================================================================
 " Function Keys
 " ==============================================================================
@@ -438,11 +448,15 @@ endif
 if isdirectory(pluggeddir.'/vim-easymotion')
   let g:EasyMotion_smartcase = 1
 
+  " <Leader>f{char} to move to {char}
+  map  <Leader>f <Plug>(easymotion-bd-f)
+  nmap <Leader>f <Plug>(easymotion-overwin-f)
+
   " map  / <Plug>(easymotion-sn)
   " omap / <Plug>(easymotion-tn)
 
-  map  <Leader><Space> <Plug>(easymotion-bd-w)
-  nmap <Leader><Space> <Plug>(easymotion-overwin-w)
+  " map  <Leader><Space> <Plug>(easymotion-bd-w)
+  " nmap <Leader><Space> <Plug>(easymotion-overwin-w)
 
   " easymotion highlight colors, make them easier to see
   highlight link EasyMotionTarget2First EasyMotionTarget
@@ -508,6 +522,7 @@ if isdirectory(pluggeddir.'/neosnippet')
 
   " SuperTab like snippets behavior.
   " NOTE: It must be "imap" and "smap".  It uses <Plug> mappings.
+  " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
   imap <expr><CR>
       \ pumvisible() && neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
