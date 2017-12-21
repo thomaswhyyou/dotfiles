@@ -280,6 +280,9 @@ fi
 ## neovim
 if hash nvim 2>/dev/null; then
   alias vim='nvim'
+  alias vi='nvim'
+  export EDITOR=nvim
+  export VISUAL=nvim
 fi
 
 ## rust / cargo
