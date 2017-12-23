@@ -76,6 +76,7 @@ Plug 'alvan/vim-closetag'
 Plug 'hashivim/vim-terraform'   " Terraform
 Plug 'ekalinin/Dockerfile.vim'  " Docker
 Plug 'chr4/nginx.vim'           " Nginx
+Plug 'wincent/terminus'         " Enhanced terminal ux
 
 " Initialize plugin system
 call plug#end()
