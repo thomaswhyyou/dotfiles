@@ -523,12 +523,13 @@ if isdirectory(pluggeddir.'/neosnippet')
 
   " SuperTab like snippets behavior.
   " NOTE: It must be "imap" and "smap".  It uses <Plug> mappings.
-  " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  imap <expr><CR>
-      \ pumvisible() && neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
-  inoremap <expr><C-f>
-      \ pumvisible() ? "\<Down>\<CR>" : "\<C-f>"
+  imap <C-f>     <Plug>(neosnippet_expand_or_jump)
+
+  " imap <expr><CR>
+  "     \ pumvisible() && neosnippet#expandable_or_jumpable() ?
+  "     \ "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
+  " inoremap <expr><C-f>
+  "     \ pumvisible() ? "\<Down>\<CR>" : "\<C-f>"
   imap <expr><TAB>
       \ pumvisible() ? "\<Down>" :
       \ neosnippet#expandable_or_jumpable() ?
