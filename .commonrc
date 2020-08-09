@@ -248,17 +248,6 @@ export NVM_DIR="$HOME/.nvm"
 ## Elixir/Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# Moagraph stuff
-if [[ -f "$HOME/.moagraphrc" ]]; then
-  # Expects to have the followings:
-  # VAR_TWITTER_API_CONSUMER_KEY
-  # VAR_TWITTER_API_CONSUMER_SECRET
-  # VAR_TWITTER_API_ACCESS_TOKEN
-  # VAR_TWITTER_API_ACCESS_SECRET
-
-  . "$HOME/.moagraphrc"
-fi
-
 # Reference:
 # http://natelandau.com/my-mac-osx-bash_profile/ (mostly copied from here)
 # https://gist.github.com/phlco/6670713          (..and here)
