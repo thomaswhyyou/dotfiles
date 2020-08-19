@@ -202,33 +202,28 @@ alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
 #   10.  APPLICATION SPECIFIC
 #   ---------------------------------------
 
-## Shortcuts
-if [ -d ~/Dropbox/Code ]; then
-  alias code='cd ~/Dropbox/Code'
-fi
-if [ -d ~/work ]; then
-  alias work='cd ~/work'
-fi
-
-## autoenv
-if hash activate.sh 2>/dev/null; then
-  . activate.sh
-fi
-
 ## tmux
+
 if hash tmux 2>/dev/null; then
   alias tls='tmux ls'
   alias tat='tmux attach -d -t'
   alias tns='tmux new-session -s'
   alias tks='tmux kill-session -t'
 
-  # TMUX_INIT_SCRIPT="$HOME/dotfiles/scripts/tmux-setup-session-default.sh"
-  # if [[ -f "$TMUX_INIT_SCRIPT" ]]; then
-  #   . "$TMUX_INIT_SCRIPT"
-  # fi
+  # Make sure we detach first if we are already inside tmux.
+  if [[ "$TERM" == "screen-255color" ]]; then
+    tmux detach
+  fi
+
+  # Set up a default session called 'asdf' if not exist
+  if ! tmux has-session -t asdf > /dev/null 2>&1; then
+    tmux new -s asdf -n one -d
+  fi
 fi
 
+
 ## neovim
+
 if hash nvim 2>/dev/null; then
   alias vim='nvim'
   alias vi='nvim'
@@ -236,16 +231,18 @@ if hash nvim 2>/dev/null; then
   export VISUAL=nvim
 fi
 
+
+
 ## rust / cargo
+
 if [ -d ~/.cargo ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-## nvm / npm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
 
 ## Elixir/Erlang
+
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Reference:
