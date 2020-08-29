@@ -1,6 +1,0 @@
-# node projects
-node_modules/
-
-# elixir/phoenix projects
-_build/
-deps/
