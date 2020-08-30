@@ -91,25 +91,24 @@ call plug#end()
 " ==============================================================================
 
 if &compatible
-  set nocompatible               " Be iMproved
+  set nocompatible              " Be iMproved
 endif
 
-" , and space as leader
-let mapleader=','
-:map <space> <leader>
-
-" swap : vs ;
-nnoremap : ;
-nnoremap ; :
+" space as leader (https://stackoverflow.com/a/9578616)
+nnoremap <SPACE> <Nop>
+map <Space> <Leader>
 
 " Set augroup.
 augroup MyAutoCmd
   autocmd!
 augroup END
 
-set autoread                " auto read when a file is changed from outside
+" auto read when a file is changed from outside
+set autoread
+
 " http://stackoverflow.com/a/20418591/3479934
 autocmd FocusGained,BufEnter * :silent! !
+
 " Check timestamp more for 'autoread'
 autocmd MyAutoCmd WinEnter * checktime
 
@@ -123,7 +122,7 @@ endif
 " command waiting time & history
 set ttimeout
 set ttimeoutlen=30
-set history=1000            " store lots of :cmdline history
+set history=1000                " store lots of :cmdline history
 
 " Persistent undo settings
 if has("persistent_undo")
@@ -134,8 +133,8 @@ if has("persistent_undo")
 endif
 
 " completion sources
-set complete-=i                     " http://stackoverflow.com/a/2460593/3479934
-set infercase                       " Ignore case on insert completion.
+set complete-=i                 " http://stackoverflow.com/a/2460593/3479934
+set infercase                   " Ignore case on insert completion.
 " .: The current buffer
 " w: Buffers in other windows
 " b: Other loaded buffers
