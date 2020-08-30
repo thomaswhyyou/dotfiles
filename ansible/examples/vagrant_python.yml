@@ -1,9 +1,0 @@
----
-- hosts: "{{ vagrant_hostname_main }}"
-  sudo: yes
-
-  roles:
-    - setup_ubuntu_essentials
-    - setup_ubuntu_python_basics
-    - setup_ubuntu_python_devenv
-    - setup_ubuntu_swapfile

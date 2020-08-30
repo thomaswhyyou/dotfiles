@@ -1,4 +1,0 @@
----
-
-dependencies:
-  - { role: setup_ubuntu_python_basics }

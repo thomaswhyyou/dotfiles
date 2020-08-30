@@ -1,5 +1,0 @@
----
-
-dependencies:
-  - { role: setup_ubuntu_python_basics }
-  - { role: setup_ubuntu_scipy_stacks }

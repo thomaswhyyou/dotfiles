@@ -1,6 +1,0 @@
----
-- include: setup_swapfile.yml
-  vars:
-    swapfile_size: 2G
-    swapfile_path: /swapfile
-
