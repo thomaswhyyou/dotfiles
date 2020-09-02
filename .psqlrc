@@ -47,9 +47,6 @@
 -- Turn off the pager so that results just keep scrolling by, rather than stopping.
 \pset pager off
 
--- Within columns, wrap long lines so that select results still fit on the display.
-\pset format wrapped
-
 -- Prompt
 -- https://thoughtbot.com/blog/improving-the-command-line-postgres-experience
 -- %[ ... %]: coloring (32 green, 33 yellow, 34 blue, 35 magenta, 36 cyan, 37 white)
