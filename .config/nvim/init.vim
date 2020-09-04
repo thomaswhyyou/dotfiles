@@ -153,6 +153,9 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" helps vim-gitgutter, coc-nvim updates faster
+" https://www.reddit.com/r/vim/comments/3ql651
+set updatetime=150
 
 
 " ==============================================================================
@@ -194,9 +197,6 @@ set backspace=2
 set backspace=indent,eol,start
 
 set mouse=a                     " Enable basic mouse behavior such as resizing buffers.
-" if exists('$TMUX')            " Support resizing in tmux
-"     set ttymouse=xterm2
-" endif
 
 " move vertically by visual line (for wrapped lines)
 nnoremap j gj
@@ -209,7 +209,6 @@ nnoremap gV `[v`]
 set nofoldenable            " dont fold by default
 set foldnestmax=3           " 3 nested fold max
 set foldmethod=indent       " fold based on indent level (or: marker, expr, syntax, diff)
-
 
 
 " ==============================================================================
@@ -307,10 +306,6 @@ set viminfo^=%
 nnoremap <S-k> <nop>
 xnoremap <S-k> <nop>
 
-" forward and backward for searched character
-nnoremap \ ;
-nnoremap \| ,
-
 "Like D for yanking
 noremap Y y$
 
@@ -337,6 +332,7 @@ function! <SID>StripTrailingWhitespacesAndEmptyEndLines()
   let @/=_s
   call cursor(l, c)
 endfun
+
 " Auto trigger to strip by default, unless exempted.
 " e.g. let noAutoStripFileTypes = ['markdown']
 let noAutoStripFileTypes = []  " http://stackoverflow.com/a/10410590/3479934
@@ -349,7 +345,6 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-
 " Highlight word under cursor without moving..
 " http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches#Highlight_matches_without_moving
 nnoremap <Leader><Space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
@@ -359,19 +354,15 @@ nnoremap <Leader><Space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<C
 " Function Keys
 " ==============================================================================
 
-" toggle relative numbering
-nnoremap <F5> :set relativenumber!<cr>
-
 " Manual trigger to strip trailing spaces.
-nnoremap <F6> :call <SID>StripTrailingWhitespacesAndEmptyEndLines()<CR>
+nnoremap <F5> :call <SID>StripTrailingWhitespacesAndEmptyEndLines()<CR>
+
+" toggle relative numbering
+nnoremap <F6> :set relativenumber!<cr>
 
 " spell check toggle
 nnoremap <F7> :setlocal spell! spelllang=en_us<CR>
-" bad spelling highlight
 hi SpellBad ctermfg=131 cterm=undercurl
-
-" toggle indent lines
-nnoremap <F8> :IndentLinesToggle<CR>
 
 
 " ==============================================================================
