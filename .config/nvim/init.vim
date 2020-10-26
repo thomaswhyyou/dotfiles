@@ -634,7 +634,7 @@ if isdirectory(plugged.'/vim-colorschemes')
 endif
 
 
-
+" Trigger float term with a command? Like.. https://github.com/joonty/vim-do
 " noremap  <leader>t  :FloatermToggle<CR>i
 " noremap! <leader>t  <Esc>:FloatermToggle<CR>i
 " tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
