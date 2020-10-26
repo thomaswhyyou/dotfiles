@@ -2,88 +2,50 @@
 " Plugin Manager
 " ==============================================================================
 
-" Automatic installation
-" https://github.com/junegunn/vim-plug/wiki/faq
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+let plugged = expand('~/.vim/plugged')
 
 " Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
+" - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
-let pluggeddir = expand('~/.vim/plugged')
-call plug#begin(pluggeddir)
+call plug#begin(plugged)
 
-
-" NOTE: Make sure you use single quotes
-
-" Vim appearance
+" Appearance
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-sleuth'
-Plug 'Yggdroot/indentLine'
+Plug 'RRethy/vim-illuminate'
+" Plug 'gcmt/taboo.vim'
 
-" Editing, Maneuvering & Seaching
-" NOTE: 'henrik/vim-indexed-search' doesn't play well with easymotion
-Plug 'haya14busa/incsearch.vim' | Plug 'haya14busa/incsearch-easymotion.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'easymotion/vim-easymotion'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-surround'
+" Maneuvering
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'dkprice/vim-easygrep'
-Plug 'mileszs/ack.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdtree'
+Plug 'justinmk/vim-dirvish'
+Plug 'justinmk/vim-sneak'
+Plug 'qpkorr/vim-bufkill'
+Plug 'easymotion/vim-easymotion'
+" Plug 'voldikss/vim-floaterm'
 
-" Code intelligence
-" NOTE: 'ervandew/supertab' doesn't play well with deoplete, don't use.
-Plug 'honza/vim-snippets'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'w0rp/ale'
+" Editing
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+
+" Searching
+Plug 'google/vim-searchindex'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Version control
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-" Elixir
-Plug 'elixir-lang/vim-elixir'
-Plug 'slashmili/alchemist.vim'
-
-" JavaScript
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'elzr/vim-json'
-" Plug 'mtscout6/syntastic-local-eslint.vim'
-
-" Reason/OCaml
-Plug 'reasonml/vim-reason'
-
-" Markdown
-Plug 'plasticboy/vim-markdown'
-
-" HTML and etc.
-Plug 'alvan/vim-closetag'
-
-" Misc.
-Plug 'hashivim/vim-terraform'   " Terraform
-Plug 'ekalinin/Dockerfile.vim'  " Docker
-Plug 'chr4/nginx.vim'           " Nginx
-Plug 'wincent/terminus'         " Enhanced terminal ux
+" Code intelligence
+Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
+" Plug 'w0rp/ale'
 
 " Initialize plugin system
 call plug#end()
-
-
-" NOTE: http://hew.tools/blog/posts/asynchronous-neovim-in-2016/
-" https://github.com/vimwiki/vimwiki
 
 
 " ==============================================================================
@@ -119,10 +81,11 @@ else
   set clipboard=unnamed
 endif
 
-" command waiting time & history
+" command waiting time, history, buffer info
 set ttimeout
 set ttimeoutlen=30
 set history=1000                " store lots of :cmdline history
+set viminfo^=%                  " remember info about open buffers on close
 
 " Persistent undo settings
 if has("persistent_undo")
@@ -171,7 +134,7 @@ set background=dark             " colorscheme
 
 set number                      " show line numbers..
 set relativenumber              " ..mixed with relative numbers
-set numberwidth=5               " give a bit more space for line numbers
+set numberwidth=3               " keep min column spacing tight (1 + 2)
 set showcmd                     " show command in bottom bar
 
 set lazyredraw                  " redraw only when we need to
@@ -217,16 +180,14 @@ set foldmethod=indent       " fold based on indent level (or: marker, expr, synt
 
 set expandtab               " tabs are spaces
 set smarttab                " be smart when using tabs
-set tabstop=4               " number of visual spaces per TAB
-set softtabstop=4           " number of spaces in tab when editing
-set shiftwidth=4            " number of spaces to use for each step of (auto)indent
+set tabstop=2               " number of visual spaces per TAB
+set softtabstop=2           " number of spaces in tab when editing
+set shiftwidth=2            " number of spaces to use for each step of (auto)indent
 set autoindent              " autoindent
 set smartindent             " smartindent
 set shiftround              " round indent to multiple of 'shiftwidth'.
 set list listchars=tab:\ \ ,trail:·  " display tabs spaces visually
 set nowrap                  " don't wrap line
-" set whichwrap+=h,l,<,>,[,],b,s,~
-
 
 
 " ==============================================================================
@@ -239,21 +200,13 @@ set ignorecase              " ignore case when searching
 set smartcase               " be smart when searching
 set magic                   " for regex turn magic on
 
-" turn off search highlight
-nnoremap <TAB> :nohlsearch<CR>:match<CR>
-
-" Prefer ag for grepprg
-set grepformat=%f:%l:%c:%m
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
-elseif executable('ack')
-  set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
-endif
-
+" By default turn off search highlight with esc
+let g:esc_commands = [':nohlsearch', ':match']
+nnoremap <silent> <ESC> :execute join(g:esc_commands, '\|')<CR>
 
 
 " ==============================================================================
-" Other Stuff
+" Custom Behavior
 " ==============================================================================
 
 " Easily move between windows
@@ -287,8 +240,27 @@ nnoremap < <<
 xnoremap > >gv
 xnoremap < <gv
 
-" switch between current and last buffer
-nnoremap <silent><leader><tab> <c-^>
+" cycle through buffers (https://stackoverflow.com/a/5563142)
+" if available, replace with vim-bufkill implementations
+nnoremap <silent> <tab> :bnext<CR>
+nnoremap <silent> <s-tab> :bprevious<CR>
+nnoremap <silent> <leader><tab> <C-^>
+
+" Close all buffers but this one (https://stackoverflow.com/a/42071865)
+command! BufOnly silent! execute "%bd|e#|bd#"
+
+" go to tab by number (https://superuser.com/a/675119)
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :execute "tabn ".g:last_tab<cr>
+autocmd TabLeave * let g:last_tab = tabpagenr()
 
 " enable . command in visual mode
 vnoremap . :normal .<cr>
@@ -299,18 +271,12 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 
-" Remember info about open buffers on close
-set viminfo^=%
-
 " disable vim looking up man page
 nnoremap <S-k> <nop>
 xnoremap <S-k> <nop>
 
 "Like D for yanking
 noremap Y y$
-
-" wipteout buffer and window together
-noremap <c-q> :bw<cr>
 
 " Automatically jump to end of text you pasted:
 " (so that you can paste multiple lines multiple times with simple ppppp)
@@ -335,15 +301,9 @@ endfun
 
 " Auto trigger to strip by default, unless exempted.
 " e.g. let noAutoStripFileTypes = ['markdown']
-let noAutoStripFileTypes = []  " http://stackoverflow.com/a/10410590/3479934
-autocmd BufWritePre * if index(noAutoStripFileTypes, &ft) < 0 |
+let s:noAutoStripFileTypes = []  " http://stackoverflow.com/a/10410590/3479934
+autocmd BufWritePre * if index(s:noAutoStripFileTypes, &ft) < 0 |
     \ :call <SID>StripTrailingWhitespacesAndEmptyEndLines()
-
-" Automatically jump to end of text you pasted:
-" (so that you can paste multiple lines multiple times with simple ppppp)
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
 
 " Highlight word under cursor without moving..
 " http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches#Highlight_matches_without_moving
@@ -369,94 +329,76 @@ hi SpellBad ctermfg=131 cterm=undercurl
 " Plugins
 " ==============================================================================
 
-" vim-colorschemes
-" ---
-if isdirectory(pluggeddir.'/vim-colorschemes')
-  colorscheme molokai
-endif
-
-" fzf (https://github.com/junegunn/fzf.vim)
-" https://www.reddit.com/r/neovim/comments/3oeko4/post_your_fzfvim_configurations/
-" ---
-if isdirectory(pluggeddir.'/fzf.vim')
-  " Run GFiles if inside git repo, otherwise Files
-  " References :
-  " https://github.com/junegunn/fzf.vim/issues/47
-  " https://github.com/junegunn/fzf.vim/issues/233
-  command! SmartGFiles execute system('git rev-parse --is-inside-work-tree') =~ 'true' ? 'GFiles' : 'Files'
-  nnoremap <silent> <leader>p :SmartGFiles<CR>
-
-  nnoremap <silent> <leader>o :Buffers<CR>
-  nnoremap <silent> <leader>/ :execute 'Ag! ' . input('Ag/')<CR>
-
-  " Augmenting Ag command using fzf#vim#with_preview function
-  "   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
-  "     * For syntax-highlighting, Ruby and any of the following tools are required:
-  "       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
-  "       - CodeRay: http://coderay.rubychan.de/
-  "       - Rouge: https://github.com/jneen/rouge
-  "
-  "   :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
-  "   :Ag! - Start fzf in fullscreen and display the preview window above
-  command! -bang -nargs=* Ag
-    \ call fzf#vim#ag(<q-args>,
-    \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-    \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \                 <bang>0)
-endif
-
 " vim-airline
 " ---
-if isdirectory(pluggeddir.'/vim-airline')
-  if isdirectory(pluggeddir.'/ale')
-    " Set this. Airline will handle the rest.
-    let g:airline#extensions#ale#enabled = 1
-  endif
+if isdirectory(plugged.'/vim-airline')
+  " Turn off a dirvish integration, keeps erroring out (as of Aug 2020, maybe
+  " check again at some point).
+  let g:airline#extensions#dirvish#enabled = 0
 endif
 
-" ale
+" vim-illuminate
 " ---
-if isdirectory(pluggeddir.'/ale')
-  let g:ale_lint_delay = 200
+if isdirectory(plugged.'/vim-illuminate')
+  let g:Illuminate_highlightUnderCursor = 1
+  let g:Illuminate_delay = 625
 
-  nnoremap <silent> <C-p> :ALEPreviousWrap<CR>
-  " nnoremap <silent> <C-n> :ALENextWrap<CR>
+  " Teal color works well with molokai theme.
+  " #285e61 (bg-teal-800) -> #275A5D -> #26565A (mid point) -> #245256 -> #234e52 (bg-teal-900)
+  augroup illuminate_augroup
+    autocmd!
+    autocmd VimEnter * hi illuminatedWord guibg=#26565A  " tailwindcss bg-teal-800
+  augroup END
 
-  let g:ale_linters = {
-  \   'javascript': ['eslint'],
-  \   'jsx': ['eslint'],
-  \}
+  " Let esc also clear illumination.
+  let g:esc_commands += [':call illuminate#on_leaving_autocmds()']
 endif
 
-" vim-jsx
+" " taboo
+" " ---
+" if isdirectory(plugged.'/taboo.vim')
+"   " Format tabline.
+"   let g:taboo_tab_format = " %N) %f%U%m "
+"   let g:taboo_renamed_tab_format = " %N) [%l]%U%m "
+" endif
+
+" vim-dirvish
 " ---
-if isdirectory(pluggeddir.'/vim-jsx')
-  let g:jsx_ext_required = 0
-endif
+if isdirectory(plugged.'/vim-dirvish')
+  " Highlight selected files in argslist look more distinct.
+  highlight link DirvishArg CursorLineNr
 
-" vim-easymotion
-" ---
-if isdirectory(pluggeddir.'/vim-easymotion')
-  let g:EasyMotion_smartcase = 1
+  " Execute the following commands to sort and filter after listing files.
+  " https://github.com/justinmk/vim-dirvish/blob/master/doc/dirvish.txt
+  " https://github.com/justinmk/vim-dirvish/issues/89#issuecomment-352419682
+  "
+  " :sort:      First sort dot-files, then sort folders at the top
+  " :silent:   Remove 'Hit ENTER to continue' prompt
+  " :global:    Filter out files matched by given patterns
+  let g:dirvish_mode = ':sort | :sort ,^.*[\/], | :silent :keeppatterns :global/\.DS_Store$/d _'
 
-  " <Leader>f{char} to move to {char}
-  map  <Leader>f <Plug>(easymotion-bd-f)
-  nmap <Leader>f <Plug>(easymotion-overwin-f)
+  " Undo the weird regex thing vim-dirvish does (e.g. /\ze[^\/]*[\/]\=$<Home>)
+  " https://github.com/justinmk/vim-dirvish/blob/master/ftplugin/dirvish.vim#L50
+  autocmd FileType dirvish nnoremap <buffer> / /
+  autocmd FileType dirvish nnoremap <buffer> ? ?
 
-  " map  / <Plug>(easymotion-sn)
-  " omap / <Plug>(easymotion-tn)
+  " Don't allow shortcuts to cycle through buffers while in dirvish
+  autocmd FileType dirvish noremap <buffer> <tab> <nop>
+  autocmd FileType dirvish noremap <buffer> <s-tab> <nop>
 
-  " map  <Leader><Space> <Plug>(easymotion-bd-w)
-  " nmap <Leader><Space> <Plug>(easymotion-overwin-w)
+  " Open file in a new tab (copied from documentation)
+  autocmd FileType dirvish nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+  autocmd FileType dirvish xnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
 
-  " easymotion highlight colors, make them easier to see
-  highlight link EasyMotionTarget2First EasyMotionTarget
-  highlight link EasyMotionTarget2Second EasyMotionTarget
+  " Load current arglist into a dirvish buffer
+  " https://github.com/justinmk/vim-dirvish/issues/151#issuecomment-549568252
+  " https://askubuntu.com/a/1098612
+  autocmd FileType dirvish nnoremap <silent><buffer> eax :%!ls -d ##<CR>
 endif
 
 " nerdtree
 " ---
-if isdirectory(pluggeddir.'/nerdtree')
+if isdirectory(plugged.'/nerdtree')
   " https://stackoverflow.com/a/31631030/3479934
   function! ToggleNERDTreeFind()
     if g:NERDTree.IsOpen()
@@ -465,149 +407,243 @@ if isdirectory(pluggeddir.'/nerdtree')
       execute ':NERDTreeFind'
     endif
   endfunction
-  nnoremap <leader>r :call ToggleNERDTreeFind()<CR>
+  nnoremap <leader>t :call ToggleNERDTreeFind()<CR>
 
-  " https://www.youtube.com/watch?v=OgQW07saWb0
-  let NERDTreeShowHidden=1                  " Show hidden files
-  let NERDTreeQuitOnOpen = 1                " Closing automatically on opening
+  let NERDTreeHijackNetrw = 0               " Don't be the default
+  let NERDTreeShowHidden = 1                " Show hidden files
   let NERDTreeAutoDeleteBuffer = 1          " Auto delete the buffer of the file you just deleted.
-  let g:NERDTreeWinSize=40                  " The default of 31 is just a little too narrow.
-  let g:NERDTreeMinimalUI=1                 " Disable display of '?' text and 'Bookmarks' label.
-  let NERDTreeCreatePrefix='silent keepalt keepjumps'   " Keep the alt buffer around..?
+  let NERDTreeWinSize = 40                  " The default of 31 is just a little too narrow.
+  let NERDTreeMinimalUI = 1                 " Disable display of '?' text and 'Bookmarks' label.
+  let NERDTreeIgnore = ['\.DS_Store$']      " Don't bother showing these files
+  let NERDTreeMapQuit = 'gq'                " Make consistent with vim-dirvish
 
-  let NERDTreeMapQuit="<esc>"
-
-  " Like vim-vinegar.
-  nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
-
-  function! DoNERDTreeInit()
-    " Move up a directory using "-" like vim-vinegar (usually "u" does this).
-    nmap <buffer> <expr> - g:NERDTreeMapUpdirKeepOpen
-  endfunction
-
-  if has('autocmd')
-    augroup NERDTreeAugroup
-      autocmd!
-      autocmd User NERDTreeInit call DoNERDTreeInit()
-    augroup END
-  endif
-
-  " Don't bother showing these files
-  let NERDTreeIgnore = ['\.pyc$', '\.DS_Store$']
-
+  " Don't allow - to trigger vim-dirvish
+  autocmd FileType nerdtree noremap <buffer> - <nop>
 endif
 
-" deoplete.nvim
+" vim-sneak
 " ---
-if isdirectory(pluggeddir.'/deoplete.nvim')
-  " https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#auto_complete_delay = 200
+if isdirectory(plugged.'/vim-sneak')
+  " Smart casing.
+  let g:sneak#use_ic_scs = 1
+
+  autocmd ColorScheme * hi Sneak gui=bold guifg=black guibg=yellow
+  autocmd ColorScheme * hi SneakScope gui=bold guifg=black guibg=#0cff00
+
+  " Let esc also exit sneak mode.
+  let g:esc_commands += [':call sneak#cancel()']
 endif
 
-" neosnippet
+" vim-easymotion
 " ---
-if isdirectory(pluggeddir.'/neosnippet')
-  " Enable snipMate compatibility feature.
-  let g:neosnippet#enable_snipmate_compatibility = 1
+if isdirectory(plugged.'/vim-easymotion')
+  let g:EasyMotion_smartcase = 1
 
-  " SuperTab like snippets behavior.
-  " NOTE: It must be "imap" and "smap".  It uses <Plug> mappings.
-  imap <C-f>     <Plug>(neosnippet_expand_or_jump)
-
-  " imap <expr><CR>
-  "     \ pumvisible() && neosnippet#expandable_or_jumpable() ?
-  "     \ "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
-  " inoremap <expr><C-f>
-  "     \ pumvisible() ? "\<Down>\<CR>" : "\<C-f>"
-  imap <expr><TAB>
-      \ pumvisible() ? "\<Down>" :
-      \ neosnippet#expandable_or_jumpable() ?
-      \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-  imap <expr><S-TAB>
-      \ pumvisible() ? "\<Up>" : "\<S-TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-  " Close the documentation window when completion is done
-  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-  " For snippet_complete marker.
-  if has('conceal')
-    set conceallevel=2 concealcursor=i
-  endif
-
-  if isdirectory(pluggeddir.'/vim-snippets')
-    " Tell Neosnippet about the other snippets
-    let g:neosnippet#snippets_directory = pluggeddir.'/vim-snippets/snippets'
-  endif
+  map  <leader>s <plug>(easymotion-bd-f2)
+  nmap <leader>s <plug>(easymotion-overwin-f2)
 endif
 
-" vim-easygrep
+" vim-bufkill
 " ---
-if isdirectory(pluggeddir.'/vim-easygrep')
-  cnoreabbrev re Replace
-
-  let g:EasyGrepCommand = 1                     " Use grepprg as configured
-  let g:EasyGrepJumpToMatch = 0                 " Don't automatically jump
-  let g:EasyGrepHidden = 1                      " Search hidden files too
-  let g:EasyGrepOptionPrefix=''                 " No keybindings
-  let g:EasyGrepFilesToExclude=".svn,.git"
+if isdirectory(plugged.'/vim-bufkill')
+  " Replaces native commands with better implementations by vim-bufkill.
+  nnoremap <silent> <tab> :BF<CR>
+  nnoremap <silent> <s-tab> :BB<CR>
+  let g:BufKillOverrideCtrlCaret = 1
 endif
 
-" ack.vim
+" vim-visual-multi
 " ---
-if isdirectory(pluggeddir.'/ack.vim')
-  cnoreabbrev ag Ack!
+if isdirectory(plugged.'/vim-visual-multi')
+  " Make selection highlight more obvious
+  let g:VM_theme = 'olive'
 
-  if executable('ag')
-    let g:ackprg = 'ag --vimgrep --nogroup --column --smart-case --nocolor --follow'
-  endif
+  " Use normal search highlight for matches
+  let g:VM_highlight_matches = ''
 endif
 
-" nerdcommenter
+" NERDcommenter
 " ---
-if isdirectory(pluggeddir.'/nerdcommenter')
-  let NERDSpaceDelims=1
+if isdirectory(plugged.'/nerdcommenter')
+  " Add spaces after comment delimiters by default
+  let NERDSpaceDelims = 1
 
   " Allow commenting and inverting empty lines (useful when commenting a region)
-  let g:NERDCommentEmptyLines = 1
+  let NERDCommentEmptyLines = 1
 endif
 
-" vim-json
+" fzf
 " ---
-if isdirectory(pluggeddir.'/vim-json')
-  let g:vim_json_syntax_conceal = 0
+if isdirectory(plugged.'/fzf.vim')
+  " Empty value to disable preview window by default
+  let g:fzf_preview_window = ''
+
+  "
+  " Buffers
+  "
+  nnoremap <silent> <leader>u :Buffers<CR>
+
+  " [Buffers] Jump to the existing window if possible
+  let g:fzf_buffers_jump = 1
+
+  "
+  " Files
+  "
+  " Run GFiles if inside git repo, otherwise Files
+  " https://github.com/junegunn/fzf.vim/issues/233
+  command! SmartGFiles execute system('git rev-parse --is-inside-work-tree') =~ 'true' ? 'GFiles' : 'Files'
+  nnoremap <silent> <leader>p :SmartGFiles<CR>
+
+  "
+  " Search
+  "
+  " From docs with modifications
+  " https://github.com/junegunn/fzf.vim#example-rg-command-with-preview-window
+  " https://github.com/junegunn/fzf.vim/issues/419
+  "
+  " with options: --follow --hidden --vimgrep
+  " with binding: F2:toggle-preview
+  " without -- and shellescape at the end, to allow passing in more flags as needed
+  function! RipgrepFzf(query, fullscreen)
+    let command = 'rg --column --line-number --no-heading --color=always --smart-case --follow --hidden --vimgrep '.a:query
+    let spec = {'options': ['--bind', 'F2:toggle-preview']}
+    call fzf#vim#grep(command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  endfunction
+
+  " Prompt for search term first and quit if none given
+  function! RipgrepPrompt(fullscreen)
+    let query = input('rg/')
+    if len(query)
+      call RipgrepFzf(query, a:fullscreen)
+    endif
+  endfunction
+  command! -nargs=* -bang RipgrepPrompt call RipgrepPrompt(<bang>0)
+
+  " Finally key binding to search with ripgrep
+  nnoremap <silent> <leader>/ :execute 'RipgrepPrompt!'<CR>
 endif
 
-" auto-pairs
+" vim-gitgutter
 " ---
-if isdirectory(pluggeddir.'/auto-pairs')
-  let g:AutoPairsMapCh = 0
+if isdirectory(plugged.'/vim-gitgutter')
+  " don't set up any mappings at all
+  let g:gitgutter_map_keys = 0
+
+  " copied over from documentation, with guibg to match the background color
+  highlight GitGutterAdd    guifg=#009900 guibg=#262626
+  highlight GitGutterChange guifg=#bbbb00 guibg=#262626
+  highlight GitGutterDelete guifg=#ff2222 guibg=#262626
 endif
 
-" vim-closetag
+" coc.nvim
+"
+" Mostly copied over from the documentation
+" https://breuer.dev/blog/top-neovim-plugins.html
 " ---
-if isdirectory(pluggeddir.'/vim-closetag')
-  let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js'
-  let g:closetag_emptyTags_caseSensitive = 1
+if isdirectory(plugged.'/coc.nvim')
+  " Automatically install these extensions if not present.
+  " + coc-marketplace: https://www.chrisatmachine.com/Neovim/19-coc-marketplace
+  " + coc-snippets: https://www.chrisatmachine.com/Neovim/17-snippets
+  " + coc-elixir: https://arusahni.net/blog/2020/08/elixir-vim.html
+  let g:coc_global_extensions = [
+    \ 'coc-marketplace',
+    \ 'coc-snippets',
+    \ 'coc-elixir',
+    \ 'coc-tsserver',
+    \ 'coc-json',
+    \ 'coc-tailwindcss']
+
+  nnoremap <silent> <space>z :<C-u>CocList<cr>
+
+  " Don't pass messages to |ins-completion-menu|.
+  set shortmess+=c
+
+  " Always show the signcolumn, otherwise it would shift the text each time
+  " diagnostics appear/become resolved.
+  if has("patch-8.1.1564")
+    " Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
+  else
+    set signcolumn=yes
+  endif
+
+  " Use tab for trigger completion with characters ahead and navigate.
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  " Use <c-space> to trigger completion.
+  if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+  else
+    inoremap <silent><expr> <c-@> coc#refresh()
+  endif
+
+  " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+  " position. Coc only does snippet and additional edit on confirm.
+  " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+  if exists('*complete_info')
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  else
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  endif
+
+  " https://github.com/neoclide/coc.nvim#example-vim-configuration
+
+  " nmap <leader>g <C-o>
+
+  nmap <silent> gD <Plug>(coc-definition)
+  " nmap <silent> gt <Plug>(coc-type-definition)
+  " nmap <silent> gi <Plug>(coc-implementation)
+  " nmap <silent> gr <Plug>(coc-references)
+
+  " TODO: Use K to show documentation in preview window.
+  " nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+  function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+  endfunction
+
+  "
+  " coc-snippets
+  "
+  let g:coc_snippet_next = '<tab>'
+  let g:coc_snippet_prev = '<s-tab>'
 endif
 
-" incsearch.vim
+
+" ==============================================================================
+" ==============================================================================
+
+" vim-colorschemes
 " ---
-if isdirectory(pluggeddir.'/incsearch.vim')
-  let g:incsearch#auto_nohlsearch = 1
-  " map / <Plug>(incsearch-stay)
-
-  " Example:
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
+if isdirectory(plugged.'/vim-colorschemes')
+  " XXX: wriet a note about autocmd highlight issue with colorscheme
+  colorscheme molokai
 endif
 
 
-" indentLine
-" ---
-if isdirectory(pluggeddir.'/indentLine')
-  let g:indentLine_enabled = 0
-endif
+
+" noremap  <leader>t  :FloatermToggle<CR>i
+" noremap! <leader>t  <Esc>:FloatermToggle<CR>i
+" tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
+
+" Improvments list
+" + Far for search and replace? https://github.com/brooth/far.vim
+" + Check out commented out plugins
+" + https://thevaluable.dev/vim-search-find-replace/
+" + TODO: check in .tool-versions
+
+" Remove duplicate settings from neovim defaults?
+" https://github.com/neovim/neovim/issues/6289
