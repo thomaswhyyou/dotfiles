@@ -13,16 +13,15 @@ call plug#begin(plugged)
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'RRethy/vim-illuminate'
-" Plug 'gcmt/taboo.vim'
 
 " Maneuvering
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
+Plug 'qpkorr/vim-bufkill'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
-Plug 'qpkorr/vim-bufkill'
-Plug 'easymotion/vim-easymotion'
-" Plug 'voldikss/vim-floaterm'
+Plug 'voldikss/vim-floaterm'
+" Plug 'easymotion/vim-easymotion'
 
 " Editing
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -57,8 +56,8 @@ if &compatible
 endif
 
 " space as leader (https://stackoverflow.com/a/9578616)
-nnoremap <SPACE> <Nop>
-map <Space> <Leader>
+nnoremap <space> <Nop>
+map <space> <Leader>
 
 " Set augroup.
 augroup MyAutoCmd
@@ -96,8 +95,8 @@ if has("persistent_undo")
 endif
 
 " completion sources
-set complete-=i                 " http://stackoverflow.com/a/2460593/3479934
 set infercase                   " Ignore case on insert completion.
+set complete-=i                 " http://stackoverflow.com/a/2460593/3479934
 " .: The current buffer
 " w: Buffers in other windows
 " b: Other loaded buffers
@@ -154,16 +153,13 @@ set viewoptions="folds,options,cursor,unix,slash"     "unix/windows compatibilit
 set tildeop                     " Tilde acts as an operator
 set splitbelow                  " Open new split panes to right and bottom..
 set splitright                  " ...which feels more natural
-
-" sane backspace
-set backspace=2
-set backspace=indent,eol,start
-
+set backspace=indent,eol,start  " sane backspace
 set mouse=a                     " Enable basic mouse behavior such as resizing buffers.
 
-" move vertically by visual line (for wrapped lines)
-nnoremap j gj
-nnoremap k gk
+" " move vertically by visual line (for wrapped lines)
+" TODO: Delete if no difference is noticed
+" nnoremap j gj
+" nnoremap k gk
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -221,11 +217,11 @@ inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
 
-" Disable arrow keys
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+" " Disable arrow keys
+" nnoremap <Left> :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up> :echoe "Use k"<CR>
+" nnoremap <Down> :echoe "Use j"<CR>
 
 " don't accidently get into Ex mode
 nnoremap Q <nop>
@@ -340,9 +336,6 @@ endif
 " vim-illuminate
 " ---
 if isdirectory(plugged.'/vim-illuminate')
-  let g:Illuminate_highlightUnderCursor = 1
-  let g:Illuminate_delay = 625
-
   " Teal color works well with molokai theme.
   " #285e61 (bg-teal-800) -> #275A5D -> #26565A (mid point) -> #245256 -> #234e52 (bg-teal-900)
   augroup illuminate_augroup
@@ -353,14 +346,6 @@ if isdirectory(plugged.'/vim-illuminate')
   " Let esc also clear illumination.
   let g:esc_commands += [':call illuminate#on_leaving_autocmds()']
 endif
-
-" " taboo
-" " ---
-" if isdirectory(plugged.'/taboo.vim')
-"   " Format tabline.
-"   let g:taboo_tab_format = " %N) %f%U%m "
-"   let g:taboo_renamed_tab_format = " %N) [%l]%U%m "
-" endif
 
 " vim-dirvish
 " ---
@@ -373,7 +358,7 @@ if isdirectory(plugged.'/vim-dirvish')
   " https://github.com/justinmk/vim-dirvish/issues/89#issuecomment-352419682
   "
   " :sort:      First sort dot-files, then sort folders at the top
-  " :silent:   Remove 'Hit ENTER to continue' prompt
+  " :silent:    Remove 'Hit ENTER to continue' prompt
   " :global:    Filter out files matched by given patterns
   let g:dirvish_mode = ':sort | :sort ,^.*[\/], | :silent :keeppatterns :global/\.DS_Store$/d _'
 
@@ -407,12 +392,12 @@ if isdirectory(plugged.'/nerdtree')
       execute ':NERDTreeFind'
     endif
   endfunction
-  nnoremap <leader>t :call ToggleNERDTreeFind()<CR>
+  nnoremap <leader>r :call ToggleNERDTreeFind()<CR>
 
   let NERDTreeHijackNetrw = 0               " Don't be the default
   let NERDTreeShowHidden = 1                " Show hidden files
   let NERDTreeAutoDeleteBuffer = 1          " Auto delete the buffer of the file you just deleted.
-  let NERDTreeWinSize = 40                  " The default of 31 is just a little too narrow.
+  let NERDTreeWinSize = 45                  " The default of 31 is just a little too narrow.
   let NERDTreeMinimalUI = 1                 " Disable display of '?' text and 'Bookmarks' label.
   let NERDTreeIgnore = ['\.DS_Store$']      " Don't bother showing these files
   let NERDTreeMapQuit = 'gq'                " Make consistent with vim-dirvish
@@ -424,23 +409,27 @@ endif
 " vim-sneak
 " ---
 if isdirectory(plugged.'/vim-sneak')
-  " Smart casing.
-  let g:sneak#use_ic_scs = 1
-
+  " let g:sneak#use_ic_scs = 1
   autocmd ColorScheme * hi Sneak gui=bold guifg=black guibg=yellow
-  autocmd ColorScheme * hi SneakScope gui=bold guifg=black guibg=#0cff00
 
-  " Let esc also exit sneak mode.
+  " Let esc also exit neak mode.
   let g:esc_commands += [':call sneak#cancel()']
 endif
 
-" vim-easymotion
-" ---
-if isdirectory(plugged.'/vim-easymotion')
-  let g:EasyMotion_smartcase = 1
+" " vim-easymotion
+" " ---
+" if isdirectory(plugged.'/vim-easymotion')
+"   " let g:EasyMotion_smartcase = 1
+"
+"   map  <leader>s <plug>(easymotion-bd-f2)
+"   nmap <leader>s <plug>(easymotion-overwin-f2)
+" endif
 
-  map  <leader>s <plug>(easymotion-bd-f2)
-  nmap <leader>s <plug>(easymotion-overwin-f2)
+" voldikss/vim-floaterm
+" ---
+if isdirectory(plugged.'/vim-floaterm')
+  let g:floaterm_keymap_toggle = '<leader>t'
+  let g:floaterm_wintype = 'normal'
 endif
 
 " vim-bufkill
@@ -554,6 +543,7 @@ if isdirectory(plugged.'/coc.nvim')
     \ 'coc-tailwindcss']
 
   nnoremap <silent> <space>z :<C-u>CocList<cr>
+  " nnoremap <silent> <space>z :<C-u>CocList<cr>
 
   " Don't pass messages to |ins-completion-menu|.
   set shortmess+=c
@@ -629,21 +619,11 @@ endif
 " vim-colorschemes
 " ---
 if isdirectory(plugged.'/vim-colorschemes')
-  " XXX: wriet a note about autocmd highlight issue with colorscheme
   colorscheme molokai
 endif
 
 
-" Trigger float term with a command? Like.. https://github.com/joonty/vim-do
-" noremap  <leader>t  :FloatermToggle<CR>i
-" noremap! <leader>t  <Esc>:FloatermToggle<CR>i
-" tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
-
 " Improvments list
-" + Far for search and replace? https://github.com/brooth/far.vim
-" + Check out commented out plugins
-" + https://thevaluable.dev/vim-search-find-replace/
+" + TODO: Explore and set up coc
 " + TODO: check in .tool-versions
-
-" Remove duplicate settings from neovim defaults?
-" https://github.com/neovim/neovim/issues/6289
+" + Configure rg to exclude .git directory
