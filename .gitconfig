@@ -1,50 +1,69 @@
+# Reference:
+# http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+
+[core]
+  editor = nvim
+
 [user]
   name = thomaswhyyou
   email = thomas.whyyou@gmail.com
 
 [push]
-  default = simple
-; [push]
-;   default = current
+  default = current
 
-; [color]
-;     ui = auto
+[pull]
+  default = current
 
-; [color "branch"]
-;     current = yellow reverse
-;     local = yellow
-;     remote = green
+[diff]
+  mnemonicprefix = true
+
+[branch]
+  autosetuprebase = always
+
+[apply]
+  whitespace = nowarn
+
+[rebase]
+  autosquash = true
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+
+[color "branch"]
+  current = red reverse
+  local = blue
+  remote = green
 
 [color "status"]
-  added = 148  # Yucky green
-  changed = 163  # Purple
-  untracked = 31  # Dark blue
+  added = 148       # Yucky green
+  changed = 163     # Purple
+  untracked = 31    # Dark blue
 
 [color "diff"]
-  meta = 255  # White
-  frag = 163  # Purple
-  old = 160 # Red
-  new = 34  # Green
+  meta = 255        # White
+  frag = 163        # Purple
+  old = 160         # Red
+  new = 34          # Green
 
 [alias]
-# http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
-
-# Basic
+  # Basic
   st = status -s
   stat = status
   co = checkout
   br = branch
 
-# Commit
+  # Commit
   cm = commit
   amend = commit --amend
 
-# Diff
+  # Diff
   df = diff
   ds = diff --staged
   dc = diff --cached
 
-# log commands
+  # log commands
   ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   lc  = "!f() { git ll "$1"^.."$1"; }; f"
@@ -81,14 +100,3 @@
   filetrail = git log --follow -p -w
   mergetrail = log --ancestry-path --merges
   unmerged = diff --name-only --diff-filter=U
-
-; [blame]
-;   date = relative
-[core]
-  editor = nvim
-  precomposeunicode = true
-  excludesfile = ~/.gitignore_global
-; [merge]
-;   conflictstyle = diff3
-; [mailmap]
-;   file = ~/.mailmap

@@ -539,6 +539,7 @@ if isdirectory(plugged.'/coc.nvim')
     \ 'coc-snippets',
     \ 'coc-elixir',
     \ 'coc-tsserver',
+    \ 'coc-tslint',
     \ 'coc-json',
     \ 'coc-tailwindcss']
 
@@ -625,5 +626,6 @@ endif
 
 " Improvments list
 " + TODO: Explore and set up coc
+"   + https://subvisual.com/blog/posts/vim-elixir-ide
 " + TODO: check in .tool-versions
 " + Configure rg to exclude .git directory
