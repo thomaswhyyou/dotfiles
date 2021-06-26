@@ -22,6 +22,16 @@ alias ..4='cd ../../../../'                 # Go back 4 directory levels
 alias ..5='cd ../../../../../'              # Go back 5 directory levels
 alias ..6='cd ../../../../../../'           # Go back 6 directory levels
 
+# homebrew
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# asdf
+if [[ -f /opt/homebrew/bin/asdf ]]; then
+  . /opt/homebrew/opt/asdf/asdf.sh
+fi
+
 # tmux
 if hash tmux 2>/dev/null; then
   alias tls='tmux ls'
