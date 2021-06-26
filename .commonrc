@@ -63,10 +63,5 @@ if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
 fi
 
-# asdf
-if [[ -f /usr/local/opt/asdf/asdf.sh ]]; then
-  source /usr/local/opt/asdf/asdf.sh
-fi
-
 # elixir & erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
