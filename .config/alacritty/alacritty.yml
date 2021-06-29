@@ -7,3 +7,7 @@
 colors:
   primary:
     background: '#121212'
+
+  cursor:
+    text: '0x003541'
+    cursor: '0x05f900'
