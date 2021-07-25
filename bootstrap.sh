@@ -16,7 +16,7 @@ done
 
 echo "Creating a symlink to nvim/init.vim in .config directory."
 mkdir -p ~/.config/nvim/
-ln -sfn ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
+ln -sfn ~/dotfiles/.config/nvim/* ~/.config/nvim/
 
 echo "Creating a symlink to alacritty/alacritty.yml in .config directory."
 mkdir -p ~/.config/alacritty/
