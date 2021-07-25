@@ -20,8 +20,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'qpkorr/vim-bufkill'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
-Plug 'voldikss/vim-floaterm'
-" Plug 'easymotion/vim-easymotion'
+" Plug 'voldikss/vim-floaterm'
 
 " Editing
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -156,11 +155,6 @@ set splitright                  " ...which feels more natural
 set backspace=indent,eol,start  " sane backspace
 set mouse=a                     " Enable basic mouse behavior such as resizing buffers.
 
-" " move vertically by visual line (for wrapped lines)
-" TODO: Delete if no difference is noticed
-" nnoremap j gj
-" nnoremap k gk
-
 " highlight last inserted text
 nnoremap gV `[v`]
 
@@ -216,12 +210,6 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
-
-" " Disable arrow keys
-" nnoremap <Left> :echoe "Use h"<CR>
-" nnoremap <Right> :echoe "Use l"<CR>
-" nnoremap <Up> :echoe "Use k"<CR>
-" nnoremap <Down> :echoe "Use j"<CR>
 
 " don't accidently get into Ex mode
 nnoremap Q <nop>
@@ -415,15 +403,6 @@ if isdirectory(plugged.'/vim-sneak')
   " Let esc also exit neak mode.
   let g:esc_commands += [':call sneak#cancel()']
 endif
-
-" " vim-easymotion
-" " ---
-" if isdirectory(plugged.'/vim-easymotion')
-"   " let g:EasyMotion_smartcase = 1
-"
-"   map  <leader>s <plug>(easymotion-bd-f2)
-"   nmap <leader>s <plug>(easymotion-overwin-f2)
-" endif
 
 " voldikss/vim-floaterm
 " ---
@@ -627,5 +606,4 @@ endif
 " Improvments list
 " + TODO: Explore and set up coc
 "   + https://subvisual.com/blog/posts/vim-elixir-ide
-" + TODO: check in .tool-versions
 " + Configure rg to exclude .git directory
