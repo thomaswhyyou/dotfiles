@@ -40,7 +40,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
-" Plug 'w0rp/ale'
 
 " Initialize plugin system
 call plug#end()
@@ -380,7 +379,7 @@ if isdirectory(plugged.'/nerdtree')
       execute ':NERDTreeFind'
     endif
   endfunction
-  nnoremap <leader>r :call ToggleNERDTreeFind()<CR>
+  nnoremap <leader>t :call ToggleNERDTreeFind()<CR>
 
   let NERDTreeHijackNetrw = 0               " Don't be the default
   let NERDTreeShowHidden = 1                " Show hidden files
@@ -397,9 +396,6 @@ endif
 " vim-sneak
 " ---
 if isdirectory(plugged.'/vim-sneak')
-  " let g:sneak#use_ic_scs = 1
-  autocmd ColorScheme * hi Sneak gui=bold guifg=black guibg=yellow
-
   " Let esc also exit neak mode.
   let g:esc_commands += [':call sneak#cancel()']
 endif
@@ -443,44 +439,39 @@ endif
 " fzf
 " ---
 if isdirectory(plugged.'/fzf.vim')
-  " Empty value to disable preview window by default
-  let g:fzf_preview_window = ''
+  let g:fzf_preview_window = ['right:50%', 'F2']
 
-  "
   " Buffers
   "
-  nnoremap <silent> <leader>u :Buffers<CR>
+  nnoremap <silent> <leader>u :Buffers!<CR>
 
   " [Buffers] Jump to the existing window if possible
-  let g:fzf_buffers_jump = 1
+  " let g:fzf_buffers_jump = 1
 
-  "
   " Files
   "
   " Run GFiles if inside git repo, otherwise Files
   " https://github.com/junegunn/fzf.vim/issues/233
-  command! SmartGFiles execute system('git rev-parse --is-inside-work-tree') =~ 'true' ? 'GFiles' : 'Files'
+  command! SmartGFiles execute system('git rev-parse --is-inside-work-tree') =~ 'true' ? 'GFiles!' : 'Files!'
   nnoremap <silent> <leader>p :SmartGFiles<CR>
 
-  "
   " Search
   "
   " From docs with modifications
   " https://github.com/junegunn/fzf.vim#example-rg-command-with-preview-window
   " https://github.com/junegunn/fzf.vim/issues/419
   "
-  " with options: --follow --hidden --vimgrep
+  " with rg options: --follow --hidden --vimgrep
   " with binding: F2:toggle-preview
-  " without -- and shellescape at the end, to allow passing in more flags as needed
+  " without -- and .shellescape at the end, to allow passing in more flags as needed
   function! RipgrepFzf(query, fullscreen)
     let command = 'rg --column --line-number --no-heading --color=always --smart-case --follow --hidden --vimgrep '.a:query
-    let spec = {'options': ['--bind', 'F2:toggle-preview']}
-    call fzf#vim#grep(command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+    call fzf#vim#grep(command, 1, fzf#vim#with_preview(), a:fullscreen)
   endfunction
 
   " Prompt for search term first and quit if none given
   function! RipgrepPrompt(fullscreen)
-    let query = input('rg/')
+    let query = input('Rg/')
     if len(query)
       call RipgrepFzf(query, a:fullscreen)
     endif
