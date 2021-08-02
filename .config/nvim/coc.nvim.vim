@@ -33,6 +33,8 @@ if exists('*complete_info')
   inoremap <silent><expr> <cr> complete_info(['selected'])['selected'] != -1 ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
+" Expose a coc-rename as a command.
+command! Rename execute "normal \<Plug>(coc-rename)"
 
 " ==============================================================================
 " General Config (mostly copy pasted from the docs example)

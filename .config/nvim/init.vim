@@ -41,7 +41,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 
-" Misc
+" Testing
 Plug 'vim-test/vim-test'
 
 " Initialize plugin system
@@ -440,9 +440,6 @@ if isdirectory(plugged.'/fzf.vim')
   " Buffers
   "
   nnoremap <silent> <leader>u :Buffers!<CR>
-
-  " [Buffers] Jump to the existing window if possible
-  " let g:fzf_buffers_jump = 1
 
   " Files
   "
