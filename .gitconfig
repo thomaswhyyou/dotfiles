@@ -1,12 +1,20 @@
 # Reference:
 # http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 
+#
+# Basic
+#
+
 [core]
   editor = nvim
 
 [user]
-  name = thomaswhyyou
+	name = Thomas
   email = thomas.whyyou@gmail.com
+
+#
+# Push/Pull/Diff/etc
+#
 
 [push]
   default = current
@@ -26,31 +34,29 @@
 [rebase]
   autosquash = true
 
-[color]
-  branch = auto
-  diff = auto
-  status = auto
+[rerere]
+  enabled = false
 
-[color "branch"]
-  current = red reverse
-  local = blue
-  remote = green
-
-[color "status"]
-  added = 148       # Yucky green
-  changed = 163     # Purple
-  untracked = 31    # Dark blue
+#
+# Color
+#
 
 [color "diff"]
-  meta = 255        # White
+  meta = yellow
   frag = 163        # Purple
   old = 160         # Red
   new = 34          # Green
+  plain = white
+
+[color "status"]
+  added = 34        # Green
+  changed = yellow
+  untracked = 31    # Dark blue
 
 [alias]
   # Basic
+  cp = cherry-pick
   st = status -s
-  stat = status
   co = checkout
   br = branch
 
@@ -63,11 +69,20 @@
   ds = diff --staged
   dc = diff --cached
 
+  # Reset
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh2 = reset HEAD^^ --hard
+
   # log commands
   ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [a:%an,c:%cn]" --decorate --numstat
   lc  = "!f() { git ll "$1"^.."$1"; }; f"
   lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+  flog = log -u
 
   unstage = reset -q HEAD --
   discard = checkout --
