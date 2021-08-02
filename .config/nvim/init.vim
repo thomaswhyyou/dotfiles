@@ -41,6 +41,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 
+" Misc
+Plug 'vim-test/vim-test'
+
 " Initialize plugin system
 call plug#end()
 
@@ -379,7 +382,7 @@ if isdirectory(plugged.'/nerdtree')
       execute ':NERDTreeFind'
     endif
   endfunction
-  nnoremap <leader>t :call ToggleNERDTreeFind()<CR>
+  nnoremap <leader>r :call ToggleNERDTreeFind()<CR>
 
   let NERDTreeHijackNetrw = 0               " Don't be the default
   let NERDTreeShowHidden = 1                " Show hidden files
@@ -482,6 +485,15 @@ if isdirectory(plugged.'/fzf.vim')
   nnoremap <silent> <leader>/ :execute 'RipgrepPrompt!'<CR>
 endif
 
+" vim-test
+" ---
+if isdirectory(plugged.'/vim-test')
+  nmap <silent> <leader>tn :TestNearest<CR>
+  nmap <silent> <leader>tf :TestFile<CR>
+  nmap <silent> <leader>ts :TestSuite<CR>
+  nmap <silent> <leader>tl :TestLast<CR>
+endif
+
 " vim-gitgutter
 " ---
 if isdirectory(plugged.'/vim-gitgutter')
@@ -510,7 +522,6 @@ endif
 if isdirectory(plugged.'/vim-colorschemes')
   colorscheme molokai
 endif
-
 
 " Improvments list
 " + Configure rg to exclude .git directory
