@@ -20,17 +20,17 @@ Plug 'scrooloose/nerdtree'
 Plug 'qpkorr/vim-bufkill'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
-" Plug 'voldikss/vim-floaterm'
 
 " Editing
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 
-" Searching
+" Searching & Replacing
 Plug 'google/vim-searchindex'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'stefandtw/quickfix-reflector.vim'
 
 " Version control
 Plug 'airblade/vim-gitgutter'
@@ -403,13 +403,6 @@ if isdirectory(plugged.'/vim-sneak')
   let g:esc_commands += [':call sneak#cancel()']
 endif
 
-" voldikss/vim-floaterm
-" ---
-if isdirectory(plugged.'/vim-floaterm')
-  let g:floaterm_keymap_toggle = '<leader>t'
-  let g:floaterm_wintype = 'normal'
-endif
-
 " vim-bufkill
 " ---
 if isdirectory(plugged.'/vim-bufkill')
@@ -499,11 +492,6 @@ endif
 if isdirectory(plugged.'/vim-gitgutter')
   " don't set up any mappings at all
   let g:gitgutter_map_keys = 0
-
-  " copied over from documentation, with guibg to match the background color
-  highlight GitGutterAdd    guifg=#009900 guibg=#262626
-  highlight GitGutterChange guifg=#bbbb00 guibg=#262626
-  highlight GitGutterDelete guifg=#ff2222 guibg=#262626
 endif
 
 " coc.nvim
