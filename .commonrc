@@ -29,7 +29,7 @@ fi
 
 # asdf
 if [[ -f /opt/homebrew/bin/asdf ]]; then
-  . /opt/homebrew/opt/asdf/asdf.sh
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
 # tmux
