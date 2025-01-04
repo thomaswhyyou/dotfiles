@@ -1,6 +1,11 @@
 # vim: filetype=sh
 # Source this file in .zshrc after installing zsh + prezto.
 
+# Set default editor
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
+
 # Aliases (https://natelandau.com/my-mac-osx-bash_profile)
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
@@ -14,13 +19,13 @@ alias ..4='cd ../../../../'                 # Go back 4 directory levels
 alias ..5='cd ../../../../../'              # Go back 5 directory levels
 alias ..6='cd ../../../../../../'           # Go back 6 directory levels
 
-# Set default editor
-export EDITOR='vim'
-export VISUAL='vim'
-export PAGER='less'
+# homebrew (MUST come first for command checks below if installed via homebrew)
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # neovim
-if hash nvim 2>/dev/null; then
+if command -v nvim >/dev/null 2>&1; then
   alias vim='nvim'
   alias vi='nvim'
   export EDITOR=nvim
@@ -28,7 +33,7 @@ if hash nvim 2>/dev/null; then
 fi
 
 # tmux
-if hash tmux 2>/dev/null; then
+if command -v tmux >/dev/null 2>&1; then
   alias tls='tmux ls'
   alias tat='tmux attach -d -t'
   alias tns='tmux new-session -s'
@@ -48,11 +53,6 @@ fi
 # fzf
 if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
-fi
-
-# homebrew
-if [[ -f /opt/homebrew/bin/brew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # asdf
