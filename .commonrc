@@ -3,6 +3,7 @@
 # NOTE:
 # Install zsh and prezto, then source .commonrc in .zshrc
 
+
 # Set default editor
 export EDITOR='vim'
 export VISUAL='vim'
@@ -40,13 +41,13 @@ if hash tmux 2>/dev/null; then
   alias tks='tmux kill-session -t'
 
   # Make sure we detach first if we are already inside tmux.
-  if [[ "$TERM" == "screen-255color" ]]; then
+  if [[ "$TERM" == "tmux-255color" ]]; then
     tmux detach
   fi
 
-  # Set up a default session called 'asdf' if not exist
-  if ! tmux has-session -t asdf > /dev/null 2>&1; then
-    tmux new -s asdf -n one -d
+  # Set up a default session called 'one' if not exist
+  if ! tmux has-session -t one > /dev/null 2>&1; then
+    tmux new -s one -n one -d
   fi
 fi
 
