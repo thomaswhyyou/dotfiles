@@ -43,6 +43,12 @@ window-save-state = always
 # cmd+t to create a new tmux window
 keybind = super+t=text:\x13c
 
+# cmd+x to close the current pane
+keybind = super+x=text:\x13X
+
+# cmd+l to toggle between two latest windows
+keybind = super+l=text:\x13l
+
 # cmd+n to go to the corresponding tmux window
 keybind = super+one=text:\x131
 keybind = super+two=text:\x132
