@@ -1,20 +1,12 @@
 # Reference:
 # http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 
-#
-# Basic
-#
-
 [core]
   editor = nvim
 
 [user]
 	name = Thomas
   email = thomas.whyyou@gmail.com
-
-#
-# Push/Pull/Diff/etc
-#
 
 [push]
   default = current
@@ -36,10 +28,6 @@
 
 [rerere]
   enabled = false
-
-#
-# Color
-#
 
 [color "diff"]
   meta = yellow
