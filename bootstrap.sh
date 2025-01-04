@@ -2,7 +2,7 @@
 # Symlink various config files.
 
 DOTFILES="
-.commonrc
+.profile
 .tmux.conf
 .gitconfig
 .psqlrc

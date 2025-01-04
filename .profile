@@ -1,5 +1,5 @@
 # vim: filetype=sh
-# Install zsh and prezto, then source this file in .zshrc.
+# Source this file in .zshrc after installing zsh + prezto.
 
 # Aliases (https://natelandau.com/my-mac-osx-bash_profile)
 alias cp='cp -iv'                           # Preferred 'cp' implementation
