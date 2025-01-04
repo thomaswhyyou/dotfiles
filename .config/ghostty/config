@@ -22,11 +22,6 @@ minimum-contrast = 1.1
 # Better fullscreen mode w/o animation
 macos-non-native-fullscreen = true
 
-# Quick terminal
-# keybind = super+escape=toggle_quick_terminal
-# quick-terminal-position = bottom
-# quick-terminal-animation-duration = 0
-
 # Misc.
 copy-on-select = true
 macos-option-as-alt = true
@@ -35,9 +30,7 @@ window-save-state = always
 
 #
 # Tmux bindings
-#
-# Reference:
-# https://github.com/mxgrn/dotfiles/blob/master/.config/ghostty/config
+# (Reference: https://github.com/mxgrn/dotfiles/tree/master/.config/ghostty)
 #
 
 # cmd+t to create a new tmux window
