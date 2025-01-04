@@ -1,36 +1,30 @@
 # vim: filetype=sh
+# Install zsh and prezto, then source this file in .zshrc.
 
-# NOTE:
-# Install zsh and prezto, then source .commonrc in .zshrc
-
-
-# Set default editor
-export EDITOR='vim'
-export VISUAL='vim'
-export PAGER='less'
-
-# Aliases
-# https://natelandau.com/my-mac-osx-bash_profile/
+# Aliases (https://natelandau.com/my-mac-osx-bash_profile)
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
-alias which='type -a'                       # which:        Find executables
-alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
+alias which='type -a'                       # which: Find executables
+alias path='echo -e ${PATH//:/\\n}'         # path: Echo all executable Paths
 alias ..2='cd ../../'                       # Go back 2 directory levels
 alias ..3='cd ../../../'                    # Go back 3 directory levels
 alias ..4='cd ../../../../'                 # Go back 4 directory levels
 alias ..5='cd ../../../../../'              # Go back 5 directory levels
 alias ..6='cd ../../../../../../'           # Go back 6 directory levels
 
-# homebrew
-if [[ -f /opt/homebrew/bin/brew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+# Set default editor
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
 
-# asdf
-if [[ -f /opt/homebrew/bin/asdf ]]; then
-  . /opt/homebrew/opt/asdf/libexec/asdf.sh
+# neovim
+if hash nvim 2>/dev/null; then
+  alias vim='nvim'
+  alias vi='nvim'
+  export EDITOR=nvim
+  export VISUAL=nvim
 fi
 
 # tmux
@@ -51,17 +45,19 @@ if hash tmux 2>/dev/null; then
   fi
 fi
 
-# neovim
-if hash nvim 2>/dev/null; then
-  alias vim='nvim'
-  alias vi='nvim'
-  export EDITOR=nvim
-  export VISUAL=nvim
-fi
-
 # fzf
 if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
+fi
+
+# homebrew
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# asdf
+if [[ -f /opt/homebrew/bin/asdf ]]; then
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
 # elixir & erlang
