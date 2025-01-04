@@ -1,7 +1,5 @@
 # vim: filetype=sh
-# Source this file in .zshrc after installing zsh + prezto.
 
-# Set default editor
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
