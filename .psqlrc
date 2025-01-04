@@ -24,11 +24,6 @@
 -- Keep a history of the last 2000 commands.
 \set HISTSIZE 2000
 
-
-/*
- * Display
- */
-
 -- Mute display setting changes below
 \set QUIET 1
 
