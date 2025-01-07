@@ -27,10 +27,10 @@ ln -sfn ~/dotfiles/.config/ghostty/config ~/.config/ghostty/config
 ZSHRC="$HOME/.zshrc"
 echo "Setting up $ZSHRC"
 
-if touch $ZSHRC && ! grep -Fxq "source .profile" "$ZSHRC"; then
+if touch $ZSHRC && ! grep -Fxq "source ~/.profile" "$ZSHRC"; then
   echo "" >> "$ZSHRC"
   echo "# Set by $(readlink -f "$0") on $(date +%F)." >> "$ZSHRC"
-  echo "source .profile" >> "$ZSHRC"
+  echo "source ~/.profile" >> "$ZSHRC"
 fi
 
 echo ""; echo "All done!"
