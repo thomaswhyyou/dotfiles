@@ -1,4 +1,4 @@
-theme = Tomorrow Night Bright
+theme = catppuccin-mocha 
 
 # Berkeley Mono (semi condensed)
 font-family = TX-02
@@ -15,9 +15,6 @@ font-feature = -dlig
 cursor-color = 05f900
 cursor-text = 003541
 shell-integration-features = false
-
-# Avoid invisible text (e.g. black on black)
-minimum-contrast = 1.1
 
 # Better fullscreen mode w/o animation
 macos-non-native-fullscreen = true
