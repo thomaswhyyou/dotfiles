@@ -49,12 +49,12 @@ if command -v tmux >/dev/null 2>&1; then
 fi
 
 # fzf
-if [[ -f ~/.fzf.zsh ]]; then
-  source ~/.fzf.zsh
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
 fi
 
 # asdf
-if [[ -f /opt/homebrew/bin/asdf ]]; then
+if command -v asdf >/dev/null 2>&1; then
   . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
