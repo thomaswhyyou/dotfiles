@@ -1,9 +1,7 @@
-theme = catppuccin-mocha 
+theme = catppuccin-mocha
 
-# Berkeley Mono (semi condensed)
-font-family = TX-02
-# font-style = Medium SemiCondensed
-# font-style-bold = Black SemiCondensed
+# Berkeley Mono
+font-family = Berkeley Mono SemiCondensed
 font-size = 12
 
 # Disable ligatures
@@ -19,7 +17,7 @@ shell-integration-features = false
 # Better fullscreen mode w/o animation
 macos-non-native-fullscreen = true
 
-# Misc.
+# Misc
 copy-on-select = true
 macos-option-as-alt = true
 mouse-hide-while-typing = true
@@ -34,7 +32,7 @@ window-save-state = always
 keybind = super+t=text:\x13c
 
 # cmd+x to close the current pane
-keybind = super+x=text:\x13X
+# keybind = super+x=text:\x13X
 
 # cmd+l to toggle between two latest windows
 keybind = super+l=text:\x13l
