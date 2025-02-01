@@ -60,3 +60,9 @@ fi
 
 # elixir & erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+# Quick cd around the work dir
+function work {
+  cd "$(fd . "${HOME}/work" --type d --color never | fzf --select-1 --query "${*}")"
+}
+
