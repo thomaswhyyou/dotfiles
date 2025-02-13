@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = Dracula
 
 # Berkeley Mono
 font-family = Berkeley Mono SemiCondensed
@@ -22,6 +22,8 @@ copy-on-select = true
 macos-option-as-alt = true
 mouse-hide-while-typing = true
 window-save-state = always
+window-padding-x = 0
+window-padding-y = 0
 
 #
 # Tmux bindings
@@ -48,11 +50,11 @@ keybind = super+seven=text:\x137
 keybind = super+eight=text:\x138
 keybind = super+nine=text:\x139
 
-# cmd+shfit+[|] to go to next/prev tmux window
-keybind = super+shift+right_bracket=text:\x13n
-keybind = super+shift+left_bracket=text:\x13p
+# cmd+shfit+left|right to go to next/prev tmux window
+keybind = super+alt+right=text:\x13n
+keybind = super+alt+left=text:\x13p
 
-# cmd+shfit+alt to move the current tmux window left/right
+# cmd+shfit+alt+left|right to move the current tmux window left/right
 # (requires the custom tmux bindings in .tmux.conf)
-keybind = super+shift+alt+right_bracket=text:\x13N
-keybind = super+shift+alt+left_bracket=text:\x13P
+keybind = super+shift+alt+right=text:\x13N
+keybind = super+shift+alt+left=text:\x13P
