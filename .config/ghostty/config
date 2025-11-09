@@ -25,6 +25,10 @@ window-save-state = always
 window-padding-x = 0
 window-padding-y = 0
 
+keybind = super+o=toggle_quick_terminal
+quick-terminal-position = right
+quick-terminal-animation-duration = 0
+
 #
 # Tmux bindings
 # (Reference: https://github.com/mxgrn/dotfiles/tree/master/.config/ghostty)
@@ -40,15 +44,17 @@ keybind = super+t=text:\x13c
 keybind = super+l=text:\x13l
 
 # cmd+n to go to the corresponding tmux window
-keybind = super+one=text:\x131
-keybind = super+two=text:\x132
-keybind = super+three=text:\x133
-keybind = super+four=text:\x134
-keybind = super+five=text:\x135
-keybind = super+six=text:\x136
-keybind = super+seven=text:\x137
-keybind = super+eight=text:\x138
-keybind = super+nine=text:\x139
+keybind = super+digit_1=text:\x131
+keybind = super+digit_2=text:\x132
+keybind = super+digit_3=text:\x133
+keybind = super+digit_4=text:\x134
+keybind = super+digit_5=text:\x135
+keybind = super+digit_6=text:\x136
+keybind = super+digit_7=text:\x137
+keybind = super+digit_8=text:\x138
+keybind = super+digit_9=text:\x139
+
+# XXX: cmd+f: for tmux search?
 
 # cmd+shfit+left|right to go to next/prev tmux window
 keybind = super+alt+right=text:\x13n
