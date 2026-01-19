@@ -6,6 +6,7 @@ DOTFILES="
 .tmux.conf
 .gitconfig
 .psqlrc
+.tool-versions
 "
 for file in $DOTFILES; do
   echo "Creating a symlink to $file in home directory"

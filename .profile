@@ -5,7 +5,7 @@ export VISUAL='vim'
 export PAGER='less'
 
 # Aliases (https://natelandau.com/my-mac-osx-bash_profile)
-alias cp='cp -iv'                           # Preferred 'cp' implementation
+# alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
@@ -66,3 +66,10 @@ function work {
   cd "$(fd . "${HOME}/work" --type d --color never | fzf --select-1 --query "${*}")"
 }
 
+# Load any private keys, if the file exists
+if [ -f ~/.private ]; then
+  . ~/.private
+fi
+
+# Knock mix test errors without this
+ulimit -n 1024

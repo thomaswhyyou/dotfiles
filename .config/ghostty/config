@@ -1,7 +1,17 @@
-theme = Dracula
+# theme = Dracula
+theme = Github Dark High Contrast
+# theme = Jetbrains Darcula
+# theme = Xcode Dark
+# theme = Xcode Dark hc
+# theme = Hybrid
+
+# theme = Operator Mono Dark
+# theme = Xcode Dark hc
 
 # Berkeley Mono
-font-family = Berkeley Mono SemiCondensed
+# font-family = Berkeley Mono
+# font-family = Berkeley Mono SemiCondensed
+font-family = Berkeley Mono Condensed
 font-size = 12
 
 # Disable ligatures
@@ -28,6 +38,8 @@ window-padding-y = 0
 keybind = super+o=toggle_quick_terminal
 quick-terminal-position = right
 quick-terminal-animation-duration = 0
+
+keybind = ctrl+`=text:\x1c
 
 #
 # Tmux bindings
