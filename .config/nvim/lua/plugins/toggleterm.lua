@@ -52,34 +52,34 @@ return {
       return main_term
     end
 
-    -- F3: Open terminal in bottom horizontal split
-    vim.keymap.set({ "n", "t" }, "<F3>", function()
-      local term = get_main_term("horizontal")
+    -- F2: Open terminal in bottom horizontal split
+    vim.keymap.set({ "n", "t" }, "<F2>", function()
+      local term = get_main_term("float")
       if term:is_open() then
         term:close()
       else
-        is_float = false
-        term.direction = "horizontal"
+        -- is_float = false
+        -- term.direction = "horizontal"
         term:open()
       end
     end, { desc = "Toggle terminal (horizontal)" })
 
-    -- F2: Toggle between horizontal and float (only in terminal)
-    vim.keymap.set("t", "<F2>", function()
-      if main_term and main_term:is_open() then
-        main_term:close()
-        if is_float then
-          -- Switch to horizontal
-          main_term.direction = "horizontal"
-          is_float = false
-        else
-          -- Switch to float
-          main_term.direction = "float"
-          is_float = true
-        end
-        main_term:open()
-      end
-    end, { desc = "Toggle terminal between horizontal/float" })
+    -- -- F2: Toggle between horizontal and float (only in terminal)
+    -- vim.keymap.set("t", "<F2>", function()
+    --   if main_term and main_term:is_open() then
+    --     main_term:close()
+    --     if is_float then
+    --       -- Switch to horizontal
+    --       main_term.direction = "horizontal"
+    --       is_float = false
+    --     else
+    --       -- Switch to float
+    --       main_term.direction = "float"
+    --       is_float = true
+    --     end
+    --     main_term:open()
+    --   end
+    -- end, { desc = "Toggle terminal between horizontal/float" })
 
     -- F4: Exit insert mode in terminal (enter normal mode for scrolling)
     vim.keymap.set("t", "<F4>", [[<C-\><C-n>]], { desc = "Terminal normal mode" })

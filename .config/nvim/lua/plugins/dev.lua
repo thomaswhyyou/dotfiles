@@ -11,19 +11,6 @@
 
 return {
 
-  -- {
-  --   'nvimdev/indentmini.nvim',
-  --   event = 'BufEnter',
-  --   config = function()
-  --     require('indentmini').setup({
-  --       char = '│',
-  --       only_current = true,
-  --     })
-  --
-  --     vim.cmd.highlight('default link IndentLine Comment')
-  --   end,
-  -- },
-
   -- https://github.com/nvim-mini/mini.hipatterns
   {
     "nvim-mini/mini.hipatterns",
