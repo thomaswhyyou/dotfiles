@@ -293,26 +293,26 @@ return {
     -- end,
   },
 
-  -- https://github.com/mg979/vim-visual-multi
-  --
-  -- Basic usage:
-  -- select words with Ctrl-N (like Ctrl-d in Sublime Text/VS Code)
-  -- create cursors vertically with Ctrl-Down/Ctrl-Up
-  -- select one character at a time with Shift-Arrows
-  -- press n/N to get next/previous occurrence
-  -- press [/] to select next/previous cursor
-  -- press q to skip current and get next occurrence
-  -- press Q to remove current cursor/selection
-  -- start insert mode with i,a,I,A
-  {
-    "mg979/vim-visual-multi",
-    branch = "master",
-    init = function()
-      vim.g.VM_theme = "neon"
-      -- Use normal search highlight for matches
-      vim.g.VM_highlight_matches = ""
-    end,
-  },
+  -- -- https://github.com/mg979/vim-visual-multi
+  -- --
+  -- -- Basic usage:
+  -- -- select words with Ctrl-N (like Ctrl-d in Sublime Text/VS Code)
+  -- -- create cursors vertically with Ctrl-Down/Ctrl-Up
+  -- -- select one character at a time with Shift-Arrows
+  -- -- press n/N to get next/previous occurrence
+  -- -- press [/] to select next/previous cursor
+  -- -- press q to skip current and get next occurrence
+  -- -- press Q to remove current cursor/selection
+  -- -- start insert mode with i,a,I,A
+  -- {
+  --   "mg979/vim-visual-multi",
+  --   branch = "master",
+  --   init = function()
+  --     vim.g.VM_theme = "neon"
+  --     -- Use normal search highlight for matches
+  --     vim.g.VM_highlight_matches = ""
+  --   end,
+  -- },
 
   -- https://github.com/stevearc/oil.nvim
   {
@@ -398,8 +398,6 @@ return {
       { "<leader>e", "<Cmd>Neotree reveal=true toggle=true<CR>", desc = "Neotree toggle" },
     },
   },
-
-  -- { 'augmentcode/augment.vim' },
 
   -- -- https://github.com/b0o/incline.nvim
   -- -- TODO: Make it so the label fades if it covers the first line? Make it toggle-able
@@ -508,22 +506,22 @@ return {
   --   -- end,
   -- },
 
-  {
-    "catgoose/nvim-colorizer.lua",
-    event = "BufReadPre",
-    opts = {
-      user_default_options = {
-        names = false,
-      },
-    },
-    -- config = function()
-    --   require("colorizer").setup({
-    --     user_commands = { "ColorizerToggle", "ColorizerReloadAllBuffers" },
-    --   })
-    -- end
-    -- opts = { -- set to setup table
-    -- },
-  },
+  -- {
+  --   "catgoose/nvim-colorizer.lua",
+  --   event = "BufReadPre",
+  --   opts = {
+  --     user_default_options = {
+  --       names = false,
+  --     },
+  --   },
+  --   -- config = function()
+  --   --   require("colorizer").setup({
+  --   --     user_commands = { "ColorizerToggle", "ColorizerReloadAllBuffers" },
+  --   --   })
+  --   -- end
+  --   -- opts = { -- set to setup table
+  --   -- },
+  -- },
 
   -- https://github.com/stefandtw/quickfix-reflector.vim
   {
@@ -613,24 +611,6 @@ return {
   --   config = function()
   --     require("mini.cursorword").setup()
   --   end,
-  -- },
-
-  -- https://github.com/sphamba/smear-cursor.nvim
-  -- {
-  --   "sphamba/smear-cursor.nvim",
-  --   -- stylua: ignore
-  --   opts = {
-  --     smear_to_cmd = false,
-  --     smear_insert_mode = false,
-  --     cursor_color = "#05f900",
-  --
-  --     -- Faster smear
-  --     stiffness = 0.8,                      -- 0.6      [0, 1]
-  --     trailing_stiffness = 0.5,             -- 0.4      [0, 1]
-  --     stiffness_insert_mode = 0.6,          -- 0.4      [0, 1]
-  --     trailing_stiffness_insert_mode = 0.6, -- 0.4      [0, 1]
-  --     distance_stop_animating = 0.5,        -- 0.1      > 0
-  --   },
   -- },
 
   -- -- https://github.com/akinsho/toggleterm.nvim

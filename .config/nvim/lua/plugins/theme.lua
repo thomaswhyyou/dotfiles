@@ -63,23 +63,23 @@ return {
         --   dimmed5 = p.dimmed5, -- "#403e41",
         -- }
 
-        local hp = require("monokai-pro.color_helper")
-
-        local common_fg = hp.lighten(c.sideBar.foreground, 30)
+        -- local hp = require("monokai-pro.color_helper")
+        --
+        -- local common_fg = hp.lighten(c.sideBar.foreground, 30)
 
         return {
           -- Custom
-          ColorColumn = { bg = hp.lighten(c.editor.background, -2) },
+          -- ColorColumn = { bg = hp.lighten(c.editor.background, -2) },
 
           -- Don't highlight the current cursor line.
           CursorLine = { bg = c.editor.background },
           ["@markup.raw.block.markdown"] = { bg = c.editor.background },
 
-          -- Snacks (https://github.com/loctvl842/monokai-pro.nvim/issues/143)
-          SnacksPicker = { bg = c.editor.background, fg = common_fg },
-          SnacksPickerBorder = { bg = c.editor.background, fg = c.tab.unfocusedActiveBorder },
-          SnacksPickerTree = { fg = c.editorLineNumber.foreground },
-          NonText = { fg = c.base.dimmed3 }, -- not sure if this should be broken into all hl groups importing NonText
+          -- -- Snacks (https://github.com/loctvl842/monokai-pro.nvim/issues/143)
+          -- SnacksPicker = { bg = c.editor.background, fg = common_fg },
+          -- SnacksPickerBorder = { bg = c.editor.background, fg = c.tab.unfocusedActiveBorder },
+          -- SnacksPickerTree = { fg = c.editorLineNumber.foreground },
+          -- NonText = { fg = c.base.dimmed3 }, -- not sure if this should be broken into all hl groups importing NonText
 
           -- Search
           Search = { bg = c.base.dimmed3 },
