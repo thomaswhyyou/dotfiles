@@ -71,7 +71,6 @@ vim.lsp.enable({
 -- https://github.com/rest-nvim/rest.nvim
 
 -- show diagnostics view in a pop over?
-
 -- colors: column color, search highlight color, multi selector color
 -- configure git control, viewing git diffs in vim.
 
@@ -99,11 +98,11 @@ vim.lsp.enable({
 
 -- Add nvim-colorizer.lua with a command to turn it on/off
 
--- Check out:
 -- https://github.com/stevearc/quicker.nvim
+
 -- * Try setting up https://github.com/yetone/avante.nvim
---   * https://github.com/milanglacier/minuet-ai.nvim
---   * https://github.com/frankroeder/parrot.nvim
---   * https://github.com/monkoose/neocodeium
---      XXX https://github.com/GeorgesAlkhouri/nvim-aider?tab=readme-ov-file
---   https://github.com/nvimdev/lspsaga.nvim
+-- * https://github.com/milanglacier/minuet-ai.nvim
+-- * https://github.com/frankroeder/parrot.nvim
+-- * https://github.com/Robitx/gp.nvim
+
+--  XXX https://github.com/GeorgesAlkhouri/nvim-aider?tab=readme-ov-file

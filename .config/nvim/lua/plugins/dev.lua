@@ -11,83 +11,22 @@
 
 return {
 
-  -- https://github.com/nvim-mini/mini.hipatterns
-  {
-    "nvim-mini/mini.hipatterns",
-    version = false,
-    config = function()
-      require("mini.hipatterns").setup({
-        highlighters = {
-          hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsNote" },
-          todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsNote" },
-          note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
-          xxx = { pattern = "%f[%w]()XXX()%f[%W]", group = "MiniHipatternsNote" },
-        },
-      })
-      vim.api.nvim_set_hl(0, "MiniHipatternsNote", { bold = true, fg = "#ffffff" })
-    end,
-  },
-
-  {
-    "vim-test/vim-test",
-    dependencies = {
-      "akinsho/toggleterm.nvim",
-    },
-    init = function()
-      -- vim.g["test#custom_strategies"] = {
-      --   zellij = function(cmd)
-      --     if os.getenv("ZELLIJ") == nil then
-      --       vim.notify("Cannot create Zellij pane to run tests. You are not in Zellij context.", "error")
-      --       return
-      --     end
-      --
-      --     local pipe_file_path = "/tmp/zellij-nvim-test-fifo"
-      --
-      --     local pgrepHandle = io.popen("ps aux | grep '[t]ail -f " .. pipe_file_path .. "'")
-      --     local pgrepOutput = pgrepHandle:read("*a")
-      --     pgrepHandle:close()
-      --
-      --     local is_pane_already_listening = pgrepOutput ~= ""
-      --
-      --     if not is_pane_already_listening then
-      --       vim.notify("Running tests in new Zellij pane", "info")
-      --       os.execute("rm -f" .. pipe_file_path)
-      --       os.execute("mkfifo -m 600 " .. pipe_file_path)
-      --       os.execute("zellij run -d down -c -n Tests -- bash -c 'tail -f " .. pipe_file_path .. " | bash' &")
-      --       -- Resize new panel
-      --       for _ = 0, 3 do
-      --         os.execute("zellij action resize decrease up")
-      --       end
-      --       -- Focus back to Neovim
-      --       os.execute("zellij action focus-previous-pane")
-      --       -- A small delay to ensure `tail` has started (maybe not necessary?)
-      --       os.execute("sleep 0.05")
-      --     else
-      --       vim.notify("Running tests in existing Zellij pane", "info")
-      --     end
-      --
-      --     local escaped_cmd = cmd:gsub('"', '\\"')
-      --     os.execute("echo '" .. escaped_cmd .. "' > " .. pipe_file_path)
-      --   end,
-      -- }
-
-      vim.g["test#strategy"] = "toggleterm"
-    end,
-    cmd = {
-      "TestNearest",
-      "TestFile",
-      "TestSuite",
-      "TestLast",
-      "TestVisit",
-    },
-    keys = {
-      { "<leader>tn", "<cmd>TestNearest<CR>" },
-      -- { "<leader>tf", "<cmd>TestFile<CR>" },
-      -- { "<leader>ts", "<cmd>TestSuite<CR>" },
-      -- { "<leader>tl", "<cmd>TestLast<CR>" },
-      -- { "<leader>tg", "<cmd>TestVisit<CR>" },
-    },
-  },
+  -- -- https://github.com/nvim-mini/mini.hipatterns
+  -- {
+  --   "nvim-mini/mini.hipatterns",
+  --   version = false,
+  --   config = function()
+  --     require("mini.hipatterns").setup({
+  --       highlighters = {
+  --         hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsNote" },
+  --         todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsNote" },
+  --         note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+  --         xxx = { pattern = "%f[%w]()XXX()%f[%W]", group = "MiniHipatternsNote" },
+  --       },
+  --     })
+  --     vim.api.nvim_set_hl(0, "MiniHipatternsNote", { bold = true, fg = "#ffffff" })
+  --   end,
+  -- },
 
   -- https://github.com/nvim-neotest/neotest
   --
@@ -300,44 +239,44 @@ return {
   --   },
   -- },
 
-  -- https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/plugins/debug.lua
-  {
-    "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
-    cmd = "Trouble",
-    keys = {
-      {
-        "<leader>xx",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-      {
-        "<leader>xX",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "Buffer Diagnostics (Trouble)",
-      },
-      {
-        "<leader>cs",
-        "<cmd>Trouble symbols toggle focus=false<cr>",
-        desc = "Symbols (Trouble)",
-      },
-      {
-        "<leader>cl",
-        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
-      },
-      {
-        "<leader>xL",
-        "<cmd>Trouble loclist toggle<cr>",
-        desc = "Location List (Trouble)",
-      },
-      {
-        "<leader>xQ",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
-      },
-    },
-  },
+  -- -- https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/plugins/debug.lua
+  -- {
+  --   "folke/trouble.nvim",
+  --   opts = {}, -- for default options, refer to the configuration section for custom setup.
+  --   cmd = "Trouble",
+  --   keys = {
+  --     {
+  --       "<leader>xx",
+  --       "<cmd>Trouble diagnostics toggle<cr>",
+  --       desc = "Diagnostics (Trouble)",
+  --     },
+  --     {
+  --       "<leader>xX",
+  --       "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+  --       desc = "Buffer Diagnostics (Trouble)",
+  --     },
+  --     {
+  --       "<leader>cs",
+  --       "<cmd>Trouble symbols toggle focus=false<cr>",
+  --       desc = "Symbols (Trouble)",
+  --     },
+  --     {
+  --       "<leader>cl",
+  --       "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+  --       desc = "LSP Definitions / references / ... (Trouble)",
+  --     },
+  --     {
+  --       "<leader>xL",
+  --       "<cmd>Trouble loclist toggle<cr>",
+  --       desc = "Location List (Trouble)",
+  --     },
+  --     {
+  --       "<leader>xQ",
+  --       "<cmd>Trouble qflist toggle<cr>",
+  --       desc = "Quickfix List (Trouble)",
+  --     },
+  --   },
+  -- },
 
   -- https://github.com/stevearc/conform.nvim
   {
@@ -563,31 +502,31 @@ return {
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
-  -- XXX: https://github.com/coder/claudecode.nvim ??
-
-  -- https://github.com/greggh/claude-code.nvim
-  {
-    "greggh/claude-code.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for git operations
-    },
-    config = function()
-      require("claude-code").setup({
-        command = "claude --dangerously-skip-permissions",
-        window = {
-          position = "vertical",
-          -- float = {
-          --   width = "30%",      -- Take up 90% of the editor width
-          --   height = "90%",     -- Take up 90% of the editor height
-          --   row = "center",     -- Center vertically
-          --   col = "100%",     -- Center horizontally
-          --   relative = "editor",
-          --   -- border = "rounded",  -- Use double border style
-          -- },
-        },
-      })
-
-      vim.api.nvim_create_user_command("CC", "ClaudeCode", {})
-    end,
-  },
+  -- -- XXX: https://github.com/coder/claudecode.nvim ??
+  --
+  -- -- https://github.com/greggh/claude-code.nvim
+  -- {
+  --   "greggh/claude-code.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- Required for git operations
+  --   },
+  --   config = function()
+  --     require("claude-code").setup({
+  --       command = "claude --dangerously-skip-permissions",
+  --       window = {
+  --         position = "vertical",
+  --         -- float = {
+  --         --   width = "30%",      -- Take up 90% of the editor width
+  --         --   height = "90%",     -- Take up 90% of the editor height
+  --         --   row = "center",     -- Center vertically
+  --         --   col = "100%",     -- Center horizontally
+  --         --   relative = "editor",
+  --         --   -- border = "rounded",  -- Use double border style
+  --         -- },
+  --       },
+  --     })
+  --
+  --     vim.api.nvim_create_user_command("CC", "ClaudeCode", {})
+  --   end,
+  -- },
 }
