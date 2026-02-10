@@ -11,9 +11,9 @@ return {
     local is_fullscreen = false
 
     -- Default dimensions
-    local default_width_ratio = 0.5
-    local default_height_ratio = 0.9
-    local fullscreen_ratio = 0.95
+    local default_width_ratio = 0.4
+    local default_height_ratio = 1
+    local fullscreen_width_ratio = 0.95
 
     -- Toggle fullscreen function
     _G.toggle_term_fullscreen = function()
@@ -31,17 +31,18 @@ return {
     end, { desc = "Toggle terminal fullscreen" })
 
     return {
-      direction = "float",
+      -- direction = "float",
       float_opts = {
         border = "curved",
         width = function()
-          local ratio = is_fullscreen and fullscreen_ratio or default_width_ratio
+          local ratio = is_fullscreen and fullscreen_width_ratio or default_width_ratio
           return math.floor(vim.o.columns * ratio)
         end,
-        height = function()
-          local ratio = is_fullscreen and fullscreen_ratio or default_height_ratio
-          return math.floor(vim.o.lines * ratio)
-        end,
+        height = vim.o.lines * default_height_ratio,
+        -- height = function()
+        --   local ratio = is_fullscreen and fullscreen_ratio or default_height_ratio
+        --   return math.floor(vim.o.lines * ratio)
+        -- end,
       },
       shade_terminals = true,
       shading_factor = -30,

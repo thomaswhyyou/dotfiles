@@ -1,13 +1,4 @@
-# theme = Dracula
-# theme = Github Dark High Contrast
-theme = Github Dark
-# theme = Jetbrains Darcula
-# theme = Xcode Dark
-# theme = Xcode Dark hc
-# theme = Hybrid
-
-# theme = Operator Mono Dark
-# theme = Xcode Dark hc
+theme = Xcode Dark
 
 # Berkeley Mono
 # font-family = Berkeley Mono
