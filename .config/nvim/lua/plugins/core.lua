@@ -23,68 +23,68 @@ return {
     -- },
   },
 
-  -- -- https://github.com/folke/noice.nvim
-  -- {
-  --   "folke/noice.nvim",
-  --   dependencies = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     "MunifTanjim/nui.nvim",
-  --     -- OPTIONAL:
-  --     --   `nvim-notify` is only needed, if you want to use the notification view.
-  --     --   If not available, we use `mini` as the fallback
-  --     -- "rcarriga/nvim-notify",
-  --   },
-  --   event = "VeryLazy",
-  --   opts = function(_, opts)
-  --     opts.presets = {
-  --       command_palette = {
-  --         views = {
-  --           cmdline_popup = {
-  --             position = {
-  --               row = "94%",
-  --               col = "50%",
-  --             },
-  --             size = {
-  --               min_width = 80,
-  --               width = "auto",
-  --               height = "auto",
-  --             },
-  --           },
-  --
-  --           -- cmdline_popupmenu = {
-  --           --   position = {
-  --           --     row = "80%",
-  --           --     col = "50%",
-  --           --   },
-  --           -- },
-  --
-  --           -- popupmenu = {
-  --           --   relative = "editor",
-  --           --   position = {
-  --           --     row = 23,
-  --           --     col = "50%",
-  --           --   },
-  --           --   size = {
-  --           --     width = 60,
-  --           --     height = "auto",
-  --           --     max_height = 15,
-  --           --   },
-  --           --   border = {
-  --           --     style = "rounded",
-  --           --     padding = { 0, 1 },
-  --           --   },
-  --           --   win_options = {
-  --           --     winhighlight = { Normal = "Normal", FloatBorder = "NoiceCmdlinePopupBorder" },
-  --           --   },
-  --           -- },
-  --         },
-  --       },
-  --     }
-  --     -- opts.lsp.signature = {
-  --     --   opts = { size = { max_height = 15 } },
-  --     -- }
-  --   end,
-  -- },
+  -- https://github.com/folke/noice.nvim
+  {
+    "folke/noice.nvim",
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      -- "rcarriga/nvim-notify",
+    },
+    event = "VeryLazy",
+    opts = function(_, opts)
+      opts.presets = {
+        command_palette = {
+          views = {
+            cmdline_popup = {
+              position = {
+                row = "94%",
+                col = "50%",
+              },
+              size = {
+                min_width = 80,
+                width = "auto",
+                height = "auto",
+              },
+            },
+
+            -- cmdline_popupmenu = {
+            --   position = {
+            --     row = "80%",
+            --     col = "50%",
+            --   },
+            -- },
+
+            -- popupmenu = {
+            --   relative = "editor",
+            --   position = {
+            --     row = 23,
+            --     col = "50%",
+            --   },
+            --   size = {
+            --     width = 60,
+            --     height = "auto",
+            --     max_height = 15,
+            --   },
+            --   border = {
+            --     style = "rounded",
+            --     padding = { 0, 1 },
+            --   },
+            --   win_options = {
+            --     winhighlight = { Normal = "Normal", FloatBorder = "NoiceCmdlinePopupBorder" },
+            --   },
+            -- },
+          },
+        },
+      }
+      -- opts.lsp.signature = {
+      --   opts = { size = { max_height = 15 } },
+      -- }
+    end,
+  },
 
   -- {
   --   "rebelot/heirline.nvim",
@@ -114,24 +114,6 @@ return {
         -- diagnostics_severities = {vim.diagnostic.severity.ERROR}
       })
     end,
-  },
-
-  -- ===========================================================================
-  -- Navigation
-
-  -- https://github.com/folke/flash.nvim
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {},
-    -- stylua: ignore
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      -- { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      -- { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      -- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
   },
 
   -- https://github.com/qpkorr/vim-bufkill
@@ -259,26 +241,26 @@ return {
     branch = "master",
   },
 
-  {
-    "kdheepak/lazygit.nvim",
-    lazy = true,
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    -- optional for floating window border decoration
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-    },
-  },
+  -- {
+  --   "kdheepak/lazygit.nvim",
+  --   lazy = true,
+  --   cmd = {
+  --     "LazyGit",
+  --     "LazyGitConfig",
+  --     "LazyGitCurrentFile",
+  --     "LazyGitFilter",
+  --     "LazyGitFilterCurrentFile",
+  --   },
+  --   -- optional for floating window border decoration
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   -- setting the keybinding for LazyGit with 'keys' is recommended in
+  --   -- order to load the plugin when the command is run for the first time
+  --   keys = {
+  --     { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+  --   },
+  -- },
 
   -- ===========================================================================
   --
@@ -399,16 +381,6 @@ return {
       end,
     },
   },
-
-  -- XXX: Remove when not in current buffer
-  -- https://github.com/nvim-mini/mini.cursorword
-  -- {
-  --   "nvim-mini/mini.cursorword",
-  --   version = false,
-  --   config = function()
-  --     require("mini.cursorword").setup()
-  --   end,
-  -- },
 
   -- -- https://github.com/akinsho/toggleterm.nvim
   -- {

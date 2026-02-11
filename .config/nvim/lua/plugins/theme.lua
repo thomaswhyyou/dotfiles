@@ -5,16 +5,6 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      styles = {
-        comment = { italic = false },
-        -- keyword = { italic = true }, -- any other keyword
-        -- type = { italic = true }, -- (preferred) int, long, char, etc
-        -- storageclass = { italic = true }, -- static, register, volatile, etc
-        -- structure = { italic = true }, -- struct, union, enum, etc
-        -- parameter = { italic = true }, -- parameter pass in function
-        -- annotation = { italic = true },
-        -- tag_attribute = { italic = false }, -- attribute of tag in reactjs
-      },
       filter = "machine", -- classic | octagon | pro | machine | ristretto | spectrum
       background_clear = {
         -- "float_win",
@@ -89,25 +79,6 @@ return {
           -- mini.cursorword
           MiniCursorword = { bg = c.base.dimmed4 },
 
-          -- https://github.com/folke/flash.nvim
-          -- https://github.com/folke/flash.nvim/blob/3c942666f115e2811e959eabbdd361a025db8b63/lua/flash/highlight.lua#L12
-          -- TODO: Tweak this to blend better into monokai
-          -- FlashBackdrop = { fg = "#545c7e" },
-
-          FlashBackdrop = { fg = c.base.dimmed3, bg = c.editor.background },
-          FlashCurrent = { bg = "#ff966c", fg = "#1b1d2b" },
-          FlashLabel = { bg = "#ff007c", bold = true, fg = "#c8d3f5" },
-          FlashMatch = { bg = "#3e68d7", fg = "#c8d3f5" },
-          FlashCursor = { reverse = true },
-
-          -- FlashBackdrop	Comment	backdrop
-          -- FlashMatch = { bg = c.base.dimmed1, fg = c.base.dark },
-          -- FlashCurrent IncSearch	current match
-          -- FlashLabel	Substitute -- jump label
-          -- FlashPrompt	MsgArea -- prompt
-          -- FlashPromptIcon Special -- prompt icon
-          -- FlashCursor Cursor -- cursor
-
           -- https://github.com/nvim-mini/mini.hipatterns
           MiniHipatternsNote = { bold = true, fg = "#ffffff" },
         }
@@ -116,12 +87,5 @@ return {
     init = function()
       vim.cmd([[colorscheme monokai-pro]])
     end,
-  },
-
-  -- https://github.com/folke/tokyonight.nvim
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
   },
 }

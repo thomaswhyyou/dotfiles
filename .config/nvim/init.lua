@@ -96,8 +96,6 @@ vim.lsp.enable({
 -- how change surrounds 'foo' -> "foo"
 -- * Tweak search color and multi select color, make it brighter
 
--- Add nvim-colorizer.lua with a command to turn it on/off
-
 -- https://github.com/stevearc/quicker.nvim
 
 -- * Try setting up https://github.com/yetone/avante.nvim
