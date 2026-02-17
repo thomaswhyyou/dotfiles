@@ -59,7 +59,6 @@ vim.lsp.enable({
 -- TODO:
 -- Set up lsp keybindings (LspAttach?), toggle virtual text vs virtual lines vs inlay?
 -- Set up vim-test
--- https://github.com/rest-nvim/rest.nvim
 -- treesitter
 
 -- Git
@@ -83,12 +82,9 @@ vim.lsp.enable({
 -- https://github.com/stevearc
 -- https://github.com/exosyphon/nvim
 
--- Configure picker
-
+-- TODO
 -- https://monsterlessons-academy.com/posts/neovim-complete-setup-setting-up-neovim-from-scratch
 -- https://www.josean.com/posts/how-to-setup-neovim-2024
-
--- TODO
 -- Finish going through typescraft tutorial: https://typecraft.dev/tutorial/how-well-do-you-know-vim-registers
 
 -- Make the diagnostic popover show on cursor
@@ -98,9 +94,5 @@ vim.lsp.enable({
 
 -- https://github.com/stevearc/quicker.nvim
 
--- * Try setting up https://github.com/yetone/avante.nvim
 -- * https://github.com/milanglacier/minuet-ai.nvim
 -- * https://github.com/frankroeder/parrot.nvim
--- * https://github.com/Robitx/gp.nvim
-
---  XXX https://github.com/GeorgesAlkhouri/nvim-aider?tab=readme-ov-file

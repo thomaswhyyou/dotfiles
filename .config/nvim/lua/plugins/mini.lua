@@ -22,13 +22,14 @@ return {
     -- require("mini.bracketed").setup()
 
     -- require("mini.git").setup()
-    -- require("mini.diff").setup({
-    --   view = {
-    --     -- TODO: Look into changing colors?
-    --     style = "sign",
-    --     signs = { add = "+", change = "~", delete = "_" },
-    --   },
-    -- })
+    require("mini.diff").setup({
+      view = {
+        -- TODO: Look into changing colors?
+        style = "sign",
+        signs = { add = "+", change = "~", delete = "_" },
+        priority = 0,
+      },
+    })
 
     --- mini.hipatterns ---
 

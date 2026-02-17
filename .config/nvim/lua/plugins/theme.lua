@@ -1,3 +1,5 @@
+-- TODO: Change the search color
+
 return {
   -- https://github.com/loctvl842/monokai-pro.nvim
   {

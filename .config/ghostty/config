@@ -1,5 +1,7 @@
 theme = Xcode Dark
 
+# custom-shader = shaders/cursor_tail.glsl
+
 # Berkeley Mono
 # font-family = Berkeley Mono
 # font-family = Berkeley Mono SemiCondensed

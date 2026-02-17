@@ -1,3 +1,4 @@
+
 -- https://github.com/folke/flash.nvim/blob/3c942666f115e2811e959eabbdd361a025db8b63/lua/flash/highlight.lua#L23-L31
 local function set_highlights()
   -- Dimmed but not bolded or italicized in the background
@@ -17,7 +18,6 @@ end
 return {
   "folke/flash.nvim",
   event = "VeryLazy",
-  opts = {},
   -- stylua: ignore
   keys = {
     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
@@ -26,5 +26,21 @@ return {
   config = function()
     vim.api.nvim_create_autocmd("ColorScheme", { callback = set_highlights })
     set_highlights()
+
+    require("flash").setup({
+      label = {
+        current = false,
+        after = false,
+        before = true,
+        style = "overlay", -- "eol" | "overlay" | "right_align" | "inline"
+        min_pattern_length = 2,
+      },
+      modes = {
+        search = {
+          enabled = true,
+          highlight = { backdrop = true },
+        },
+      },
+    })
   end,
 }

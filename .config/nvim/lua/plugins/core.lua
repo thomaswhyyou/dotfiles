@@ -23,68 +23,6 @@ return {
     -- },
   },
 
-  -- https://github.com/folke/noice.nvim
-  {
-    "folke/noice.nvim",
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      -- "rcarriga/nvim-notify",
-    },
-    event = "VeryLazy",
-    opts = function(_, opts)
-      opts.presets = {
-        command_palette = {
-          views = {
-            cmdline_popup = {
-              position = {
-                row = "94%",
-                col = "50%",
-              },
-              size = {
-                min_width = 80,
-                width = "auto",
-                height = "auto",
-              },
-            },
-
-            -- cmdline_popupmenu = {
-            --   position = {
-            --     row = "80%",
-            --     col = "50%",
-            --   },
-            -- },
-
-            -- popupmenu = {
-            --   relative = "editor",
-            --   position = {
-            --     row = 23,
-            --     col = "50%",
-            --   },
-            --   size = {
-            --     width = 60,
-            --     height = "auto",
-            --     max_height = 15,
-            --   },
-            --   border = {
-            --     style = "rounded",
-            --     padding = { 0, 1 },
-            --   },
-            --   win_options = {
-            --     winhighlight = { Normal = "Normal", FloatBorder = "NoiceCmdlinePopupBorder" },
-            --   },
-            -- },
-          },
-        },
-      }
-      -- opts.lsp.signature = {
-      --   opts = { size = { max_height = 15 } },
-      -- }
-    end,
-  },
 
   -- {
   --   "rebelot/heirline.nvim",
@@ -211,29 +149,29 @@ return {
   -- ===========================================================================
   -- Git
 
-  -- https://github.com/lewis6991/gitsigns.nvim
-  -- TODO: https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/plugins/gitsigns.lua
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      signs = {
-        add = { text = "+" },
-        change = { text = "~" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "~" },
-        untracked = { text = "┆" },
-      },
-      signs_staged = {
-        add = { text = "+" },
-        change = { text = "~" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "~" },
-        untracked = { text = "┆" },
-      },
-    },
-  },
+  -- -- https://github.com/lewis6991/gitsigns.nvim
+  -- -- TODO: https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/plugins/gitsigns.lua
+  -- {
+  --   "lewis6991/gitsigns.nvim",
+  --   opts = {
+  --     signs = {
+  --       add = { text = "+" },
+  --       change = { text = "~" },
+  --       delete = { text = "_" },
+  --       topdelete = { text = "‾" },
+  --       changedelete = { text = "~" },
+  --       untracked = { text = "┆" },
+  --     },
+  --     signs_staged = {
+  --       add = { text = "+" },
+  --       change = { text = "~" },
+  --       delete = { text = "_" },
+  --       topdelete = { text = "‾" },
+  --       changedelete = { text = "~" },
+  --       untracked = { text = "┆" },
+  --     },
+  --   },
+  -- },
 
   -- https://github.com/tpope/vim-fugitive
   {
