@@ -35,12 +35,15 @@ return {
         style = "overlay", -- "eol" | "overlay" | "right_align" | "inline"
         min_pattern_length = 2,
       },
-      modes = {
-        search = {
-          enabled = true,
-          highlight = { backdrop = true },
-        },
-      },
+      -- modes = {
+      --   search = {
+      --     enabled = true,
+      --     label = {
+      --       style = "eol",
+      --     },
+      --     -- highlight = { backdrop = true },
+      --   },
+      -- },
     })
   end,
 }

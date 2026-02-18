@@ -25,10 +25,10 @@ return {
       end
     end
 
-    -- Set up F2 keymap
-    vim.keymap.set({ "n", "t" }, "<F2>", function()
-      _G.toggle_term_fullscreen()
-    end, { desc = "Toggle terminal fullscreen" })
+    -- -- Set up F2 keymap
+    -- vim.keymap.set({ "n", "t" }, "<F2>", function()
+    --   _G.toggle_term_fullscreen()
+    -- end, { desc = "Toggle terminal fullscreen" })
 
     return {
       -- direction = "float",

@@ -1,6 +1,9 @@
 theme = Xcode Dark
 
+# Reference: https://github.com/sahaj-b/ghostty-cursor-shaders
+custom-shader = shaders/cursor_sweep.glsl
 # custom-shader = shaders/cursor_tail.glsl
+# custom-shader = shaders/cursor_warp.glsl
 
 # Berkeley Mono
 # font-family = Berkeley Mono
