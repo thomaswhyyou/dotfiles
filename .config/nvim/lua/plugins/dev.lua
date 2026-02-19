@@ -1,13 +1,4 @@
--- earttps://github.com/jellydn/tiny-nvim/blob/22d8e485653c17670244e204bc611bac58654cfd/lua/plugins/extra/codecompanion.lua#L135
-
--- lsp & treesitter
--- formatter (conform)
--- completion (blink)
--- runner
--- diagnostic
--- outline
--- ai
--- hilights
+-- https://github.com/jellydn/tiny-nvim/blob/22d8e485653c17670244e204bc611bac58654cfd/lua/plugins/extra/codecompanion.lua#L135
 
 return {
 
@@ -26,14 +17,6 @@ return {
   --     })
   --     vim.api.nvim_set_hl(0, "MiniHipatternsNote", { bold = true, fg = "#ffffff" })
   --   end,
-  -- },
-
-  -- -- https://github.com/folke/ts-comments.nvim
-  -- {
-  --   "folke/ts-comments.nvim",
-  --   opts = {},
-  --   event = "VeryLazy",
-  --   enabled = vim.fn.has("nvim-0.10.0") == 1,
   -- },
 
   -- -- https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/plugins/debug.lua
@@ -74,42 +57,6 @@ return {
   --     },
   --   },
   -- },
-
-  -- https://github.com/stevearc/conform.nvim
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        lua = { "stylua" },
-        elixir = { "mix" },
-      },
-      format_on_save = function()
-        return {
-          -- Only run these basic formatters automatically on save.
-          formatters = {
-            "trim_whitespace",
-            "trim_newlines",
-          },
-          timeout_ms = 500,
-          lsp_format = "never",
-        }
-      end,
-    },
-    init = function()
-      -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#format-command
-      vim.api.nvim_create_user_command("Conform", function(args)
-        local range = nil
-        if args.count ~= -1 then
-          local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
-          range = {
-            start = { args.line1, 0 },
-            ["end"] = { args.line2, end_line:len() },
-          }
-        end
-        require("conform").format({ async = true, lsp_format = "fallback", range = range })
-      end, { range = true })
-    end,
-  },
 
   -- https://github.com/tjdevries/advent-of-nvim?tab=readme-ov-file
   -- https://github.com/martinsione/dotfiles/tree/main/src/.config/nvim

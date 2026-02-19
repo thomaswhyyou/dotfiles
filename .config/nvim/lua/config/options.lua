@@ -52,7 +52,7 @@ vim.opt.splitright = true -- Force all vertical splits to go to the right of cur
 vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20      -- Minimal number of screen lines to keep above and below the cursor (default: 0)

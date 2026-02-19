@@ -1,53 +1,27 @@
 theme = Xcode Dark
 
-# Reference: https://github.com/sahaj-b/ghostty-cursor-shaders
-custom-shader = shaders/cursor_sweep.glsl
-# custom-shader = shaders/cursor_tail.glsl
-# custom-shader = shaders/cursor_warp.glsl
-
-# Berkeley Mono
-# font-family = Berkeley Mono
-# font-family = Berkeley Mono SemiCondensed
 font-family = Berkeley Mono Condensed
 font-size = 12
+font-feature = -calt, -liga, -dlig
 
-# Disable ligatures
-font-feature = -calt
-font-feature = -liga
-font-feature = -dlig
-
-# Cursor
 cursor-color = 05f900
 cursor-text = 003541
-shell-integration-features = false
-
-# Better fullscreen mode w/o animation
-macos-non-native-fullscreen = true
+custom-shader = shaders/cursor_sweep.glsl
 
 # Misc
-copy-on-select = true
-macos-option-as-alt = true
+macos-non-native-fullscreen = true
 mouse-hide-while-typing = true
-window-save-state = always
 window-padding-x = 0
 window-padding-y = 0
 
-keybind = super+o=toggle_quick_terminal
-quick-terminal-position = right
-quick-terminal-animation-duration = 0
-
-keybind = ctrl+`=text:\x1c
-
-#
 # Tmux bindings
-# (Reference: https://github.com/mxgrn/dotfiles/tree/master/.config/ghostty)
-#
+# Reference: https://github.com/mxgrn/dotfiles/tree/master/.config/ghostty
 
 # cmd+t to create a new tmux window
 keybind = super+t=text:\x13c
 
 # cmd+x to close the current pane
-# keybind = super+x=text:\x13X
+keybind = super+x=text:\x13x
 
 # cmd+l to toggle between two latest windows
 keybind = super+l=text:\x13l
@@ -62,8 +36,6 @@ keybind = super+digit_6=text:\x136
 keybind = super+digit_7=text:\x137
 keybind = super+digit_8=text:\x138
 keybind = super+digit_9=text:\x139
-
-# XXX: cmd+f: for tmux search?
 
 # cmd+shfit+left|right to go to next/prev tmux window
 keybind = super+alt+right=text:\x13n

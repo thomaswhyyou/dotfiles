@@ -8,7 +8,6 @@ return {
     -- C-n/C-p or Up/Down: Select next/previous item
     -- C-e: Hide menu
     -- C-k: Toggle signature help (if signature.enabled = true)
-    --
     -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = {
       preset = "super-tab",
@@ -19,23 +18,11 @@ return {
       list = { selection = { preselect = false, auto_insert = true } },
     },
     cmdline = {
-      -- keymap = { preset = "cmdline" },
       keymap = {
         preset = "inherit",
         -- recommended, as the default keymap will only show and select the next item
         ["<Tab>"] = { "show", "accept" },
       },
-
-      -- completion = { menu = { auto_show = false } },
-      -- completion = {
-      --   menu = {
-      --     auto_show = function(ctx)
-      --       return vim.fn.getcmdtype() == ":"
-      --       -- enable for inputs as well, with:
-      --       -- or vim.fn.getcmdtype() == '@'
-      --     end,
-      --   },
-      -- },
     },
   },
 }
