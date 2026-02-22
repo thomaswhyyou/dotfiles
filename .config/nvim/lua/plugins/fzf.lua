@@ -16,6 +16,7 @@ return {
       -- { "<leader>sb", ":FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
     },
   opts = {
+    fzf_colors = true,
     winopts = {
       height = 0.90,
       width = 0.50,

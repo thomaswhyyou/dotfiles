@@ -207,7 +207,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
         float sdfTrail = mix(sdfTrail_diag, sdfTrail_rect, isStraightMove);
 
         vec4 trail = TRAIL_COLOR;
-        float trailAlpha = antialising(sdfTrail);
+        float trailAlpha = antialising(sdfTrail) * (1.0 - progress);
         newColor = mix(newColor, trail, trailAlpha);
 
         // Punch hole
